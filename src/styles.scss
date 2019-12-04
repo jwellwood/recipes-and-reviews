@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootswatch/dist/minty/variables";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules//bootswatch/dist/flatly/bootstrap.min.css";
+@import "./scss/variables";
+body {
+  font-family: "Patrick Hand", cursive;
+  min-height: 100vh;
+}

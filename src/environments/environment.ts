@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBOSFuFWEOsM_AlSEj7UKKLRQX4HSfV4Tg',
+    authDomain: 'pbponch.firebaseapp.com',
+    databaseURL: 'https://pbponch.firebaseio.com',
+    projectId: 'pbponch',
+    storageBucket: 'pbponch.appspot.com',
+    messagingSenderId: '226805917493',
+    appId: '1:226805917493:web:444512627cef979dc98e7c',
+    measurementId: 'G-F1Y6M583T8'
+  }
 };
 
 /*

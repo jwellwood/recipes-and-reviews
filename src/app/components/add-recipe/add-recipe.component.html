@@ -1,0 +1,241 @@
+<!-- This inputs in this file are: 
+  - #name (req)
+  - #tagLine
+  - #mainComment (req)
+  - #type (req)
+  - #servesNumber (req)
+  - #healthRating (req)
+  - #prepTime (req)
+  - #ingredientsTotal (req)
+-->
+<div class="d-flex bd-highlight mb-2">
+  <div class="p-1 bd-highlight">
+    <button type="button" class="btn btn-light btn-sm" routerLink="/recipes">
+      Back
+    </button>
+  </div>
+</div>
+<!-- TODO Find a way to avoid so much repetition -->
+<div class="card bg-light mb-5">
+  <div class="card-header text-white bg-primary">
+    Add a new recipe
+  </div>
+  <div class="card-body">
+    <form #recipeForm="ngForm" (ngSubmit)="onSubmit(recipeForm)">
+      <!-- ************************************* NAME **************************************** -->
+      <div class="form-group">
+        <label for="name">Name of Recipe *</label>
+        <input
+          type="text"
+          [(ngModel)]="recipe.name"
+          #name="ngModel"
+          [ngClass]="{
+            'is-invalid': name.errors && name.touched
+          }"
+          class="form-control"
+          id="name"
+          name="name"
+          aria-describedby="name"
+          placeholder="Name"
+          required
+          maxlength="50"
+        />
+        <div [hidden]="!name.errors?.required" class="invalid-feedback">
+          Name is required
+        </div>
+      </div>
+      <!-- ************************************* TAGLINE **************************************** -->
+      <div class="form-group">
+        <label for="tagLine">Tagline</label>
+        <small class="form-text text-muted mb-3"
+          >Add a short summary of the recipe (max 150 chars)</small
+        >
+        <textarea
+          [(ngModel)]="recipe.tagLine"
+          #tagLine="ngModel"
+          [ngClass]="{
+            'is-invalid': tagLine.errors && tagLine.touched
+          }"
+          class="form-control"
+          id="tagLine"
+          name="tagLine"
+          aria-describedby="tagLine"
+          placeholder="Tagline"
+          rows="2"
+          maxlength="150"
+        ></textarea>
+        <div [hidden]="!tagLine.errors?.required" class="invalid-feedback">
+          Field is required
+        </div>
+      </div>
+      <!-- ************************************* MAIN COMMENT **************************************** -->
+      <div class="form-group">
+        <label for="mainComment">Comment *</label>
+        <textarea
+          [(ngModel)]="recipe.mainComment"
+          #mainComment="ngModel"
+          [ngClass]="{
+            'is-invalid': mainComment.errors && mainComment.touched
+          }"
+          class="form-control"
+          id="mainComment"
+          name="mainComment"
+          aria-describedby="mainComment"
+          placeholder="Comment"
+          required
+          rows="3"
+          maxlength="9999"
+        ></textarea>
+        <div [hidden]="!mainComment.errors?.required" class="invalid-feedback">
+          Field is required
+        </div>
+      </div>
+      <!-- ************************************* Ratings **************************************** -->
+      <div class="row">
+        <!-- ************************************* SERVES **************************************** -->
+        <div class="col-md-3 col-6">
+          <div class="form-group">
+            <label for="servesNumber">Serves *</label>
+            <input
+              type="number"
+              [(ngModel)]="recipe.servesNumber"
+              #servesNumber="ngModel"
+              [ngClass]="{
+                'is-invalid': servesNumber.errors && servesNumber.touched
+              }"
+              class="form-control"
+              id="servesNumber"
+              name="servesNumber"
+              aria-describedby="servesNumber"
+              placeholder="Serves"
+              required
+              pattern="{{ pattern }}"
+              max="10"
+              min="0"
+            />
+            <div
+              [hidden]="!servesNumber.errors?.required"
+              class="invalid-feedback"
+            >
+              Field is required
+            </div>
+            <div
+              [hidden]="!servesNumber.errors?.pattern"
+              class="invalid-feedback"
+            >
+              Use numbers 0-10 without decimals
+            </div>
+          </div>
+        </div>
+        <!-- ************************************* PREP TIME **************************************** -->
+        <div class="col-md-3 col-6">
+          <div class="form-group">
+            <label for="prepTime">Prep time *</label>
+            <div class="input-group">
+              <input
+                type="number"
+                [(ngModel)]="recipe.prepTime"
+                #prepTime="ngModel"
+                [ngClass]="{
+                  'is-invalid': prepTime.errors && prepTime.touched
+                }"
+                class="form-control"
+                id="prepTime"
+                name="prepTime"
+                aria-describedby="prepTime"
+                placeholder="Prep Time"
+                required
+                pattern="{{ timePattern }}"
+                max="999"
+                min="1"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">mins</span>
+              </div>
+              <div
+                [hidden]="!prepTime.errors?.required"
+                class="invalid-feedback"
+              >
+                Field is required
+              </div>
+              <div
+                [hidden]="!prepTime.errors?.pattern"
+                class="invalid-feedback"
+              >
+                Use numbers 1-999 without decimals
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ************************************* HEALTH **************************************** -->
+        <div class="col-md-3 col-6">
+          <div class="form-group">
+            <label for="healthRating">Health Rating *</label>
+            <input
+              type="number"
+              [(ngModel)]="recipe.healthRating"
+              #healthRating="ngModel"
+              [ngClass]="{
+                'is-invalid': healthRating.errors && healthRating.touched
+              }"
+              class="form-control"
+              id="healthRating"
+              name="healthRating"
+              aria-describedby="healthRating"
+              placeholder="Healthiness"
+              required
+              pattern="{{ pattern }}"
+              max="10"
+              min="0"
+            />
+            <div
+              [hidden]="!healthRating.errors?.required"
+              class="invalid-feedback"
+            >
+              Field is required
+            </div>
+            <div
+              [hidden]="!healthRating.errors?.pattern"
+              class="invalid-feedback"
+            >
+              Use numbers 0-10 without decimals
+            </div>
+          </div>
+        </div>
+        <!-- ************************************* TYPE **************************************** -->
+        <div class="col-md-3 col-6">
+          <div class="form-group">
+            <label for="type">Type *</label>
+            <select
+              [(ngModel)]="recipe.type"
+              #type="ngModel"
+              [ngClass]="{
+                'is-invalid': type.errors && type.touched
+              }"
+              class="form-control"
+              id="type"
+              name="type"
+              aria-describedby="type"
+              required
+            >
+              <option value="Starter">Starter</option>
+              <option value="Side">Side</option>
+              <option value="Main">Main</option>
+              <option value="Dessert">Dessert</option>
+            </select>
+            <div [hidden]="!type.errors?.required" class="invalid-feedback">
+              Field is required
+            </div>
+          </div>
+        </div>
+
+        <!-- ************************************* SUBMISSION **************************************** -->
+      </div>
+      <flash-messages></flash-messages>
+      <button type="submit" class="btn btn-success btn-sm btn-block">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

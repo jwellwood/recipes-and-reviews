@@ -1,0 +1,70 @@
+<div class="d-flex bd-highlight mb-2">
+  <div class="p-1 bd-highlight">
+    <button type="button" class="btn btn-light btn-sm" routerLink="/">
+      Back
+    </button>
+  </div>
+</div>
+
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark mb-2">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 font-italic text-primary">
+      Reviews
+    </h1>
+    <p class="lead my-3">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate omnis
+      harum amet repellendus, blanditiis tempore vero possimus voluptatibus
+      iusto dolor. Quisquam sunt dolorem beatae dicta libero ipsa nobis
+      similique placeat?
+    </p>
+    <p class="lead mb-0">
+      <a href="#" class="text-white font-weight-bold">Check it out!</a>
+    </p>
+  </div>
+</div>
+
+<div class="p-1 flex-grow-1 bd-highlight my-2">
+  <button
+    type="button"
+    class="btn btn-light btn-block btn-sm"
+    routerLink="/reviews/add-review"
+  >
+    Add new review
+  </button>
+</div>
+
+<div *ngIf="!reviews">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="row" *ngIf="reviews">
+  <div class="col-sm-4" *ngFor="let review of reviews">
+    <div class="card mb-3 " routerLink="/reviews/{{ review.id }}">
+      <h5 class="card-header text-center text-white bg-primary">
+        {{ review.name }}
+      </h5>
+      <div class="card-body">
+        <h6 class="card-title">
+          {{ review.city }},
+          <small class="card-subtitle text-muted">{{ review.country }}</small>
+        </h6>
+
+        <img
+          style="height: 200px; width: 100%; display: block;"
+          src="https://picsum.photos/200/200"
+          alt="Card image"
+          class="img-thumbnail"
+        />
+      </div>
+      <div class="d-flex justify-content-between card-footer">
+        <div class="text-muted">
+          {{ review.dateVisited.toDate() | date }}
+        </div>
+        <div class="font-weight-bold">
+          <fa-icon [icon]="leaf" class="text-success"></fa-icon>
+          {{ overallRating | number: "1.0-1" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
