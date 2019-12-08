@@ -1,16 +1,19 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+// App
 import { LandingComponent } from "./components/landing/landing.component";
 import { AboutComponent } from "./components/about/about.component";
-import { RecipesComponent } from "./components/recipes/recipes.component";
-import { ReviewsComponent } from "./components/reviews/reviews.component";
-import { AddReviewComponent } from "./components/add-review/add-review.component";
-import { ReviewDetailsComponent } from "./components/review-details/review-details.component";
-import { EditReviewComponent } from "./components/edit-review/edit-review.component";
-import { NotFoundComponent } from "./components/not-found/not-found.component";
-import { AddRecipeComponent } from "./components/add-recipe/add-recipe.component";
-import { EditRecipeComponent } from "./components/edit-recipe/edit-recipe.component";
-import { RecipeDetailsComponent } from "./components/recipe-details/recipe-details.component";
+import { NotFoundComponent } from "./components/navigation/not-found/not-found.component";
+// Recipes
+import { RecipesComponent } from "./components/recipe/recipes/recipes.component";
+import { AddRecipeComponent } from "./components/recipe/add-recipe/add-recipe.component";
+import { EditRecipeComponent } from "./components/recipe/edit-recipe/edit-recipe.component";
+import { RecipeDetailsComponent } from "./components/recipe/recipe-details/recipe-details.component";
+// Reviews
+import { ReviewsComponent } from "./components/review/reviews/reviews.component";
+import { AddReviewComponent } from "./components/review/add-review/add-review.component";
+import { ReviewDetailsComponent } from "./components/review/review-details/review-details.component";
+import { EditReviewComponent } from "./components/review/edit-review/edit-review.component";
 
 const routes: Routes = [
   {

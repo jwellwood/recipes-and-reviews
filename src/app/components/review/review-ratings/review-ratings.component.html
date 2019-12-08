@@ -1,0 +1,20 @@
+<div class="card-body">
+  <ul class="list-group list-group-xl">
+    <li class="list-group-item" *ngFor="let rating of ratings">
+      <div class="d-flex w-100 justify-content-between align-items-center">
+        <div class="mb-1">
+          <div>{{ rating.type }}</div>
+          <small class="text-primary">{{ rating.comment }}</small>
+        </div>
+        <span> {{ rating.value }}</span>
+      </div>
+    </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center list-group-item-success"
+    >
+      Overall<span class="font-weight-bold">{{
+        overallRating | number: "1.0-1"
+      }}</span>
+    </li>
+  </ul>
+</div>

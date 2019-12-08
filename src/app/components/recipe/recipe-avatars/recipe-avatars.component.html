@@ -1,0 +1,10 @@
+<div class="card-body">
+  <div class="row mb-1 d-flex justify-content-center">
+    <div class="mx-auto mb-1" *ngFor="let item of data">
+      <fa-icon [icon]="item.icon" class="small-icon bg-dark"></fa-icon>
+      <div class="mx-auto circle-icon bg-primary">
+        <div class="text-white">{{ item.value }}</div>
+      </div>
+    </div>
+  </div>
+</div>

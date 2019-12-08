@@ -1,0 +1,46 @@
+<app-back-button [link]=""></app-back-button>
+<app-jumbotron [title]="'Recipes'"></app-jumbotron>
+
+<app-add-button
+  [text]="'recipe'"
+  [link]="'/recipes/add-recipe'"
+></app-add-button>
+
+<div *ngIf="!recipes">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="row" *ngIf="recipes">
+  <div class="col-sm-4" *ngFor="let recipe of recipes">
+    <div class="card mb-3" routerLink="/recipes/{{ recipe.id }}">
+      <h5 class="card-header text-center text-white bg-primary">
+        <div class="d-flex justify-content-between">
+          {{ recipe.name }}
+          <fa-icon *ngIf="recipe.type === 'Starter'" [icon]="carrot"></fa-icon>
+          <fa-icon *ngIf="recipe.type === 'Side'" [icon]="cookie"></fa-icon>
+          <fa-icon *ngIf="recipe.type === 'Main'" [icon]="hamburger"></fa-icon>
+          <fa-icon
+            *ngIf="recipe.type === 'Dessert'"
+            [icon]="iceCream"
+          ></fa-icon>
+        </div>
+      </h5>
+
+      <div class="card-body">
+        <img
+          style="height: 200px; width: 100%; display: block;"
+          src="https://picsum.photos/200/200"
+          alt="Card image"
+          class="img-thumbnail"
+        />
+      </div>
+      <app-recipe-card-footer
+        [data]="[
+          { title: 'Serves', value: recipe.servesNumber },
+          { title: 'Prep time', value: recipe.prepTime },
+          { title: 'Healthiness', value: recipe.healthRating }
+        ]"
+      ></app-recipe-card-footer>
+    </div>
+  </div>
+</div>

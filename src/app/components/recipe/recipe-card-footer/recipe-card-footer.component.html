@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-between card-footer">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col text-center" *ngFor="let item of data">
+        <small>{{ item.title }}</small>
+        <div class="font-weight-bold text-success">
+          {{ item.value }}<span *ngIf="item.title == 'Prep time'">'</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

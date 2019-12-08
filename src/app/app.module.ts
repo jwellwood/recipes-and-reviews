@@ -15,47 +15,77 @@ import { CarouselModule } from "ngx-carousel-lib";
 // App
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-//
 import { LandingComponent } from "./components/landing/landing.component";
-import { NavbarComponent } from "./components/navbar/navbar.component";
-import { NavDropdownComponent } from "./components/nav-dropdown/nav-dropdown.component";
 import { AboutComponent } from "./components/about/about.component";
-import { FooterComponent } from "./components/footer/footer.component";
-import { SpinnerComponent } from "./components/spinner/spinner.component";
-import { NotFoundComponent } from "./components/not-found/not-found.component";
-import { ErrorMessagesComponent } from "./components/error-messages/error-messages.component";
-import { CarouselComponent } from "./components/carousel/carousel.component";
+// Navs
+import { NavbarComponent } from "./components/navigation/navbar/navbar.component";
+import { NavDropdownComponent } from "./components/navigation/nav-dropdown/nav-dropdown.component";
+import { FooterComponent } from "./components/navigation/footer/footer.component";
+import { NotFoundComponent } from "./components/navigation/not-found/not-found.component";
 // Recipes
-import { RecipesComponent } from "./components/recipes/recipes.component";
-import { AddRecipeComponent } from "./components/add-recipe/add-recipe.component";
-import { EditRecipeComponent } from "./components/edit-recipe/edit-recipe.component";
-import { RecipeDetailsComponent } from "./components/recipe-details/recipe-details.component";
+import { RecipesComponent } from "./components/recipe/recipes/recipes.component";
+import { AddRecipeComponent } from "./components/recipe/add-recipe/add-recipe.component";
+import { EditRecipeComponent } from "./components/recipe/edit-recipe/edit-recipe.component";
+import { RecipeDetailsComponent } from "./components/recipe/recipe-details/recipe-details.component";
+import { RecipeCardFooterComponent } from "./components/recipe/recipe-card-footer/recipe-card-footer.component";
+import { RecipeAvatarsComponent } from "./components/recipe/recipe-avatars/recipe-avatars.component";
 // Reviews
-import { ReviewsComponent } from "./components/reviews/reviews.component";
-import { AddReviewComponent } from "./components/add-review/add-review.component";
-import { ReviewDetailsComponent } from "./components/review-details/review-details.component";
-import { EditReviewComponent } from "./components/edit-review/edit-review.component";
+import { ReviewsComponent } from "./components/review/reviews/reviews.component";
+import { AddReviewComponent } from "./components/review/add-review/add-review.component";
+import { ReviewDetailsComponent } from "./components/review/review-details/review-details.component";
+import { EditReviewComponent } from "./components/review/edit-review/edit-review.component";
+import { ReviewRatingsComponent } from "./components/review/review-ratings/review-ratings.component";
+// Common
+import { CarouselComponent } from "./components/common/carousel/carousel.component";
+import { JumbotronComponent } from "./components/common/jumbotron/jumbotron.component";
+import { TaglineComponent } from "./components/common/tagline/tagline.component";
+import { CardTitleComponent } from "./components/common/card-title/card-title.component";
+import { CardFooterComponent } from "./components/common/card-footer/card-footer.component";
+import { MainImageCommentComponent } from "./components/common/main-image-comment/main-image-comment.component";
+// Utils
+import { BackButtonComponent } from "./components/utils/back-button/back-button.component";
+import { EditButtonsComponent } from "./components/utils/edit-buttons/edit-buttons.component";
+import { SpinnerComponent } from "./components/utils/spinner/spinner.component";
+import { ErrorMessagesComponent } from "./components/utils/error-messages/error-messages.component";
+import { AddButtonComponent } from "./components/utils/add-button/add-button.component";
 
 @NgModule({
   declarations: [
+    // App
     AppComponent,
+    LandingComponent,
+    AboutComponent,
+    // Nav
     NavbarComponent,
     NavDropdownComponent,
     FooterComponent,
-    SpinnerComponent,
-    CarouselComponent,
-    ErrorMessagesComponent,
     NotFoundComponent,
-    LandingComponent,
-    AboutComponent,
+    // Recipes
     RecipesComponent,
     RecipeDetailsComponent,
     AddRecipeComponent,
     EditRecipeComponent,
+    RecipeCardFooterComponent,
+    RecipeAvatarsComponent,
+    // Reviews
     ReviewsComponent,
     ReviewDetailsComponent,
     AddReviewComponent,
-    EditReviewComponent
+    EditReviewComponent,
+    ReviewRatingsComponent,
+    // Common (recipes and reviews)
+    CarouselComponent,
+    JumbotronComponent,
+    MainImageCommentComponent,
+    TaglineComponent,
+    CardTitleComponent,
+    CardFooterComponent,
+    // Utils
+    SpinnerComponent,
+    ErrorMessagesComponent,
+    EditButtonsComponent,
+    BackButtonComponent,
+    AddButtonComponent
   ],
   imports: [
     BrowserModule,

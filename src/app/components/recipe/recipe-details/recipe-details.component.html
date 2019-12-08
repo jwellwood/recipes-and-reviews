@@ -1,0 +1,41 @@
+<!-- Buttons -->
+<div class="d-flex bd-highlight mb-2 justify-content-between">
+  <app-back-button [link]="'recipes'"></app-back-button>
+  <app-edit-buttons
+    *ngIf="recipe"
+    [id]="id"
+    [baseRoute]="baseRoute"
+    (onDeletion)="onDelete($event)"
+  ></app-edit-buttons>
+</div>
+<!-- Spinner -->
+<div *ngIf="!recipe">
+  <app-spinner></app-spinner>
+</div>
+<!-- Title -->
+<div class="card mb-3" *ngIf="recipe">
+  <app-card-title [title]="recipe.name">
+    <h6 class="card-subtitle text-muted">{{ recipe.type }}</h6>
+  </app-card-title>
+  <!-- Tagline -->
+  <app-tagline *ngIf="recipe.tagLine" [text]="recipe.tagLine"></app-tagline>
+  <!-- Avatars -->
+  <app-recipe-avatars
+    [data]="[
+      { icon: utensils, value: recipe.servesNumber },
+      { icon: clock, value: recipe.prepTime },
+      { icon: heart, value: recipe.healthRating }
+    ]"
+  ></app-recipe-avatars>
+  <!-- Main content -->
+  <app-main-image-comment
+    [mainComment]="recipe.mainComment"
+  ></app-main-image-comment>
+  <!-- Gallery -->
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">Gallery</h6>
+    <app-carousel></app-carousel>
+  </div>
+  <!-- Card Footer -->
+  <app-card-footer></app-card-footer>
+</div>

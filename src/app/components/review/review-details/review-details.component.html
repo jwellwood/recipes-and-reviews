@@ -1,0 +1,45 @@
+<!-- Buttons -->
+<div class="d-flex bd-highlight mb-2 justify-content-between">
+  <app-back-button [link]="'reviews'"></app-back-button>
+  <app-edit-buttons
+    *ngIf="review"
+    [id]="id"
+    [baseRoute]="baseRoute"
+    (onDeletion)="onDelete($event)"
+  ></app-edit-buttons>
+</div>
+<!-- Spinner -->
+<div *ngIf="!review">
+  <app-spinner></app-spinner>
+</div>
+<!-- Card -->
+<div class="card mb-3" *ngIf="review">
+  <!-- Title -->
+  <app-card-title [title]="review.name">
+    <h6 class="text-muted mb-1">
+      {{ review.city }},
+      <small>{{ review.country }}</small>
+    </h6>
+    <h6 class="text-primary">
+      {{ review.dateVisited.toDate() | date }}
+    </h6>
+  </app-card-title>
+  <!-- Tagline -->
+  <app-tagline *ngIf="review.tagLine" [text]="review.tagLine"></app-tagline>
+  <!-- Main content -->
+  <app-main-image-comment
+    [mainComment]="review.mainComment"
+  ></app-main-image-comment>
+  <!-- Gallery -->
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">Gallery</h6>
+    <app-carousel></app-carousel>
+  </div>
+  <!-- Ratings List -->
+  <app-review-ratings
+    [ratings]="ratings"
+    [overallRating]="overallRating"
+  ></app-review-ratings>
+
+  <app-card-footer [footerText]="review.website"></app-card-footer>
+</div>

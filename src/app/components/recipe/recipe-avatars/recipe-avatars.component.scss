@@ -1,0 +1,19 @@
+@import "../../../../scss/variables";
+
+.circle-icon {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 2rem;
+}
+
+.small-icon {
+  position: absolute;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+  line-height: 23px;
+}

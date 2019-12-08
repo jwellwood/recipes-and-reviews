@@ -1,0 +1,13 @@
+<div class="p-1 btn-group btn-group-sm">
+  <!-- TODO not the most elegant solution but it works -->
+  <button
+    type="button"
+    routerLink="/{{ baseRoute }}/edit/{{ id }}"
+    class="btn btn-dark"
+  >
+    Edit
+  </button>
+  <button type="button" class="btn btn-danger" (click)="onDeleteItem()">
+    <fa-icon [icon]="trash" class="text-white"></fa-icon>
+  </button>
+</div>
