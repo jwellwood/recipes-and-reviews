@@ -10,6 +10,7 @@ export class EditButtonsComponent implements OnInit {
   @Input() baseRoute: string;
   @Input() id: string;
   @Output() onDeletion: EventEmitter<any> = new EventEmitter();
+
   trash = faTrash;
   constructor() {}
 

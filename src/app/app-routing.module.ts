@@ -14,12 +14,15 @@ import { ReviewsComponent } from "./components/review/reviews/reviews.component"
 import { AddReviewComponent } from "./components/review/add-review/add-review.component";
 import { ReviewDetailsComponent } from "./components/review/review-details/review-details.component";
 import { EditReviewComponent } from "./components/review/edit-review/edit-review.component";
-
+import { LoginComponent } from "./components/login/login.component";
+// Guard
+import { AuthGuard } from "./guards/auth.guard";
 const routes: Routes = [
   {
     path: "",
     component: LandingComponent
   },
+  { path: "login", component: LoginComponent },
   {
     path: "about",
     component: AboutComponent
@@ -30,11 +33,13 @@ const routes: Routes = [
   },
   {
     path: "recipes/add-recipe",
-    component: AddRecipeComponent
+    component: AddRecipeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "recipes/edit/:id",
-    component: EditRecipeComponent
+    component: EditRecipeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "recipes/:id",
@@ -46,7 +51,8 @@ const routes: Routes = [
   },
   {
     path: "reviews/add-review",
-    component: AddReviewComponent
+    component: AddReviewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "reviews/:id",
@@ -54,7 +60,8 @@ const routes: Routes = [
   },
   {
     path: "reviews/edit/:id",
-    component: EditReviewComponent
+    component: EditReviewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "**",

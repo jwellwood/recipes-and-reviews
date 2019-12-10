@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Review } from "src/app/models/Review";
 import { ReviewsService } from "src/app/services/reviews.service";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-review-details",
@@ -10,6 +11,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./review-details.component.scss"]
 })
 export class ReviewDetailsComponent implements OnInit {
+  isAuth: boolean;
   id: string;
   baseRoute: string = "reviews";
   review: Review;
@@ -19,12 +21,20 @@ export class ReviewDetailsComponent implements OnInit {
 
   constructor(
     private reviewsService: ReviewsService,
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
+    this.authService.getAuth().subscribe(auth => {
+      if (auth) {
+        this.isAuth = true;
+      } else {
+        this.isAuth = false;
+      }
+    });
     this.reviewsService.getReview(this.id).subscribe(review => {
       if (review != null) {
         this.review = review;
@@ -53,7 +63,6 @@ export class ReviewDetailsComponent implements OnInit {
   }
 
   onDelete() {
-    console.log(this);
     if (confirm("Are you sure?")) {
       this.reviewsService.deleteReview(this.review);
       this.router.navigate(["/reviews"]);

@@ -2,6 +2,7 @@
 <app-jumbotron [title]="'Recipes'"></app-jumbotron>
 
 <app-add-button
+  *ngIf="isAuth"
   [text]="'recipe'"
   [link]="'/recipes/add-recipe'"
 ></app-add-button>

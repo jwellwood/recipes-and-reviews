@@ -2,15 +2,17 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { environment } from "../environments/environment";
-import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FlashMessagesModule } from "angular2-flash-messages";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { CarouselModule } from "ngx-carousel-lib";
+// Firebase
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+
 // Internal imports
 // App
 import { AppRoutingModule } from "./app-routing.module";
@@ -48,6 +50,7 @@ import { EditButtonsComponent } from "./components/utils/edit-buttons/edit-butto
 import { SpinnerComponent } from "./components/utils/spinner/spinner.component";
 import { ErrorMessagesComponent } from "./components/utils/error-messages/error-messages.component";
 import { AddButtonComponent } from "./components/utils/add-button/add-button.component";
+import { LoginComponent } from "./components/login/login.component";
 
 @NgModule({
   declarations: [
@@ -85,7 +88,8 @@ import { AddButtonComponent } from "./components/utils/add-button/add-button.com
     ErrorMessagesComponent,
     EditButtonsComponent,
     BackButtonComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

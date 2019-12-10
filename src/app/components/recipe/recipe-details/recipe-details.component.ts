@@ -7,6 +7,7 @@ import {
   faHeart,
   faClock
 } from "@fortawesome/free-solid-svg-icons";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-recipe-details",
@@ -16,10 +17,11 @@ import {
 export class RecipeDetailsComponent implements OnInit {
   constructor(
     private recipesService: RecipesService,
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
-
+  isAuth: boolean;
   id: string;
   baseRoute: string = "recipes";
   recipe: Recipe;
@@ -29,6 +31,13 @@ export class RecipeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
+    this.authService.getAuth().subscribe(auth => {
+      if (auth) {
+        this.isAuth = true;
+      } else {
+        this.isAuth = false;
+      }
+    });
     this.recipesService.getRecipe(this.id).subscribe(recipe => {
       if (recipe != null) {
         this.recipe = recipe;

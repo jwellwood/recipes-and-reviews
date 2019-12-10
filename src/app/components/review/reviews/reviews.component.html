@@ -2,6 +2,7 @@
 <app-jumbotron [title]="'Reviews'"></app-jumbotron>
 
 <app-add-button
+  *ngIf="isAuth"
   [text]="'review'"
   [link]="'/reviews/add-review'"
 ></app-add-button>

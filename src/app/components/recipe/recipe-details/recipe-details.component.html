@@ -2,7 +2,7 @@
 <div class="d-flex bd-highlight mb-2 justify-content-between">
   <app-back-button [link]="'recipes'"></app-back-button>
   <app-edit-buttons
-    *ngIf="recipe"
+    *ngIf="recipe && isAuth"
     [id]="id"
     [baseRoute]="baseRoute"
     (onDeletion)="onDelete($event)"
