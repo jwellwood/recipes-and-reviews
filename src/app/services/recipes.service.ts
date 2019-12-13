@@ -13,7 +13,7 @@ import { Recipe } from "../models/Recipe";
 })
 export class RecipesService {
   recipesCollection: AngularFirestoreCollection<Recipe>;
-  recipesDoc: AngularFirestoreDocument<Recipe>;
+  recipeDoc: AngularFirestoreDocument<Recipe>;
   recipes: Observable<Recipe[]>;
   recipe: Observable<Recipe>;
 
@@ -35,8 +35,8 @@ export class RecipesService {
   }
 
   getRecipe(id: string): Observable<Recipe> {
-    this.recipesDoc = this.db.doc<Recipe>(`recipes/${id}`);
-    this.recipe = this.recipesDoc.snapshotChanges().pipe(
+    this.recipeDoc = this.db.doc<Recipe>(`recipes/${id}`);
+    this.recipe = this.recipeDoc.snapshotChanges().pipe(
       map(action => {
         if (action.payload.exists === false) {
           return null;
@@ -54,13 +54,25 @@ export class RecipesService {
     this.recipesCollection.add(recipe);
   }
 
+  // This is used to add data to existing documents
+
+  addRecipeData(id: string, recipe: Recipe) {
+    this.recipeDoc = this.db.doc(`recipes/${id}`);
+    this.recipeDoc.set(
+      {
+        ...recipe
+      },
+      { merge: true }
+    );
+  }
+
   updateRecipe(recipe: Recipe) {
-    this.recipesDoc = this.db.doc(`recipes/${recipe.id}`);
-    this.recipesDoc.update(recipe);
+    this.recipeDoc = this.db.doc(`recipes/${recipe.id}`);
+    this.recipeDoc.update(recipe);
   }
 
   deleteRecipe(recipe: Recipe) {
-    this.recipesDoc = this.db.doc(`reviews/${recipe.id}`);
-    this.recipesDoc.delete();
+    this.recipeDoc = this.db.doc(`recipes/${recipe.id}`);
+    this.recipeDoc.delete();
   }
 }

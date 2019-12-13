@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { RecipesService } from "src/app/services/recipes.service";
-import { Recipe } from "src/app/models/Recipe";
 import {
   faIceCream,
   faCarrot,
   faHamburger,
   faCookieBite
 } from "@fortawesome/free-solid-svg-icons";
+import { RecipesService } from "src/app/services/recipes.service";
+import { Recipe } from "src/app/models/Recipe";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -16,11 +16,12 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class RecipesComponent implements OnInit {
   isAuth: boolean;
+  recipes: Recipe[];
+  // Icons
   iceCream = faIceCream;
   carrot = faCarrot;
   hamburger = faHamburger;
   cookie = faCookieBite;
-  recipes: Recipe[];
   constructor(
     private authService: AuthService,
     private recipesService: RecipesService

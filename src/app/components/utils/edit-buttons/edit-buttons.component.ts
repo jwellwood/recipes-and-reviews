@@ -7,10 +7,11 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./edit-buttons.component.scss"]
 })
 export class EditButtonsComponent implements OnInit {
-  @Input() baseRoute: string;
+  @Input() link: string;
   @Input() id: string;
+  @Input() buttons: [];
   @Output() onDeletion: EventEmitter<any> = new EventEmitter();
-
+  // Icons
   trash = faTrash;
   constructor() {}
 

@@ -1,18 +1,19 @@
 import { Component, OnInit } from "@angular/core";
+import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { ReviewsService } from "src/app/services/reviews.service";
 import { Review } from "src/app/models/Review";
-import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { AuthService } from "src/app/services/auth.service";
+
 @Component({
   selector: "app-reviews",
   templateUrl: "./reviews.component.html",
   styleUrls: ["./reviews.component.scss"]
 })
 export class ReviewsComponent implements OnInit {
-  leaf = faLeaf;
   isAuth: boolean;
   reviews: Review[];
-  overallRating: number = null;
+  // Icons
+  leaf = faLeaf;
   constructor(
     private reviewsService: ReviewsService,
     private authService: AuthService
@@ -28,15 +29,6 @@ export class ReviewsComponent implements OnInit {
     });
     this.reviewsService.getReviews().subscribe(reviews => {
       this.reviews = reviews;
-      if (reviews != null) {
-        reviews.map(review => {
-          this.overallRating =
-            (review.tasteRating +
-              review.serviceRating +
-              review.atmosphereRating) /
-            3;
-        });
-      }
     });
   }
 }

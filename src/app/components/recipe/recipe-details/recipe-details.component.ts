@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { Recipe } from "src/app/models/Recipe";
-import { RecipesService } from "src/app/services/recipes.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import {
   faUtensils,
   faHeart,
   faClock
 } from "@fortawesome/free-solid-svg-icons";
+import { Recipe } from "src/app/models/Recipe";
+import { RecipesService } from "src/app/services/recipes.service";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -23,8 +23,9 @@ export class RecipeDetailsComponent implements OnInit {
   ) {}
   isAuth: boolean;
   id: string;
-  baseRoute: string = "recipes";
   recipe: Recipe;
+  buttons: any = [];
+  // Icons
   utensils = faUtensils;
   heart = faHeart;
   clock = faClock;
@@ -41,6 +42,12 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipesService.getRecipe(this.id).subscribe(recipe => {
       if (recipe != null) {
         this.recipe = recipe;
+        this.buttons = [
+          { title: "details", link: `/recipes/edit/${this.id}` },
+          { title: "comment", link: `/recipes/${this.id}/add-comment` },
+          { title: "ingredients", link: `/recipes/${this.id}/add-ingredients` },
+          { title: "steps", link: `/recipes/${this.id}/add-steps` }
+        ];
       }
     });
   }

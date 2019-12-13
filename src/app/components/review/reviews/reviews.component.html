@@ -36,7 +36,13 @@
         </div>
         <div class="font-weight-bold">
           <fa-icon [icon]="leaf" class="text-success"></fa-icon>
-          {{ overallRating | number: "1.0-1" }}
+          <!-- TODO - would be better if this came from component, and was dynamic -->
+          {{
+            (review.tasteRating +
+              review.serviceRating +
+              review.atmosphereRating) /
+              3 | number: "1.0-1"
+          }}
         </div>
       </div>
     </div>

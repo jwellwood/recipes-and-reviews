@@ -1,0 +1,101 @@
+<app-back-button [link]="id ? 'reviews/' + id : 'reviews'"></app-back-button>
+<app-form-wrapper [title]="'Add new review'">
+  <form
+    [formGroup]="reviewDetailsForm"
+    (ngSubmit)="
+      isUpdate ? onUpdate(reviewDetailsForm) : onSubmit(reviewDetailsForm)
+    "
+  >
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <app-form-label>Name of the place *</app-form-label>
+          <input
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': name.errors && name.touched
+            }"
+            required
+          />
+          <app-control-messages
+            [control]="reviewDetailsForm.get('name')"
+          ></app-control-messages>
+        </div>
+      </div>
+      <!-- ************************************* DATE **************************************** -->
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="dateVisited">Date</label>
+          <app-form-label>Date of visit *</app-form-label>
+          <input
+            formControlName="dateVisited"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="bsConfig"
+            [ngClass]="{
+              'is-invalid': dateVisited.errors && dateVisited.touched
+            }"
+            required
+          />
+          <app-control-messages
+            [control]="reviewDetailsForm.get('dateVisited')"
+          ></app-control-messages>
+        </div>
+      </div>
+    </div>
+    <!-- ************************************* LOCATION **************************************** -->
+    <label>Location</label>
+    <div class="row">
+      <!-- City -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <app-form-label>City *</app-form-label>
+          <input
+            type="text"
+            formControlName="city"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': city.errors && city.touched
+            }"
+            required
+          />
+          <app-control-messages
+            [control]="reviewDetailsForm.get('city')"
+          ></app-control-messages>
+        </div>
+      </div>
+      <!-- Country -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <app-form-label>Country *</app-form-label>
+          <input type="text" formControlName="country" class="form-control" />
+          <app-control-messages
+            [control]="reviewDetailsForm.get('country')"
+          ></app-control-messages>
+        </div>
+      </div>
+    </div>
+
+    <!-- ************************************* WEBSITE **************************************** -->
+    <div class="form-group">
+      <label for="website">Website</label>
+      <app-form-label>Place's own website</app-form-label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">https://</span>
+        </div>
+
+        <input type="text" formControlName="website" class="form-control" />
+      </div>
+      <app-control-messages
+        [control]="reviewDetailsForm.get('website')"
+      ></app-control-messages>
+    </div>
+    <flash-messages></flash-messages>
+    <button type="submit" class="btn btn-success btn-sm btn-block">
+      {{ isUpdate ? "Update" : "Create" }}
+    </button>
+  </form>
+</app-form-wrapper>

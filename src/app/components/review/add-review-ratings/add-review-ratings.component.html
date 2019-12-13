@@ -1,0 +1,94 @@
+<app-back-button [link]="'reviews/' + id"></app-back-button>
+<app-form-wrapper [title]="'Add ratings review'">
+  <form
+    [formGroup]="reviewRatingForm"
+    (ngSubmit)="
+      isUpdate ? onUpdate(reviewRatingForm) : onSubmit(reviewRatingForm)
+    "
+  >
+    <div class="row">
+      <!-- ************************************* TASTE **************************************** -->
+      <div class="col-md-4">
+        <div class="form-group">
+          <small class="form-text text-muted">Taste Rating *</small>
+          <input
+            type="number"
+            formControlName="tasteRating"
+            class="form-control"
+          />
+          <app-control-messages
+            [control]="reviewRatingForm.get('tasteRating')"
+          ></app-control-messages>
+        </div>
+        <!-- Comment  -->
+        <div class="form-group">
+          <small class="form-text text-muted">Comment on taste</small>
+          <textarea
+            type="text"
+            formControlName="tasteComment"
+            class="form-control"
+          ></textarea>
+          <app-control-messages
+            [control]="reviewRatingForm.get('tasteComment')"
+          ></app-control-messages>
+        </div>
+      </div>
+      <!-- ************************************* SERVICE **************************************** -->
+      <div class="col-md-4">
+        <div class="form-group">
+          <small class="form-text text-muted">Service Rating *</small>
+          <input
+            type="number"
+            formControlName="serviceRating"
+            class="form-control"
+          />
+          <app-control-messages
+            [control]="reviewRatingForm.get('serviceRating')"
+          ></app-control-messages>
+        </div>
+        <!-- Comment  -->
+        <div class="form-group">
+          <small class="form-text text-muted">Comment on service</small>
+          <textarea
+            type="text"
+            formControlName="serviceComment"
+            class="form-control"
+          ></textarea>
+          <app-control-messages
+            [control]="reviewRatingForm.get('serviceComment')"
+          ></app-control-messages>
+        </div>
+      </div>
+      <!-- ************************************* ATMOSPHERE **************************************** -->
+      <div class="col-md-4">
+        <div class="form-group">
+          <small class="form-text text-muted">Atmosphere Rating *</small>
+          <input
+            type="number"
+            formControlName="atmosphereRating"
+            class="form-control"
+          />
+          <app-control-messages
+            [control]="reviewRatingForm.get('atmosphereRating')"
+          ></app-control-messages>
+        </div>
+        <!-- Comment  -->
+        <div class="form-group">
+          <small class="form-text text-muted">Comment on atmosphere</small>
+          <textarea
+            type="text"
+            formControlName="atmosphereComment"
+            class="form-control"
+          ></textarea>
+          <app-control-messages
+            [control]="reviewRatingForm.get('atmosphereComment')"
+          ></app-control-messages>
+        </div>
+      </div>
+    </div>
+    <flash-messages></flash-messages>
+    <button type="submit" class="btn btn-success btn-sm btn-block">
+      {{ isUpdate ? "Update" : "Create" }}
+    </button>
+  </form>
+</app-form-wrapper>

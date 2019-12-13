@@ -3,18 +3,20 @@
   <app-back-button [link]="'reviews'"></app-back-button>
   <app-edit-buttons
     *ngIf="review && isAuth"
+    [buttons]="buttons"
     [id]="id"
-    [baseRoute]="baseRoute"
+    [link]="'reviews'"
     (onDeletion)="onDelete($event)"
   ></app-edit-buttons>
 </div>
+
 <!-- Spinner -->
 <div *ngIf="!review">
   <app-spinner></app-spinner>
 </div>
 <!-- Card -->
 <div class="card mb-3" *ngIf="review">
-  <!-- Title -->
+  <!---------------------------------------------------Main Details---------------------------------------------- -->
   <app-card-title [title]="review.name">
     <h6 class="text-muted mb-1">
       {{ review.city }},
@@ -24,19 +26,19 @@
       {{ review.dateVisited.toDate() | date }}
     </h6>
   </app-card-title>
-  <!-- Tagline -->
+  <!-- -----------------------------------------------Main Details------------------------------------------------ -->
+
   <app-tagline *ngIf="review.tagLine" [text]="review.tagLine"></app-tagline>
-  <!-- Main content -->
   <app-main-image-comment
+    *ngIf="review.mainComment"
     [mainComment]="review.mainComment"
   ></app-main-image-comment>
-  <!-- Gallery -->
-  <div class="card-body">
+  <div class="card-body" *ngIf="review.images">
     <h6 class="card-subtitle mb-2 text-muted">Gallery</h6>
     <app-carousel></app-carousel>
   </div>
-  <!-- Ratings List -->
   <app-review-ratings
+    *ngIf="overallRating"
     [ratings]="ratings"
     [overallRating]="overallRating"
   ></app-review-ratings>

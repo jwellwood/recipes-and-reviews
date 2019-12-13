@@ -11,6 +11,7 @@ import {
   styleUrls: ["./nav-dropdown.component.scss"]
 })
 export class NavDropdownComponent implements OnInit {
+  // Icons
   twitter = faTwitter;
   facebook = faFacebookSquare;
   instagram = faInstagram;

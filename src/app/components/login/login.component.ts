@@ -12,6 +12,7 @@ import { FlashMessagesService } from "angular2-flash-messages";
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  // Icons
   unlock = faUnlock;
   constructor(
     private authService: AuthService,
@@ -31,10 +32,6 @@ export class LoginComponent implements OnInit {
     this.authService
       .login(this.email, this.password)
       .then(res => {
-        this.flashMessage.show("You have successfully logged in", {
-          cssClass: "alert-success",
-          timeout: 4000
-        });
         this.router.navigate(["/"]);
       })
       .catch(err => {

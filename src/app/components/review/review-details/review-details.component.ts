@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Review } from "src/app/models/Review";
 import { ReviewsService } from "src/app/services/reviews.service";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -13,10 +13,11 @@ import { AuthService } from "src/app/services/auth.service";
 export class ReviewDetailsComponent implements OnInit {
   isAuth: boolean;
   id: string;
-  baseRoute: string = "reviews";
   review: Review;
   ratings: any = [];
   overallRating: number = 0;
+  buttons: any = [];
+  // Icons
   trash = faTrash;
 
   constructor(
@@ -59,6 +60,11 @@ export class ReviewDetailsComponent implements OnInit {
         this.overallRating =
           allRatings.reduce((acc, cur) => acc + cur, 0) / this.ratings.length;
       }
+      this.buttons = [
+        { title: "details", link: `/reviews/edit/${this.id}` },
+        { title: "comment", link: `/reviews/${this.id}/add-comment` },
+        { title: "ratings", link: `/reviews/${this.id}/add-rating` }
+      ];
     });
   }
 

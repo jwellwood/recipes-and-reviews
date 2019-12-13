@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument
-} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Review } from '../models/Review';
+} from "@angular/fire/firestore";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { Review } from "../models/Review";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ReviewsService {
   reviewsCollection: AngularFirestoreCollection<Review>;
@@ -18,7 +18,7 @@ export class ReviewsService {
   review: Observable<Review>;
 
   constructor(private db: AngularFirestore) {
-    this.reviewsCollection = this.db.collection('reviews');
+    this.reviewsCollection = this.db.collection("reviews");
   }
 
   getReviews(): Observable<Review[]> {
@@ -49,9 +49,22 @@ export class ReviewsService {
     );
     return this.review;
   }
+  // This is used to create a new document
 
   newReview(review: Review) {
     this.reviewsCollection.add(review);
+  }
+
+  // This is used to add data to existing documents
+
+  addReviewData(id: string, review: Review) {
+    this.reviewDoc = this.db.doc(`reviews/${id}`);
+    this.reviewDoc.set(
+      {
+        ...review
+      },
+      { merge: true }
+    );
   }
 
   updateReview(review: Review) {

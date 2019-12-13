@@ -4,7 +4,8 @@
   <app-edit-buttons
     *ngIf="recipe && isAuth"
     [id]="id"
-    [baseRoute]="baseRoute"
+    [buttons]="buttons"
+    [link]="'recipes'"
     (onDeletion)="onDelete($event)"
   ></app-edit-buttons>
 </div>

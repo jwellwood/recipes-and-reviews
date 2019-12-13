@@ -1,12 +1,12 @@
 <div class="p-1 btn-group btn-group-sm">
-  <!-- TODO not the most elegant solution but it works -->
   <button
-    type="button"
-    routerLink="/{{ baseRoute }}/edit/{{ id }}"
-    class="btn btn-dark"
+    *ngFor="let button of buttons"
+    routerLink="{{ button.link }}"
+    class="btn btn-warning"
   >
-    Edit
+    {{ button.title }}
   </button>
+
   <button type="button" class="btn btn-danger" (click)="onDeleteItem()">
     <fa-icon [icon]="trash" class="text-white"></fa-icon>
   </button>

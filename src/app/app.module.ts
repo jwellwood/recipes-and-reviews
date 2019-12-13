@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { environment } from "../environments/environment";
 import { FlashMessagesModule } from "angular2-flash-messages";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -12,6 +13,7 @@ import { CarouselModule } from "ngx-carousel-lib";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
 // Internal imports
 // App
@@ -26,17 +28,18 @@ import { FooterComponent } from "./components/navigation/footer/footer.component
 import { NotFoundComponent } from "./components/navigation/not-found/not-found.component";
 // Recipes
 import { RecipesComponent } from "./components/recipe/recipes/recipes.component";
-import { AddRecipeComponent } from "./components/recipe/add-recipe/add-recipe.component";
-import { EditRecipeComponent } from "./components/recipe/edit-recipe/edit-recipe.component";
 import { RecipeDetailsComponent } from "./components/recipe/recipe-details/recipe-details.component";
-import { RecipeCardFooterComponent } from "./components/recipe/recipe-card-footer/recipe-card-footer.component";
-import { RecipeAvatarsComponent } from "./components/recipe/recipe-avatars/recipe-avatars.component";
+import { RecipeCardFooterComponent } from "./components/utils/recipe-card-footer/recipe-card-footer.component";
+import { RecipeAvatarsComponent } from "./components/utils/recipe-avatars/recipe-avatars.component";
+import { AddRecipeDetailsComponent } from "./components/recipe/add-recipe-details/add-recipe-details.component";
+import { AddRecipeCommentComponent } from "./components/recipe/add-recipe-comment/add-recipe-comment.component";
 // Reviews
 import { ReviewsComponent } from "./components/review/reviews/reviews.component";
-import { AddReviewComponent } from "./components/review/add-review/add-review.component";
 import { ReviewDetailsComponent } from "./components/review/review-details/review-details.component";
-import { EditReviewComponent } from "./components/review/edit-review/edit-review.component";
-import { ReviewRatingsComponent } from "./components/review/review-ratings/review-ratings.component";
+import { ReviewRatingsComponent } from "./components/utils/review-ratings/review-ratings.component";
+import { AddReviewRatingsComponent } from "./components/review/add-review-ratings/add-review-ratings.component";
+import { AddReviewDetailsComponent } from "./components/review/add-review-details/add-review-details.component";
+import { AddReviewCommentComponent } from "./components/review/add-review-comment/add-review-comment.component";
 // Common
 import { CarouselComponent } from "./components/common/carousel/carousel.component";
 import { JumbotronComponent } from "./components/common/jumbotron/jumbotron.component";
@@ -48,9 +51,11 @@ import { MainImageCommentComponent } from "./components/common/main-image-commen
 import { BackButtonComponent } from "./components/utils/back-button/back-button.component";
 import { EditButtonsComponent } from "./components/utils/edit-buttons/edit-buttons.component";
 import { SpinnerComponent } from "./components/utils/spinner/spinner.component";
-import { ErrorMessagesComponent } from "./components/utils/error-messages/error-messages.component";
 import { AddButtonComponent } from "./components/utils/add-button/add-button.component";
 import { LoginComponent } from "./components/login/login.component";
+import { ControlMessagesComponent } from "./components/utils/control-messages/control-messages.component";
+import { FormLabelComponent } from "./components/utils/form-label/form-label.component";
+import { FormWrapperComponent } from "./components/utils/form-wrapper/form-wrapper.component";
 
 @NgModule({
   declarations: [
@@ -66,15 +71,14 @@ import { LoginComponent } from "./components/login/login.component";
     // Recipes
     RecipesComponent,
     RecipeDetailsComponent,
-    AddRecipeComponent,
-    EditRecipeComponent,
     RecipeCardFooterComponent,
     RecipeAvatarsComponent,
     // Reviews
     ReviewsComponent,
     ReviewDetailsComponent,
-    AddReviewComponent,
-    EditReviewComponent,
+    AddReviewRatingsComponent,
+    AddReviewDetailsComponent,
+    AddReviewCommentComponent,
     ReviewRatingsComponent,
     // Common (recipes and reviews)
     CarouselComponent,
@@ -85,19 +89,25 @@ import { LoginComponent } from "./components/login/login.component";
     CardFooterComponent,
     // Utils
     SpinnerComponent,
-    ErrorMessagesComponent,
     EditButtonsComponent,
     BackButtonComponent,
     AddButtonComponent,
-    LoginComponent
+    LoginComponent,
+    ControlMessagesComponent,
+    FormLabelComponent,
+    FormWrapperComponent,
+    AddRecipeDetailsComponent,
+    AddRecipeCommentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase, "pbponch"),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     FlashMessagesModule.forRoot(),

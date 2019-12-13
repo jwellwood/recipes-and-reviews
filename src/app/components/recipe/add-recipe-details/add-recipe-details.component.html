@@ -1,0 +1,93 @@
+<app-back-button [link]="id ? 'recipes/' + id : 'recipes'"></app-back-button>
+<app-form-wrapper [title]="'Add new recipe'">
+  <form
+    [formGroup]="recipeDetailsForm"
+    (ngSubmit)="
+      isUpdate ? onUpdate(recipeDetailsForm) : onSubmit(recipeDetailsForm)
+    "
+  >
+    <div class="row">
+      <!-- ************************************* NAME **************************************** -->
+      <div class="col-6">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <app-form-label>Name of the recipe</app-form-label>
+          <input
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': name.errors && name.touched
+            }"
+            required
+          />
+          <app-control-messages
+            [control]="recipeDetailsForm.get('name')"
+          ></app-control-messages>
+        </div>
+
+        <!-- ************************************* TYPE **************************************** -->
+        <div class="col-6">
+          <div class="form-group">
+            <label for="type">Type *</label>
+            <select
+              formControlName="type"
+              [ngClass]="{
+                'is-invalid': type.errors && type.touched
+              }"
+              class="form-control"
+              required
+            >
+              <option value="Starter">Starter</option>
+              <option value="Side">Side</option>
+              <option value="Main">Main</option>
+              <option value="Dessert">Dessert</option>
+            </select>
+            <app-control-messages
+              [control]="recipeDetailsForm.get('type')"
+            ></app-control-messages>
+          </div>
+        </div>
+        <!-- ************************************* Serves **************************************** -->
+        <div class="form-group">
+          <small class="form-text text-muted">Serves</small>
+          <input
+            type="number"
+            formControlName="servesNumber"
+            class="form-control"
+          />
+          <app-control-messages
+            [control]="recipeDetailsForm.get('servesNumber')"
+          ></app-control-messages>
+        </div>
+        <!-- ************************************* Prep Time **************************************** -->
+        <div class="form-group">
+          <small class="form-text text-muted">Prep Time</small>
+          <input
+            type="number"
+            formControlName="prepTime"
+            class="form-control"
+          />
+          <app-control-messages
+            [control]="recipeDetailsForm.get('prepTime')"
+          ></app-control-messages>
+        </div>
+        <!-- ************************************* Prep Time **************************************** -->
+        <div class="form-group">
+          <small class="form-text text-muted">Health Rating</small>
+          <input
+            type="number"
+            formControlName="healthRating"
+            class="form-control"
+          />
+          <app-control-messages
+            [control]="recipeDetailsForm.get('healthRating')"
+          ></app-control-messages>
+        </div>
+      </div>
+    </div>
+    <flash-messages></flash-messages>
+    <button type="submit" class="btn btn-success btn-sm btn-block">
+      {{ isUpdate ? "Update" : "Create" }}
+    </button>
+  </form>
+</app-form-wrapper>

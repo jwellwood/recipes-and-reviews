@@ -1,0 +1,43 @@
+<app-back-button [link]="'recipes/' + id"></app-back-button>
+<app-form-wrapper [title]="'Add a comment'">
+  <form
+    [formGroup]="recipeCommentForm"
+    (ngSubmit)="
+      isUpdate ? onUpdate(recipeCommentForm) : onSubmit(recipeCommentForm)
+    "
+  >
+    <!-- ************************************* TAGLINE **************************************** -->
+    <div class="form-group">
+      <label for="tagLine">Tagline</label>
+      <app-form-label>Add a short summary (max 150 chars)</app-form-label>
+      <textarea
+        type="text"
+        formControlName="tagLine"
+        class="form-control"
+        rows="1"
+      ></textarea>
+      <app-control-messages
+        [control]="recipeCommentForm.get('tagLine')"
+      ></app-control-messages>
+    </div>
+    <!-- ************************************* MAIN COMMENT **************************************** -->
+    <div class="form-group">
+      <label for="mainComment">Comment</label>
+      <app-form-label>Main comment*</app-form-label>
+      <textarea
+        type="text"
+        formControlName="mainComment"
+        class="form-control"
+        rows="3"
+        wrap="hard"
+      ></textarea>
+      <app-control-messages
+        [control]="recipeCommentForm.get('mainComment')"
+      ></app-control-messages>
+    </div>
+    <flash-messages></flash-messages>
+    <button type="submit" class="btn btn-success btn-sm btn-block">
+      {{ isUpdate ? "Update" : "Create" }}
+    </button>
+  </form>
+</app-form-wrapper>
