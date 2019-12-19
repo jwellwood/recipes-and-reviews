@@ -8,10 +8,12 @@
   >
     <div class="row">
       <!-- ************************************* NAME **************************************** -->
-      <div class="col-6">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <app-form-label>Name of the recipe</app-form-label>
+      <div class="col-md-8">
+        <app-input-wrapper
+          [labelText]="'Name *'"
+          [labelFor]="'name'"
+          [validation]="recipeDetailsForm.get('name')"
+        >
           <input
             formControlName="name"
             class="form-control"
@@ -20,74 +22,71 @@
             }"
             required
           />
-          <app-control-messages
-            [control]="recipeDetailsForm.get('name')"
-          ></app-control-messages>
-        </div>
-
-        <!-- ************************************* TYPE **************************************** -->
-        <div class="col-6">
-          <div class="form-group">
-            <label for="type">Type *</label>
-            <select
-              formControlName="type"
-              [ngClass]="{
-                'is-invalid': type.errors && type.touched
-              }"
-              class="form-control"
-              required
-            >
-              <option value="Starter">Starter</option>
-              <option value="Side">Side</option>
-              <option value="Main">Main</option>
-              <option value="Dessert">Dessert</option>
-            </select>
-            <app-control-messages
-              [control]="recipeDetailsForm.get('type')"
-            ></app-control-messages>
-          </div>
-        </div>
-        <!-- ************************************* Serves **************************************** -->
-        <div class="form-group">
-          <small class="form-text text-muted">Serves</small>
+        </app-input-wrapper>
+      </div>
+      <!-- ************************************* TYPE **************************************** -->
+      <div class="col-md-4">
+        <app-input-wrapper
+          [labelText]="'Type *'"
+          [labelFor]="'type'"
+          [validation]="recipeDetailsForm.get('type')"
+        >
+          <select
+            formControlName="type"
+            [ngClass]="{
+              'is-invalid': type.errors && type.touched
+            }"
+            class="form-control"
+            required
+          >
+            <option value="Starter">Starter</option>
+            <option value="Side">Side</option>
+            <option value="Main">Main</option>
+            <option value="Dessert">Dessert</option>
+          </select>
+        </app-input-wrapper>
+      </div>
+      <!-- ************************************* Serves **************************************** -->
+      <div class="col-4">
+        <app-input-wrapper
+          [inputTitle]="'Serves (no. of people)'"
+          [validation]="recipeDetailsForm.get('servesNumber')"
+        >
           <input
             type="number"
             formControlName="servesNumber"
             class="form-control"
           />
-          <app-control-messages
-            [control]="recipeDetailsForm.get('servesNumber')"
-          ></app-control-messages>
-        </div>
-        <!-- ************************************* Prep Time **************************************** -->
-        <div class="form-group">
-          <small class="form-text text-muted">Prep Time</small>
+        </app-input-wrapper>
+      </div>
+
+      <!-- ************************************* Prep Time **************************************** -->
+      <div class="col-4">
+        <app-input-wrapper
+          [inputTitle]="'Prep Time (in mins)'"
+          [validation]="recipeDetailsForm.get('prepTime')"
+        >
           <input
             type="number"
             formControlName="prepTime"
             class="form-control"
           />
-          <app-control-messages
-            [control]="recipeDetailsForm.get('prepTime')"
-          ></app-control-messages>
-        </div>
-        <!-- ************************************* Prep Time **************************************** -->
-        <div class="form-group">
-          <small class="form-text text-muted">Health Rating</small>
+        </app-input-wrapper>
+      </div>
+      <!-- ************************************* Prep Time **************************************** -->
+      <div class="col-4">
+        <app-input-wrapper
+          [inputTitle]="'Health Rating (/10)'"
+          [validation]="recipeDetailsForm.get('healthRating')"
+        >
           <input
             type="number"
             formControlName="healthRating"
             class="form-control"
           />
-          <app-control-messages
-            [control]="recipeDetailsForm.get('healthRating')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
     </div>
-    <flash-messages></flash-messages>
-    <button type="submit" class="btn btn-success btn-sm btn-block">
-      {{ isUpdate ? "Update" : "Create" }}
-    </button>
+    <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>
 </app-form-wrapper>

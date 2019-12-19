@@ -30,8 +30,9 @@
 
   <app-tagline *ngIf="review.tagLine" [text]="review.tagLine"></app-tagline>
   <app-main-image-comment
-    *ngIf="review.mainComment"
+    *ngIf="review.mainComment || review.mainImage"
     [mainComment]="review.mainComment"
+    [mainImage]="review.mainImage"
   ></app-main-image-comment>
   <div class="card-body" *ngIf="review.images">
     <h6 class="card-subtitle mb-2 text-muted">Gallery</h6>

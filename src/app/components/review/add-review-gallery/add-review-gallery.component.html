@@ -1,0 +1,50 @@
+<app-back-button [link]="'reviews/' + id"></app-back-button>
+<app-form-wrapper [title]="'Add Gallery'">
+  <form
+    [formGroup]="reviewGalleryForm"
+    (ngSubmit)="onSubmit(reviewGalleryForm)"
+  >
+    <!-- <div class="form-group">
+      <label for="mainImage">Main Image</label>
+      <app-form-label>Choose the main image for this review</app-form-label>
+      <img [src]="imgSrc" alt="" width="150" (click)="fileUploader.click()" />
+      <input
+        type="file"
+        formControlName="mainImage"
+        #fileUploader
+        (change)="showPreview($event)"
+      />
+      <app-control-messages
+        [control]="reviewImageForm.get('mainImage')"
+      ></app-control-messages>
+    </div> -->
+
+    <div
+      formArrayName="images"
+      *ngFor="
+        let item of reviewGalleryForm.get('images').controls;
+        let i = index
+      "
+    >
+      <div [formGroupName]="i">
+        <img
+          [src]="imgSrc"
+          alt=""
+          width="150"
+          (click)="fileUploader[i].click()"
+        />
+        <input
+          type="file"
+          formControlName="imageUrl"
+          #fileUploader[i]
+          (change)="showPreview($event)"
+        />
+        <input formControlName="caption" placeholder="Caption" />
+      </div>
+    </div>
+  </form>
+  <button (click)="addField()">Add</button>
+  <button *ngIf="showRemove" (click)="removeField()">
+    Remove
+  </button>
+</app-form-wrapper>

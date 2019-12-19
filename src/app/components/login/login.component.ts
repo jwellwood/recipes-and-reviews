@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { faUnlock } from "@fortawesome/free-solid-svg-icons";
 import { AuthService } from "src/app/services/auth.service";
 import { Router } from "@angular/router";
-import { FlashMessagesService } from "angular2-flash-messages";
+import { MessagesService } from "src/app/services/messages.service";
 
 @Component({
   selector: "app-login",
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private flashMessage: FlashMessagesService
+    private messageService: MessagesService
   ) {}
 
   ngOnInit() {
@@ -35,10 +35,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/"]);
       })
       .catch(err => {
-        this.flashMessage.show(err.message, {
-          cssClass: "alert-danger",
-          timeout: 4000
-        });
+        this.messageService.showAuthError(err.message);
       });
   }
 }

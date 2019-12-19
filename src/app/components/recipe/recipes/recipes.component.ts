@@ -3,7 +3,10 @@ import {
   faIceCream,
   faCarrot,
   faHamburger,
-  faCookieBite
+  faCookieBite,
+  faUserFriends,
+  faClock,
+  faHeart
 } from "@fortawesome/free-solid-svg-icons";
 import { RecipesService } from "src/app/services/recipes.service";
 import { Recipe } from "src/app/models/Recipe";
@@ -22,6 +25,9 @@ export class RecipesComponent implements OnInit {
   carrot = faCarrot;
   hamburger = faHamburger;
   cookie = faCookieBite;
+  people = faUserFriends;
+  clock = faClock;
+  heart = faHeart;
   constructor(
     private authService: AuthService,
     private recipesService: RecipesService

@@ -1,0 +1,58 @@
+<!-- TODO - add an explanation about what is happening in this template -->
+
+<app-back-button [link]="id ? 'recipes/' + id : 'recipes'"></app-back-button>
+<app-form-wrapper [title]="'Add ingredients'">
+  <form
+    [formGroup]="addIngredientsForm"
+    (ngSubmit)="
+      isUpdate ? onUpdate(addIngredientsForm) : onSubmit(addIngredientsForm)
+    "
+  >
+    <div
+      formArrayName="ingredients"
+      *ngFor="
+        let ingredient of addIngredientsForm.get('ingredients').controls;
+        let i = index
+      "
+      class="card border-dark mb-1 p-2"
+    >
+      <div [formGroupName]="i" class="row align-items-center">
+        <!-- ************************************* NAME **************************************** -->
+        <div class="col-md-7">
+          <app-input-wrapper [inputTitle]="'Ingredient'">
+            <input
+              formControlName="name"
+              class="form-control form-control-sm"
+              required
+            />
+          </app-input-wrapper>
+        </div>
+        <!-- ************************************* QUANTITY **************************************** -->
+        <div class="col-md-3">
+          <app-input-wrapper [inputTitle]="'Quantity'">
+            <input
+              formControlName="quantity"
+              class="form-control form-control-sm"
+              required
+            />
+          </app-input-wrapper>
+        </div>
+        <!-- ************************************* BUTTONS **************************************** -->
+        <div class="col-md-2 text-center">
+          <button
+            [disabled]="!i"
+            class="btn text-danger"
+            (click)="removeField($event, i)"
+          >
+            <fa-icon [icon]="minus" class="text-danger"></fa-icon>
+          </button>
+          <button type="button" class="btn" (click)="addField($event, i)">
+            Add
+            <fa-icon [icon]="plus" class="text-primary"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
+  </form>
+</app-form-wrapper>

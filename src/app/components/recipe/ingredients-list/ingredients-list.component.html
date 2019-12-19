@@ -1,0 +1,20 @@
+<div class="card-body ">
+  <div class="row">
+    <div class="col-md-4 px-2 my-2">
+      <div class="list-group ">
+        <div
+          *ngFor="let ingredient of ingredients"
+          class="list-group-item text-white bg-primary"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <div>{{ ingredient.name }}</div>
+            <div class="text-info">{{ ingredient.quantity }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <p>This is where the instructions go</p>
+    </div>
+  </div>
+</div>

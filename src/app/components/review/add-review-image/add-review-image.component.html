@@ -1,0 +1,21 @@
+<app-back-button [link]="'reviews/' + id"></app-back-button>
+<app-form-wrapper [title]="'Add photos'">
+  <form [formGroup]="reviewImageForm" (ngSubmit)="onSubmit(reviewImageForm)">
+    <!-- ************************************* Main Image **************************************** -->
+    <div class="form-group">
+      <label for="mainImage">Main Image</label>
+      <app-form-label>Choose the main image for this review</app-form-label>
+      <img [src]="imgSrc" alt="" width="150" (click)="fileUploader.click()" />
+      <input
+        type="file"
+        formControlName="mainImage"
+        #fileUploader
+        (change)="showPreview($event)"
+      />
+      <app-control-messages
+        [control]="reviewImageForm.get('mainImage')"
+      ></app-control-messages>
+    </div>
+    <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
+  </form>
+</app-form-wrapper>

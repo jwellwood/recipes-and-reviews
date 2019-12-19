@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { ReviewsService } from "src/app/services/reviews.service";
 import { Review } from "src/app/models/Review";
-import { FlashMessagesService } from "angular2-flash-messages";
+import { MessagesService } from "src/app/services/messages.service";
 
 @Component({
   selector: "app-add-review-details",
@@ -24,7 +24,7 @@ export class AddReviewDetailsComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private reviewsService: ReviewsService,
-    private flashMessage: FlashMessagesService,
+    private messageService: MessagesService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -80,10 +80,7 @@ export class AddReviewDetailsComponent implements OnInit {
     const value: Review = Object.assign({}, this.reviewDetailsForm.value);
     const valid: boolean = this.reviewDetailsForm.valid;
     if (!valid) {
-      this.flashMessage.show("There was a problem with the submission", {
-        cssClass: "alert-danger",
-        timeout: 4000
-      });
+      this.messageService.showFormError();
     } else {
       // Add id to client
       value.id = this.id;
@@ -97,13 +94,7 @@ export class AddReviewDetailsComponent implements OnInit {
     const value: Review = Object.assign({}, this.reviewDetailsForm.value);
     const valid: boolean = this.reviewDetailsForm.valid;
     if (!valid) {
-      this.flashMessage.show(
-        "There was a problem with the submission, check the fields marked *",
-        {
-          cssClass: "alert-danger",
-          timeout: 4000
-        }
-      );
+      this.messageService.showFormError();
     } else {
       // Add new client to firestore
       this.reviewsService.newReview(value);

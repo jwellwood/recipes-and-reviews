@@ -24,10 +24,9 @@
         </h6>
 
         <img
-          style="height: 200px; width: 100%; display: block;"
-          src="https://picsum.photos/200/200"
+          src="{{ review.mainImage || defaultImg }}"
           alt="Card image"
-          class="img-thumbnail"
+          class="img-thumbnail main-image"
         />
       </div>
       <div class="d-flex justify-content-between card-footer">

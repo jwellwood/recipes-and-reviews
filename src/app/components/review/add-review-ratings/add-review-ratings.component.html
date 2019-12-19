@@ -9,86 +9,77 @@
     <div class="row">
       <!-- ************************************* TASTE **************************************** -->
       <div class="col-md-4">
-        <div class="form-group">
-          <small class="form-text text-muted">Taste Rating *</small>
+        <app-input-wrapper
+          [inputTitle]="'Taste Rating'"
+          [validation]="reviewRatingForm.get('tasteRating')"
+        >
           <input
             type="number"
             formControlName="tasteRating"
             class="form-control"
           />
-          <app-control-messages
-            [control]="reviewRatingForm.get('tasteRating')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
         <!-- Comment  -->
-        <div class="form-group">
-          <small class="form-text text-muted">Comment on taste</small>
+        <app-input-wrapper
+          [inputTitle]="'Taste Comment'"
+          [validation]="reviewRatingForm.get('tasteComment')"
+        >
           <textarea
             type="text"
             formControlName="tasteComment"
             class="form-control"
           ></textarea>
-          <app-control-messages
-            [control]="reviewRatingForm.get('tasteComment')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
       <!-- ************************************* SERVICE **************************************** -->
       <div class="col-md-4">
-        <div class="form-group">
-          <small class="form-text text-muted">Service Rating *</small>
+        <app-input-wrapper
+          [inputTitle]="'Service Rating'"
+          [validation]="reviewRatingForm.get('serviceRating')"
+        >
           <input
             type="number"
             formControlName="serviceRating"
             class="form-control"
           />
-          <app-control-messages
-            [control]="reviewRatingForm.get('serviceRating')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
         <!-- Comment  -->
-        <div class="form-group">
-          <small class="form-text text-muted">Comment on service</small>
+        <app-input-wrapper
+          [inputTitle]="'Service Comment'"
+          [validation]="reviewRatingForm.get('serviceComment')"
+        >
           <textarea
             type="text"
             formControlName="serviceComment"
             class="form-control"
           ></textarea>
-          <app-control-messages
-            [control]="reviewRatingForm.get('serviceComment')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
       <!-- ************************************* ATMOSPHERE **************************************** -->
       <div class="col-md-4">
-        <div class="form-group">
-          <small class="form-text text-muted">Atmosphere Rating *</small>
+        <app-input-wrapper
+          [inputTitle]="'Atmosphere Rating'"
+          [validation]="reviewRatingForm.get('atmosphereRating')"
+        >
           <input
             type="number"
             formControlName="atmosphereRating"
             class="form-control"
           />
-          <app-control-messages
-            [control]="reviewRatingForm.get('atmosphereRating')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
         <!-- Comment  -->
-        <div class="form-group">
-          <small class="form-text text-muted">Comment on atmosphere</small>
+        <app-input-wrapper
+          [inputTitle]="'Atmosphere Comment'"
+          [validation]="reviewRatingForm.get('atmosphereComment')"
+        >
           <textarea
             type="text"
             formControlName="atmosphereComment"
             class="form-control"
           ></textarea>
-          <app-control-messages
-            [control]="reviewRatingForm.get('atmosphereComment')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
     </div>
-    <flash-messages></flash-messages>
-    <button type="submit" class="btn btn-success btn-sm btn-block">
-      {{ isUpdate ? "Update" : "Create" }}
-    </button>
+    <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>
 </app-form-wrapper>

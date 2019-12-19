@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { RecipesService } from "src/app/services/recipes.service";
 import { Recipe } from "src/app/models/Recipe";
-import { FlashMessagesService } from "angular2-flash-messages";
+import { MessagesService } from "src/app/services/messages.service";
 
 @Component({
   selector: "app-add-recipe-details",
@@ -19,7 +19,7 @@ export class AddRecipeDetailsComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private recipesService: RecipesService,
-    private flashMessage: FlashMessagesService,
+    private messageService: MessagesService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -49,9 +49,18 @@ export class AddRecipeDetailsComponent implements OnInit {
     return formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
       type: ["", Validators.required],
-      prepTime: [0, Validators.required],
-      servesNumber: [0, Validators.required],
-      healthRating: [0, Validators.required]
+      prepTime: [
+        0,
+        [Validators.required, Validators.max(999), Validators.min(1)]
+      ],
+      servesNumber: [
+        0,
+        [Validators.required, Validators.max(99), Validators.min(1)]
+      ],
+      healthRating: [
+        0,
+        [Validators.required, Validators.max(10), Validators.min(1)]
+      ]
     });
   }
 
@@ -75,10 +84,7 @@ export class AddRecipeDetailsComponent implements OnInit {
     const value: Recipe = Object.assign({}, this.recipeDetailsForm.value);
     const valid: boolean = this.recipeDetailsForm.valid;
     if (!valid) {
-      this.flashMessage.show("There was a problem with the submission", {
-        cssClass: "alert-danger",
-        timeout: 4000
-      });
+      this.messageService.showFormError();
     } else {
       // Add id to client
       value.id = this.id;
@@ -92,13 +98,7 @@ export class AddRecipeDetailsComponent implements OnInit {
     const value: Recipe = Object.assign({}, this.recipeDetailsForm.value);
     const valid: boolean = this.recipeDetailsForm.valid;
     if (!valid) {
-      this.flashMessage.show(
-        "There was a problem with the submission, check the fields marked *",
-        {
-          cssClass: "alert-danger",
-          timeout: 4000
-        }
-      );
+      this.messageService.showFormError();
     } else {
       // Add new client to firestore
       this.recipesService.newRecipe(value);

@@ -9,6 +9,7 @@ import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { CarouselModule } from "ngx-carousel-lib";
+import { ModalModule } from "ngx-bootstrap/modal";
 // Firebase
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -56,6 +57,12 @@ import { LoginComponent } from "./components/login/login.component";
 import { ControlMessagesComponent } from "./components/utils/control-messages/control-messages.component";
 import { FormLabelComponent } from "./components/utils/form-label/form-label.component";
 import { FormWrapperComponent } from "./components/utils/form-wrapper/form-wrapper.component";
+import { AddReviewImageComponent } from "./components/review/add-review-image/add-review-image.component";
+import { AddReviewGalleryComponent } from "./components/review/add-review-gallery/add-review-gallery.component";
+import { AddRecipeIngredientsComponent } from "./components/recipe/add-recipe-ingredients/add-recipe-ingredients.component";
+import { IngredientsListComponent } from "./components/recipe/ingredients-list/ingredients-list.component";
+import { InputWrapperComponent } from "./components/utils/input-wrapper/input-wrapper.component";
+import { SubmitButtonComponent } from './components/utils/submit-button/submit-button.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +104,13 @@ import { FormWrapperComponent } from "./components/utils/form-wrapper/form-wrapp
     FormLabelComponent,
     FormWrapperComponent,
     AddRecipeDetailsComponent,
-    AddRecipeCommentComponent
+    AddRecipeCommentComponent,
+    AddReviewImageComponent,
+    AddReviewGalleryComponent,
+    AddRecipeIngredientsComponent,
+    IngredientsListComponent,
+    InputWrapperComponent,
+    SubmitButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -113,7 +126,8 @@ import { FormWrapperComponent } from "./components/utils/form-wrapper/form-wrapp
     FlashMessagesModule.forRoot(),
     FontAwesomeModule,
     BsDatepickerModule.forRoot(),
-    CarouselModule
+    CarouselModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

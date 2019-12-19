@@ -7,10 +7,14 @@
     "
   >
     <div class="row">
+      <!-- ************************************* NAME **************************************** -->
       <div class="col-md-8">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <app-form-label>Name of the place *</app-form-label>
+        <app-input-wrapper
+          [labelText]="'Name *'"
+          [labelFor]="'name'"
+          [inputTitle]="'Name of the place'"
+          [validation]="reviewDetailsForm.get('name')"
+        >
           <input
             formControlName="name"
             class="form-control"
@@ -19,16 +23,16 @@
             }"
             required
           />
-          <app-control-messages
-            [control]="reviewDetailsForm.get('name')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
       <!-- ************************************* DATE **************************************** -->
       <div class="col-md-4">
-        <div class="form-group">
-          <label for="dateVisited">Date</label>
-          <app-form-label>Date of visit *</app-form-label>
+        <app-input-wrapper
+          [labelText]="'Date *'"
+          [labelFor]="'dateVisited'"
+          [inputTitle]="'Date of visit *'"
+          [validation]="reviewDetailsForm.get('dateVisited')"
+        >
           <input
             formControlName="dateVisited"
             class="form-control"
@@ -39,10 +43,7 @@
             }"
             required
           />
-          <app-control-messages
-            [control]="reviewDetailsForm.get('dateVisited')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
     </div>
     <!-- ************************************* LOCATION **************************************** -->
@@ -50,8 +51,10 @@
     <div class="row">
       <!-- City -->
       <div class="col-md-6">
-        <div class="form-group">
-          <app-form-label>City *</app-form-label>
+        <app-input-wrapper
+          [inputTitle]="'City'"
+          [validation]="reviewDetailsForm.get('city')"
+        >
           <input
             type="text"
             formControlName="city"
@@ -61,41 +64,28 @@
             }"
             required
           />
-          <app-control-messages
-            [control]="reviewDetailsForm.get('city')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
       <!-- Country -->
       <div class="col-md-6">
-        <div class="form-group">
-          <app-form-label>Country *</app-form-label>
+        <app-input-wrapper
+          [inputTitle]="'Country'"
+          [validation]="reviewDetailsForm.get('country')"
+        >
           <input type="text" formControlName="country" class="form-control" />
-          <app-control-messages
-            [control]="reviewDetailsForm.get('country')"
-          ></app-control-messages>
-        </div>
+        </app-input-wrapper>
       </div>
     </div>
 
     <!-- ************************************* WEBSITE **************************************** -->
-    <div class="form-group">
-      <label for="website">Website</label>
-      <app-form-label>Place's own website</app-form-label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">https://</span>
-        </div>
-
-        <input type="text" formControlName="website" class="form-control" />
-      </div>
-      <app-control-messages
-        [control]="reviewDetailsForm.get('website')"
-      ></app-control-messages>
-    </div>
-    <flash-messages></flash-messages>
-    <button type="submit" class="btn btn-success btn-sm btn-block">
-      {{ isUpdate ? "Update" : "Create" }}
-    </button>
+    <app-input-wrapper
+      [labelText]="'Website'"
+      [labelFor]="'website'"
+      [inputTitle]="'Place\'s own website'"
+      [validation]="reviewDetailsForm.get('website')"
+    >
+      <input type="text" formControlName="website" class="form-control" />
+    </app-input-wrapper>
+    <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>
 </app-form-wrapper>

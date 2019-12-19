@@ -18,4 +18,7 @@ export interface Review {
   tasteRating: number;
   serviceRating: number;
   atmosphereRating: number;
+  // Images
+  mainImage?: string;
+  imageList?: any;
 }

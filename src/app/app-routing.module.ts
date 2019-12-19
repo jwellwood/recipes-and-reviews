@@ -18,6 +18,9 @@ import { AddReviewCommentComponent } from "./components/review/add-review-commen
 import { AddReviewRatingsComponent } from "./components/review/add-review-ratings/add-review-ratings.component";
 // Guard
 import { AuthGuard } from "./guards/auth.guard";
+import { AddReviewImageComponent } from "./components/review/add-review-image/add-review-image.component";
+import { AddReviewGalleryComponent } from "./components/review/add-review-gallery/add-review-gallery.component";
+import { AddRecipeIngredientsComponent } from "./components/recipe/add-recipe-ingredients/add-recipe-ingredients.component";
 
 const routes: Routes = [
   {
@@ -31,6 +34,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "recipes/:id/add-ingredients",
+    component: AddRecipeIngredientsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "reviews/:id/add-comment",
     component: AddReviewCommentComponent,
     canActivate: [AuthGuard]
@@ -38,6 +46,16 @@ const routes: Routes = [
   {
     path: "reviews/:id/add-rating",
     component: AddReviewRatingsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "reviews/:id/add-image",
+    component: AddReviewImageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "reviews/:id/add-gallery",
+    component: AddReviewGalleryComponent,
     canActivate: [AuthGuard]
   },
   {

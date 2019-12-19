@@ -37,9 +37,9 @@
       </div>
       <app-recipe-card-footer
         [data]="[
-          { title: 'Serves', value: recipe.servesNumber },
-          { title: 'Prep time', value: recipe.prepTime },
-          { title: 'Healthiness', value: recipe.healthRating }
+          { icon: people, value: recipe.servesNumber },
+          { icon: clock, value: recipe.prepTime },
+          { icon: heart, value: recipe.healthRating }
         ]"
       ></app-recipe-card-footer>
     </div>

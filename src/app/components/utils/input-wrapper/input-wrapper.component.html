@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label *ngIf="labelText" for="{{ labelFor }}">{{ labelText }}</label>
+  <app-form-label>{{ inputTitle }}</app-form-label>
+  <ng-content></ng-content>
+  <app-control-messages
+    *ngIf="validation"
+    [control]="validation"
+  ></app-control-messages>
+</div>

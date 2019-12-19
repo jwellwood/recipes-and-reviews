@@ -1,3 +1,6 @@
+import { Ingredient } from "./Ingredient";
+import { Step } from "./Step";
+
 export interface Recipe {
   id?: string;
   name: string;
@@ -12,7 +15,7 @@ export interface Recipe {
   ingredientsTotal?: number;
   prepTime: number;
   // Ingredients
-  ingredients?: [];
+  ingredients?: Ingredient[];
   // Steps
-  steps?: [];
+  steps?: Step[];
 }

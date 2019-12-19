@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { RecipesService } from "src/app/services/recipes.service";
 import { Recipe } from "src/app/models/Recipe";
-import { FlashMessagesService } from "angular2-flash-messages";
+import { MessagesService } from "src/app/services/messages.service";
 
 @Component({
   selector: "app-add-recipe-comment",
@@ -18,7 +18,7 @@ export class AddRecipeCommentComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private recipesService: RecipesService,
-    private flashMessage: FlashMessagesService,
+    private messageService: MessagesService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -56,10 +56,7 @@ export class AddRecipeCommentComponent implements OnInit {
     const value: Recipe = Object.assign({}, this.recipeCommentForm.value);
     const valid: boolean = this.recipeCommentForm.valid;
     if (!valid) {
-      this.flashMessage.show("There was a problem with the submission", {
-        cssClass: "alert-danger",
-        timeout: 4000
-      });
+      this.messageService.showFormError();
     } else {
       // Add id to client
       value.id = this.id;
@@ -72,13 +69,7 @@ export class AddRecipeCommentComponent implements OnInit {
     const value: Recipe = Object.assign({}, this.recipeCommentForm.value);
     const valid: boolean = this.recipeCommentForm.valid;
     if (!valid) {
-      this.flashMessage.show(
-        "There was a problem with the submission, check the fields marked *",
-        {
-          cssClass: "alert-danger",
-          timeout: 4000
-        }
-      );
+      this.messageService.showFormError();
     } else {
       // Add new client to firestore
       this.recipesService.addRecipeData(this.id, value);

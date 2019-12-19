@@ -5,6 +5,13 @@
 @import "../node_modules//bootswatch/dist/flatly/bootstrap.min.css";
 @import "./scss/variables";
 body {
-  font-family: "Patrick Hand", cursive;
+  // font-family: "Patrick Hand", cursive;
   min-height: 100vh;
+}
+
+.main-image {
+  width: 238px;
+  height: 238px;
+  display: block;
+  margin: auto;
 }

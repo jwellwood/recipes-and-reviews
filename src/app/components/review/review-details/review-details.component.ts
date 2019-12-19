@@ -63,7 +63,9 @@ export class ReviewDetailsComponent implements OnInit {
       this.buttons = [
         { title: "details", link: `/reviews/edit/${this.id}` },
         { title: "comment", link: `/reviews/${this.id}/add-comment` },
-        { title: "ratings", link: `/reviews/${this.id}/add-rating` }
+        { title: "ratings", link: `/reviews/${this.id}/add-rating` },
+        { title: "images", link: `/reviews/${this.id}/add-image` },
+        { title: "gallery", link: `/reviews/${this.id}/add-gallery` }
       ];
     });
   }

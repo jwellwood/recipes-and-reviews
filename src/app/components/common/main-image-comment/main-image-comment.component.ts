@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class MainImageCommentComponent implements OnInit {
   @Input() mainComment: string;
+  @Input() mainImage: string;
   constructor() {}
 
   ngOnInit() {}

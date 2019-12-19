@@ -14,6 +14,7 @@ export class ReviewsComponent implements OnInit {
   reviews: Review[];
   // Icons
   leaf = faLeaf;
+  defaultImg: string = "../../../../../../assets/images/placeholder.png";
   constructor(
     private reviewsService: ReviewsService,
     private authService: AuthService

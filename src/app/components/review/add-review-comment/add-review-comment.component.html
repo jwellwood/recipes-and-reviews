@@ -7,23 +7,26 @@
     "
   >
     <!-- ************************************* TAGLINE **************************************** -->
-    <div class="form-group">
-      <label for="tagLine">Tagline</label>
-      <app-form-label>Add a short summary (max 150 chars)</app-form-label>
+    <app-input-wrapper
+      [labelText]="'Tagline *'"
+      [labelFor]="'tagLine'"
+      [inputTitle]="'Add a short summary (max 150 chars)'"
+      [validation]="reviewCommentForm.get('tagLine')"
+    >
       <textarea
         type="text"
         formControlName="tagLine"
         class="form-control"
         rows="1"
       ></textarea>
-      <app-control-messages
-        [control]="reviewCommentForm.get('tagLine')"
-      ></app-control-messages>
-    </div>
+    </app-input-wrapper>
     <!-- ************************************* MAIN COMMENT **************************************** -->
-    <div class="form-group">
-      <label for="mainComment">Comment</label>
-      <app-form-label>Main comment*</app-form-label>
+    <app-input-wrapper
+      [labelText]="'Comment *'"
+      [labelFor]="'mainComment'"
+      [inputTitle]="'Main comment'"
+      [validation]="reviewCommentForm.get('mainComment')"
+    >
       <textarea
         type="text"
         formControlName="mainComment"
@@ -31,13 +34,7 @@
         rows="3"
         wrap="hard"
       ></textarea>
-      <app-control-messages
-        [control]="reviewCommentForm.get('mainComment')"
-      ></app-control-messages>
-    </div>
-    <flash-messages></flash-messages>
-    <button type="submit" class="btn btn-success btn-sm btn-block">
-      {{ isUpdate ? "Update" : "Create" }}
-    </button>
+    </app-input-wrapper>
+    <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>
 </app-form-wrapper>
