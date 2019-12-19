@@ -8,19 +8,20 @@ import { LoginComponent } from "./components/login/login.component";
 // Recipes
 import { RecipesComponent } from "./components/recipe/recipes/recipes.component";
 import { RecipeDetailsComponent } from "./components/recipe/recipe-details/recipe-details.component";
-import { AddRecipeDetailsComponent } from "./components/recipe/add-recipe-details/add-recipe-details.component";
-import { AddRecipeCommentComponent } from "./components/recipe/add-recipe-comment/add-recipe-comment.component";
+import { AddRecipeDetailsComponent } from "./components/recipe/forms/add-recipe-details/add-recipe-details.component";
+import { AddRecipeCommentComponent } from "./components/recipe/forms/add-recipe-comment/add-recipe-comment.component";
+import { AddRecipeIngredientsComponent } from "./components/recipe/forms/add-recipe-ingredients/add-recipe-ingredients.component";
+import { AddRecipeStepsComponent } from "./components/recipe/forms/add-recipe-steps/add-recipe-steps.component";
 // Reviews
 import { ReviewsComponent } from "./components/review/reviews/reviews.component";
 import { ReviewDetailsComponent } from "./components/review/review-details/review-details.component";
-import { AddReviewDetailsComponent } from "./components/review/add-review-details/add-review-details.component";
-import { AddReviewCommentComponent } from "./components/review/add-review-comment/add-review-comment.component";
-import { AddReviewRatingsComponent } from "./components/review/add-review-ratings/add-review-ratings.component";
+import { AddReviewDetailsComponent } from "./components/review/forms/add-review-details/add-review-details.component";
+import { AddReviewCommentComponent } from "./components/review/forms/add-review-comment/add-review-comment.component";
+import { AddReviewRatingsComponent } from "./components/review/forms/add-review-ratings/add-review-ratings.component";
 // Guard
 import { AuthGuard } from "./guards/auth.guard";
-import { AddReviewImageComponent } from "./components/review/add-review-image/add-review-image.component";
-import { AddReviewGalleryComponent } from "./components/review/add-review-gallery/add-review-gallery.component";
-import { AddRecipeIngredientsComponent } from "./components/recipe/add-recipe-ingredients/add-recipe-ingredients.component";
+import { AddReviewImageComponent } from "./components/review/forms/add-review-image/add-review-image.component";
+import { AddReviewGalleryComponent } from "./components/review/forms/add-review-gallery/add-review-gallery.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: "recipes/:id/add-ingredients",
     component: AddRecipeIngredientsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "recipes/:id/add-steps",
+    component: AddRecipeStepsComponent,
     canActivate: [AuthGuard]
   },
   {

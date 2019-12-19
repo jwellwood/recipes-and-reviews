@@ -35,7 +35,7 @@
     [mainImage]="review.mainImage"
   ></app-main-image-comment>
   <div class="card-body" *ngIf="review.images">
-    <h6 class="card-subtitle mb-2 text-muted">Gallery</h6>
+    <app-subtitle [text]="'Gallery'"></app-subtitle>
     <app-carousel></app-carousel>
   </div>
   <app-review-ratings

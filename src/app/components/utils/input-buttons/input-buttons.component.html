@@ -1,0 +1,11 @@
+<button
+  [hidden]="!index"
+  class="btn text-danger"
+  (click)="onRemoveClick($event)"
+>
+  <fa-icon [icon]="minus" class="text-danger"></fa-icon>
+</button>
+<button type="button" class="btn" (click)="onAddClick($event)">
+  Add
+  <fa-icon [icon]="plus" class="text-primary"></fa-icon>
+</button>

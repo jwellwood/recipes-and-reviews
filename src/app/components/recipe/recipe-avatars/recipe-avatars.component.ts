@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import {
-  faUtensils,
+  faUserFriends,
   faHeart,
   faClock
 } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,7 @@ import {
 export class RecipeAvatarsComponent implements OnInit {
   @Input() data: [];
   // Icons
-  utensils = faUtensils;
+  people = faUserFriends;
   heart = faHeart;
   clock = faClock;
 

@@ -5,21 +5,18 @@ import { Recipe } from "src/app/models/Recipe";
 import { MessagesService } from "src/app/services/messages.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { switchMap } from "rxjs/operators";
-import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: "app-add-recipe-ingredients",
-  templateUrl: "./add-recipe-ingredients.component.html",
-  styleUrls: ["./add-recipe-ingredients.component.scss"]
+  selector: "app-add-recipe-steps",
+  templateUrl: "./add-recipe-steps.component.html",
+  styleUrls: ["./add-recipe-steps.component.scss"]
 })
-export class AddRecipeIngredientsComponent implements OnInit {
+export class AddRecipeStepsComponent implements OnInit {
   id: string;
   isUpdate: boolean;
-  addIngredientsForm: FormGroup;
-  ingredients: FormArray;
-  // Icons
-  minus = faMinusCircle;
-  plus = faPlusCircle;
+  addStepsForm: FormGroup;
+  steps: FormArray;
+
   constructor(
     private formBuilder: FormBuilder,
     private messageService: MessagesService,
@@ -30,8 +27,8 @@ export class AddRecipeIngredientsComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
-    this.addIngredientsForm = this.formBuilder.group({
-      ingredients: this.formBuilder.array([this.createIngredientInput()])
+    this.addStepsForm = this.formBuilder.group({
+      steps: this.formBuilder.array([this.createStepInput()])
     });
     this.route.params
       .pipe(
@@ -39,49 +36,48 @@ export class AddRecipeIngredientsComponent implements OnInit {
       )
       .subscribe((recipe: Recipe) => {
         if (
-          recipe.ingredients &&
-          this.addIngredientsForm.get("ingredients")["controls"].length > 0
+          recipe.steps &&
+          this.addStepsForm.get("steps")["controls"].length > 0
         ) {
           this.isUpdate = true;
-          this.addIngredientsForm.setControl(
-            "ingredients",
-            this.setExistingIngredients(recipe.ingredients)
+          this.addStepsForm.setControl(
+            "steps",
+            this.setExistingSteps(recipe.steps)
           );
         }
       });
   }
 
-  setExistingIngredients(ingredientsArr): FormArray {
+  setExistingSteps(stepsArr): FormArray {
     const formArray = new FormArray([]);
-    ingredientsArr.forEach(ing => {
+    stepsArr.forEach(step => {
       formArray.push(
         this.formBuilder.group({
-          name: ing.name,
-          quantity: ing.quantity
+          title: step.title,
+          text: step.text
         })
       );
     });
     return formArray;
   }
 
-  createIngredientInput(): FormGroup {
+  createStepInput(): FormGroup {
     return this.formBuilder.group({
-      name: ["", [Validators.required, Validators.maxLength(50)]],
-      quantity: ["", [Validators.required, Validators.maxLength(50)]]
+      title: ["", Validators.maxLength(50)],
+      text: ["", [Validators.required, Validators.maxLength(150)]]
     });
   }
 
-  get name() {
-    return this.addIngredientsForm.get("name");
+  get title() {
+    return this.addStepsForm.get("title");
   }
-  get type() {
-    return this.addIngredientsForm.get("quantity");
+  get text() {
+    return this.addStepsForm.get("text");
   }
 
   onUpdate() {
-    const value: Recipe = Object.assign({}, this.addIngredientsForm.value);
-    const valid: boolean = this.addIngredientsForm.valid;
-    console.log(value);
+    const value: Recipe = Object.assign({}, this.addStepsForm.value);
+    const valid: boolean = this.addStepsForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
@@ -93,8 +89,8 @@ export class AddRecipeIngredientsComponent implements OnInit {
 
   onSubmit() {
     // Make sure to create a deep copy of the form-model
-    const value: Recipe = Object.assign({}, this.addIngredientsForm.value);
-    const valid: boolean = this.addIngredientsForm.valid;
+    const value: Recipe = Object.assign({}, this.addStepsForm.value);
+    const valid: boolean = this.addStepsForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
@@ -105,14 +101,14 @@ export class AddRecipeIngredientsComponent implements OnInit {
 
   addField(e: any, index: number): void {
     e.preventDefault();
-    this.ingredients = this.addIngredientsForm.get("ingredients") as FormArray;
-    this.ingredients.insert(index + 1, this.createIngredientInput());
+    this.steps = this.addStepsForm.get("steps") as FormArray;
+    this.steps.insert(index + 1, this.createStepInput());
   }
 
   removeField(e: any, index: number): void {
     e.preventDefault();
     if (index) {
-      const inputArray = <FormArray>this.addIngredientsForm.get("ingredients");
+      const inputArray = <FormArray>this.addStepsForm.get("steps");
       inputArray.removeAt(index);
       inputArray.markAsTouched;
       inputArray.markAsDirty;

@@ -23,21 +23,35 @@
   <!-- Avatars -->
   <app-recipe-avatars
     [data]="[
-      { icon: utensils, value: recipe.servesNumber },
+      { icon: people, value: recipe.servesNumber },
       { icon: clock, value: recipe.prepTime },
       { icon: heart, value: recipe.healthRating }
     ]"
   ></app-recipe-avatars>
-  <!-- Main content -->
+  <!-- Comment -->
   <app-main-image-comment
     [mainComment]="recipe.mainComment"
   ></app-main-image-comment>
-  <app-ingredients-list
-    [ingredients]="recipe.ingredients"
-  ></app-ingredients-list>
+  <!-- Ingredients -->
+  <div class="card-body ">
+    <div class="row">
+      <div class="col-md-5 px-2 my-2">
+        <app-subtitle [text]="'Ingredients'"></app-subtitle>
+        <app-ingredients-list
+          [ingredients]="recipe.ingredients"
+        ></app-ingredients-list>
+      </div>
+      <!-- Steps -->
+      <div class="col-md-7 px-2 my-2">
+        <app-subtitle [text]="'Steps'"></app-subtitle>
+        <app-steps-list [steps]="recipe.steps"></app-steps-list>
+      </div>
+    </div>
+  </div>
   <!-- Gallery -->
+
   <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">Gallery</h6>
+    <app-subtitle [text]="'Gallery'"></app-subtitle>
     <app-carousel></app-carousel>
   </div>
   <!-- Card Footer -->

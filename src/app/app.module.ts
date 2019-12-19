@@ -30,17 +30,17 @@ import { NotFoundComponent } from "./components/navigation/not-found/not-found.c
 // Recipes
 import { RecipesComponent } from "./components/recipe/recipes/recipes.component";
 import { RecipeDetailsComponent } from "./components/recipe/recipe-details/recipe-details.component";
-import { RecipeCardFooterComponent } from "./components/utils/recipe-card-footer/recipe-card-footer.component";
-import { RecipeAvatarsComponent } from "./components/utils/recipe-avatars/recipe-avatars.component";
-import { AddRecipeDetailsComponent } from "./components/recipe/add-recipe-details/add-recipe-details.component";
-import { AddRecipeCommentComponent } from "./components/recipe/add-recipe-comment/add-recipe-comment.component";
+import { RecipeCardFooterComponent } from "./components/recipe/recipe-card-footer/recipe-card-footer.component";
+import { RecipeAvatarsComponent } from "./components/recipe/recipe-avatars/recipe-avatars.component";
+import { AddRecipeDetailsComponent } from "./components/recipe/forms/add-recipe-details/add-recipe-details.component";
+import { AddRecipeCommentComponent } from "./components/recipe/forms/add-recipe-comment/add-recipe-comment.component";
 // Reviews
 import { ReviewsComponent } from "./components/review/reviews/reviews.component";
 import { ReviewDetailsComponent } from "./components/review/review-details/review-details.component";
-import { ReviewRatingsComponent } from "./components/utils/review-ratings/review-ratings.component";
-import { AddReviewRatingsComponent } from "./components/review/add-review-ratings/add-review-ratings.component";
-import { AddReviewDetailsComponent } from "./components/review/add-review-details/add-review-details.component";
-import { AddReviewCommentComponent } from "./components/review/add-review-comment/add-review-comment.component";
+import { ReviewRatingsComponent } from "./components/review/review-ratings/review-ratings.component";
+import { AddReviewRatingsComponent } from "./components/review/forms/add-review-ratings/add-review-ratings.component";
+import { AddReviewDetailsComponent } from "./components/review/forms/add-review-details/add-review-details.component";
+import { AddReviewCommentComponent } from "./components/review/forms/add-review-comment/add-review-comment.component";
 // Common
 import { CarouselComponent } from "./components/common/carousel/carousel.component";
 import { JumbotronComponent } from "./components/common/jumbotron/jumbotron.component";
@@ -57,12 +57,16 @@ import { LoginComponent } from "./components/login/login.component";
 import { ControlMessagesComponent } from "./components/utils/control-messages/control-messages.component";
 import { FormLabelComponent } from "./components/utils/form-label/form-label.component";
 import { FormWrapperComponent } from "./components/utils/form-wrapper/form-wrapper.component";
-import { AddReviewImageComponent } from "./components/review/add-review-image/add-review-image.component";
-import { AddReviewGalleryComponent } from "./components/review/add-review-gallery/add-review-gallery.component";
-import { AddRecipeIngredientsComponent } from "./components/recipe/add-recipe-ingredients/add-recipe-ingredients.component";
+import { AddReviewImageComponent } from "./components/review/forms/add-review-image/add-review-image.component";
+import { AddReviewGalleryComponent } from "./components/review/forms/add-review-gallery/add-review-gallery.component";
+import { AddRecipeIngredientsComponent } from "./components/recipe/forms/add-recipe-ingredients/add-recipe-ingredients.component";
 import { IngredientsListComponent } from "./components/recipe/ingredients-list/ingredients-list.component";
 import { InputWrapperComponent } from "./components/utils/input-wrapper/input-wrapper.component";
-import { SubmitButtonComponent } from './components/utils/submit-button/submit-button.component';
+import { SubmitButtonComponent } from "./components/utils/submit-button/submit-button.component";
+import { AddRecipeStepsComponent } from "./components/recipe/forms/add-recipe-steps/add-recipe-steps.component";
+import { InputButtonsComponent } from "./components/utils/input-buttons/input-buttons.component";
+import { StepsListComponent } from "./components/recipe/steps-list/steps-list.component";
+import { SubtitleComponent } from "./components/utils/subtitle/subtitle.component";
 
 @NgModule({
   declarations: [
@@ -110,7 +114,11 @@ import { SubmitButtonComponent } from './components/utils/submit-button/submit-b
     AddRecipeIngredientsComponent,
     IngredientsListComponent,
     InputWrapperComponent,
-    SubmitButtonComponent
+    SubmitButtonComponent,
+    AddRecipeStepsComponent,
+    InputButtonsComponent,
+    StepsListComponent,
+    SubtitleComponent
   ],
   imports: [
     BrowserModule,

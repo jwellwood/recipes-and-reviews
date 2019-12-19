@@ -9,7 +9,5 @@ export class IngredientsListComponent implements OnInit {
   @Input() ingredients: any;
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.ingredients);
-  }
+  ngOnInit() {}
 }

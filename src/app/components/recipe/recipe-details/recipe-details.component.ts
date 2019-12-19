@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import {
-  faUtensils,
+  faUserFriends,
   faHeart,
   faClock
 } from "@fortawesome/free-solid-svg-icons";
@@ -26,7 +26,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe;
   buttons: any = [];
   // Icons
-  utensils = faUtensils;
+  people = faUserFriends;
   heart = faHeart;
   clock = faClock;
 

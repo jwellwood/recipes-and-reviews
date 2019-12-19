@@ -37,7 +37,6 @@ export class AddReviewImageComponent implements OnInit {
         switchMap((params: Params) => this.reviewsService.getReview(this.id))
       )
       .subscribe((review: Review) => {
-        console.log(review);
         if (review.mainImage) {
           this.isUpdate = true;
           this.imgSrc = review.mainImage;
@@ -92,7 +91,7 @@ export class AddReviewImageComponent implements OnInit {
             });
           })
         )
-        .subscribe(data => console.log(data));
+        .subscribe();
       // Go back to review
       this.router.navigate([`/reviews/${this.id}`]);
     }
