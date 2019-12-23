@@ -1,0 +1,7 @@
+<img
+  *ngIf="mainImage"
+  class="img-thumbnail rounded mx-auto d-block main-image"
+  src="{{ mainImage }}"
+  alt="Card image"
+/>
+<app-image-placeholder *ngIf="!mainImage"></app-image-placeholder>

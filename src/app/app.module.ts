@@ -47,7 +47,7 @@ import { JumbotronComponent } from "./components/common/jumbotron/jumbotron.comp
 import { TaglineComponent } from "./components/common/tagline/tagline.component";
 import { CardTitleComponent } from "./components/common/card-title/card-title.component";
 import { CardFooterComponent } from "./components/common/card-footer/card-footer.component";
-import { MainImageCommentComponent } from "./components/common/main-image-comment/main-image-comment.component";
+import { MainCommentComponent } from "./components/common/main-comment/main-comment.component";
 // Utils
 import { BackButtonComponent } from "./components/utils/back-button/back-button.component";
 import { EditButtonsComponent } from "./components/utils/edit-buttons/edit-buttons.component";
@@ -67,6 +67,9 @@ import { AddRecipeStepsComponent } from "./components/recipe/forms/add-recipe-st
 import { InputButtonsComponent } from "./components/utils/input-buttons/input-buttons.component";
 import { StepsListComponent } from "./components/recipe/steps-list/steps-list.component";
 import { SubtitleComponent } from "./components/utils/subtitle/subtitle.component";
+import { ImagePlaceholderComponent } from "./components/utils/image-placeholder/image-placeholder.component";
+import { MainImageComponent } from "./components/common/main-image/main-image.component";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -94,7 +97,7 @@ import { SubtitleComponent } from "./components/utils/subtitle/subtitle.componen
     // Common (recipes and reviews)
     CarouselComponent,
     JumbotronComponent,
-    MainImageCommentComponent,
+    MainCommentComponent,
     TaglineComponent,
     CardTitleComponent,
     CardFooterComponent,
@@ -118,7 +121,9 @@ import { SubtitleComponent } from "./components/utils/subtitle/subtitle.componen
     AddRecipeStepsComponent,
     InputButtonsComponent,
     StepsListComponent,
-    SubtitleComponent
+    SubtitleComponent,
+    ImagePlaceholderComponent,
+    MainImageComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +140,8 @@ import { SubtitleComponent } from "./components/utils/subtitle/subtitle.componen
     FontAwesomeModule,
     BsDatepickerModule.forRoot(),
     CarouselModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

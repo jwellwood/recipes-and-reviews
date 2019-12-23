@@ -1,85 +1,61 @@
-<app-back-button [link]="'reviews/' + id"></app-back-button>
-<app-form-wrapper [title]="'Add ratings review'">
+<!-- TODO - add an explanation about what is happening in this template -->
+
+<app-back-button [link]="id ? 'reviews/' + id : 'reviews'"></app-back-button>
+<app-form-wrapper [title]="'Add Ratings'">
   <form
-    [formGroup]="reviewRatingForm"
-    (ngSubmit)="
-      isUpdate ? onUpdate(reviewRatingForm) : onSubmit(reviewRatingForm)
-    "
+    [formGroup]="addRatingsForm"
+    (ngSubmit)="isUpdate ? onUpdate(addRatingsForm) : onSubmit(addRatingsForm)"
   >
-    <div class="row">
-      <!-- ************************************* TASTE **************************************** -->
-      <div class="col-md-4">
-        <app-input-wrapper
-          [inputTitle]="'Taste Rating'"
-          [validation]="reviewRatingForm.get('tasteRating')"
-        >
-          <input
-            type="number"
-            formControlName="tasteRating"
-            class="form-control"
-          />
-        </app-input-wrapper>
-        <!-- Comment  -->
-        <app-input-wrapper
-          [inputTitle]="'Taste Comment'"
-          [validation]="reviewRatingForm.get('tasteComment')"
-        >
-          <textarea
-            type="text"
-            formControlName="tasteComment"
-            class="form-control"
-          ></textarea>
-        </app-input-wrapper>
-      </div>
-      <!-- ************************************* SERVICE **************************************** -->
-      <div class="col-md-4">
-        <app-input-wrapper
-          [inputTitle]="'Service Rating'"
-          [validation]="reviewRatingForm.get('serviceRating')"
-        >
-          <input
-            type="number"
-            formControlName="serviceRating"
-            class="form-control"
-          />
-        </app-input-wrapper>
-        <!-- Comment  -->
-        <app-input-wrapper
-          [inputTitle]="'Service Comment'"
-          [validation]="reviewRatingForm.get('serviceComment')"
-        >
-          <textarea
-            type="text"
-            formControlName="serviceComment"
-            class="form-control"
-          ></textarea>
-        </app-input-wrapper>
-      </div>
-      <!-- ************************************* ATMOSPHERE **************************************** -->
-      <div class="col-md-4">
-        <app-input-wrapper
-          [inputTitle]="'Atmosphere Rating'"
-          [validation]="reviewRatingForm.get('atmosphereRating')"
-        >
-          <input
-            type="number"
-            formControlName="atmosphereRating"
-            class="form-control"
-          />
-        </app-input-wrapper>
-        <!-- Comment  -->
-        <app-input-wrapper
-          [inputTitle]="'Atmosphere Comment'"
-          [validation]="reviewRatingForm.get('atmosphereComment')"
-        >
-          <textarea
-            type="text"
-            formControlName="atmosphereComment"
-            class="form-control"
-          ></textarea>
-        </app-input-wrapper>
+    <div
+      formArrayName="ratings"
+      *ngFor="
+        let rating of addRatingsForm.get('ratings').controls;
+        let i = index
+      "
+      class="card border-dark mb-1 p-2"
+    >
+      <div [formGroupName]="i" class="row align-items-center">
+        <!-- ************************************* Title **************************************** -->
+        <div class="col-md-3">
+          <app-input-wrapper [inputTitle]="'Rating type'">
+            <input
+              formControlName="title"
+              class="form-control form-control-sm"
+              required
+            />
+          </app-input-wrapper>
+        </div>
+        <!-- ************************************* Score **************************************** -->
+        <div class="col-md-1">
+          <app-input-wrapper [inputTitle]="'Score'">
+            <input
+              type="number"
+              formControlName="score"
+              class="form-control form-control-sm"
+              required
+            />
+          </app-input-wrapper>
+        </div>
+        <!-- ************************************* Comment **************************************** -->
+        <div class="col-md-6">
+          <app-input-wrapper [inputTitle]="'Comment'">
+            <textarea
+              formControlName="comment"
+              class="form-control form-control-sm"
+            ></textarea>
+          </app-input-wrapper>
+        </div>
+        <!-- ************************************* BUTTONS **************************************** -->
+        <div class="col-md-2 text-center">
+          <app-input-buttons
+            [index]="i"
+            (onAdd)="addField($event, i)"
+            (onRemove)="removeField($event, i)"
+          ></app-input-buttons>
+        </div>
       </div>
     </div>
+
     <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>
 </app-form-wrapper>

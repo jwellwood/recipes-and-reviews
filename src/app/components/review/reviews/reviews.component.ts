@@ -3,6 +3,7 @@ import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { ReviewsService } from "src/app/services/reviews.service";
 import { Review } from "src/app/models/Review";
 import { AuthService } from "src/app/services/auth.service";
+import { GetRatingPipe } from "src/app/pipes/get-rating.pipe";
 
 @Component({
   selector: "app-reviews",
@@ -15,6 +16,7 @@ export class ReviewsComponent implements OnInit {
   // Icons
   leaf = faLeaf;
   defaultImg: string = "../../../../../../assets/images/placeholder.png";
+
   constructor(
     private reviewsService: ReviewsService,
     private authService: AuthService
@@ -31,5 +33,11 @@ export class ReviewsComponent implements OnInit {
     this.reviewsService.getReviews().subscribe(reviews => {
       this.reviews = reviews;
     });
+  }
+
+  getOverallRating(review: Review) {
+    console.log("getting");
+    const scores = review.ratings.map(rating => +rating.score);
+    return scores.reduce((acc, cur) => acc + cur, 0) / review.ratings.length;
   }
 }

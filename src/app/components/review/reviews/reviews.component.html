@@ -22,27 +22,27 @@
           {{ review.city }},
           <small class="card-subtitle text-muted">{{ review.country }}</small>
         </h6>
-
-        <img
-          src="{{ review.mainImage || defaultImg }}"
-          alt="Card image"
-          class="img-thumbnail main-image"
-        />
+        <app-main-image [mainImage]="review.mainImage"></app-main-image>
       </div>
       <div class="d-flex justify-content-between card-footer">
         <div class="text-muted">
           {{ review.dateVisited.toDate() | date }}
         </div>
+
         <div class="font-weight-bold">
           <fa-icon [icon]="leaf" class="text-success"></fa-icon>
-          <!-- TODO - would be better if this came from component, and was dynamic -->
-          {{
-            (review.tasteRating +
-              review.serviceRating +
-              review.atmosphereRating) /
-              3 | number: "1.0-1"
-          }}
+
+          <span *ngIf="review.ratings">
+            {{ getOverallRating(review) | number: "1.0-1" }}</span
+          >
         </div>
+        <!-- <div class="font-weight-bold">
+          <fa-icon [icon]="leaf" class="text-success"></fa-icon>
+
+          <span *ngIf="review.ratings">
+            {{ review.ratings[0].score | getOverallRating }}</span
+          >
+        </div> -->
       </div>
     </div>
   </div>

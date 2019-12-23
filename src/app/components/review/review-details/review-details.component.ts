@@ -4,6 +4,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Review } from "src/app/models/Review";
 import { ReviewsService } from "src/app/services/reviews.service";
 import { AuthService } from "src/app/services/auth.service";
+import { Rating } from "src/app/models/Rating";
 
 @Component({
   selector: "app-review-details",
@@ -14,7 +15,7 @@ export class ReviewDetailsComponent implements OnInit {
   isAuth: boolean;
   id: string;
   review: Review;
-  ratings: any = [];
+  ratings: Rating[];
   overallRating: number = 0;
   buttons: any = [];
   // Icons
@@ -39,35 +40,25 @@ export class ReviewDetailsComponent implements OnInit {
     this.reviewsService.getReview(this.id).subscribe(review => {
       if (review != null) {
         this.review = review;
-        this.ratings = [
-          {
-            type: "Taste",
-            value: review.tasteRating,
-            comment: review.tasteComment
-          },
-          {
-            type: "Service",
-            value: review.serviceRating,
-            comment: review.serviceComment
-          },
-          {
-            type: "Atmosphere",
-            value: review.atmosphereRating,
-            comment: review.atmosphereComment
-          }
-        ];
-        const allRatings = this.ratings.map(rating => rating.value);
+      }
+      if (review.ratings) {
+        this.ratings = review.ratings.map(rating => ({
+          title: rating.title,
+          score: rating.score,
+          comment: rating.comment
+        }));
+        const allRatings = this.ratings.map(rating => +rating.score);
         this.overallRating =
           allRatings.reduce((acc, cur) => acc + cur, 0) / this.ratings.length;
       }
-      this.buttons = [
-        { title: "details", link: `/reviews/edit/${this.id}` },
-        { title: "comment", link: `/reviews/${this.id}/add-comment` },
-        { title: "ratings", link: `/reviews/${this.id}/add-rating` },
-        { title: "images", link: `/reviews/${this.id}/add-image` },
-        { title: "gallery", link: `/reviews/${this.id}/add-gallery` }
-      ];
     });
+    this.buttons = [
+      { title: "details", link: `/reviews/${this.id}/edit-details` },
+      { title: "comment", link: `/reviews/${this.id}/add-comment` },
+      { title: "ratings", link: `/reviews/${this.id}/add-rating` },
+      { title: "images", link: `/reviews/${this.id}/add-image` },
+      { title: "gallery", link: `/reviews/${this.id}/add-gallery` }
+    ];
   }
 
   onDelete() {

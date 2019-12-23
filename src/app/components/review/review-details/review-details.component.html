@@ -29,11 +29,16 @@
   <!-- -----------------------------------------------Main Details------------------------------------------------ -->
 
   <app-tagline *ngIf="review.tagLine" [text]="review.tagLine"></app-tagline>
-  <app-main-image-comment
-    *ngIf="review.mainComment || review.mainImage"
-    [mainComment]="review.mainComment"
-    [mainImage]="review.mainImage"
-  ></app-main-image-comment>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <app-main-image [mainImage]="review.mainImage"></app-main-image>
+      </div>
+      <div class="col-md-8">
+        <app-main-comment [mainComment]="review.mainComment"></app-main-comment>
+      </div>
+    </div>
+  </div>
   <div class="card-body" *ngIf="review.images">
     <app-subtitle [text]="'Gallery'"></app-subtitle>
     <app-carousel></app-carousel>

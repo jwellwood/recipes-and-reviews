@@ -25,7 +25,7 @@ import { AddReviewGalleryComponent } from "./components/review/forms/add-review-
 
 const routes: Routes = [
   {
-    path: "recipes/edit/:id",
+    path: "recipes/:id/edit-details",
     component: AddRecipeDetailsComponent,
     canActivate: [AuthGuard]
   },
@@ -65,7 +65,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "reviews/edit/:id",
+    path: "reviews/:id/edit-details",
     component: AddReviewDetailsComponent,
     canActivate: [AuthGuard]
   },

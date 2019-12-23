@@ -1,3 +1,5 @@
+import { Rating } from "./Rating";
+
 export interface Review {
   id?: string;
   // Details
@@ -11,13 +13,7 @@ export interface Review {
   // Comments
   tagLine?: string;
   mainComment: string;
-  tasteComment?: string;
-  serviceComment?: string;
-  atmosphereComment?: string;
-  // Ratings
-  tasteRating: number;
-  serviceRating: number;
-  atmosphereRating: number;
+  ratings?: Rating[];
   // Images
   mainImage?: string;
   imageList?: any;
