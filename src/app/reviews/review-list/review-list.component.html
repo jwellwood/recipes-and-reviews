@@ -1,0 +1,41 @@
+<app-back-button [link]=""></app-back-button>
+<app-jumbotron [title]="'Reviews'"></app-jumbotron>
+
+<app-add-button
+  *ngIf="isAuth"
+  [text]="'review'"
+  [link]="'/reviews/add-review'"
+></app-add-button>
+
+<div *ngIf="!reviews">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="row" *ngIf="reviews">
+  <div class="col-sm-4" *ngFor="let review of reviews">
+    <div class="card mb-3 " routerLink="/reviews/{{ review.id }}">
+      <h5 class="card-header text-center text-white bg-primary">
+        {{ review.name }}
+      </h5>
+      <div class="card-body">
+        <h6 class="card-title">
+          {{ review.city }},
+          <small class="card-subtitle text-muted">{{ review.country }}</small>
+        </h6>
+        <app-main-image [mainImage]="review.mainImage"></app-main-image>
+      </div>
+      <div class="d-flex justify-content-between card-footer">
+        <div class="text-muted">
+          {{ review.dateVisited.toDate() | date }}
+        </div>
+
+        <div class="font-weight-bold">
+          <fa-icon [icon]="leaf" class="text-success"></fa-icon>
+          <span *ngIf="review.ratings">
+            {{ review.ratings | getRating | number: "1.0-1" }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
