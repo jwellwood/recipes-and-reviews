@@ -49,11 +49,11 @@ export class ReviewComponent implements OnInit {
       }
     });
     this.buttons = [
-      { title: "details", link: `/reviews/${this.id}/edit-details` },
-      { title: "comment", link: `/reviews/${this.id}/add-comment` },
-      { title: "ratings", link: `/reviews/${this.id}/add-rating` },
-      { title: "images", link: `/reviews/${this.id}/add-image` },
-      { title: "gallery", link: `/reviews/${this.id}/add-gallery` }
+      { title: "Details", link: `/reviews/${this.id}/edit-details` },
+      { title: "Comment", link: `/reviews/${this.id}/add-comment` },
+      { title: "Ratings", link: `/reviews/${this.id}/add-rating` },
+      { title: "Images", link: `/reviews/${this.id}/add-image` },
+      { title: "Gallery", link: `/reviews/${this.id}/add-gallery` }
     ];
   }
 

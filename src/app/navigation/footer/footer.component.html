@@ -8,24 +8,10 @@
     <li class="list-inline-item"><a routerLink="/about">Support</a></li>
   </ul>
   <ul class="list-inline">
-    <li class="list-inline-item mx-2">
-      <a href="/">
+    <li *ngFor="let link of socialLinks" class="list-inline-item mx-2">
+      <a href="link.link">
         <h2 class="text-dark">
-          <fa-icon [icon]="instagram" class=""></fa-icon>
-        </h2>
-      </a>
-    </li>
-    <li class="list-inline-item mx-2">
-      <a href="/">
-        <h2 class="text-dark">
-          <fa-icon [icon]="facebook" class=""></fa-icon>
-        </h2>
-      </a>
-    </li>
-    <li class="list-inline-item mx-2">
-      <a href="/">
-        <h2 class="text-dark">
-          <fa-icon [icon]="twitter" class=""></fa-icon>
+          <fa-icon [icon]="link.icon" class=""></fa-icon>
         </h2>
       </a>
     </li>

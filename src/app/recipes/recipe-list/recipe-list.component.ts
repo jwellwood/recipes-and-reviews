@@ -20,6 +20,8 @@ import { AuthService } from "src/app/core/auth/auth.service";
 export class RecipeListComponent implements OnInit {
   isAuth: boolean;
   recipes: Recipe[];
+  introText: string =
+    "Love cooking? Looking for some inspiration? Look no further! Starters, mains, desserts and sides, we've got you covered no matter what the occasion";
   // Icons
   iceCream = faIceCream;
   carrot = faCarrot;

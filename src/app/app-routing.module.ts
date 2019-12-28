@@ -4,7 +4,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { LandingComponent } from "./shared/pages/landing/landing.component";
 import { AboutComponent } from "./shared/pages/about/about.component";
 import { NotFoundComponent } from "./shared/pages/not-found/not-found.component";
-import { LoginComponent } from "./core/login/login.component";
 
 const routes: Routes = [
   {
@@ -17,8 +16,10 @@ const routes: Routes = [
     loadChildren: () =>
       import("./recipes/recipes.module").then(m => m.RecipesModule)
   },
-  // General routes
-  { path: "login", component: LoginComponent },
+  {
+    path: "admin",
+    loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule)
+  },
   {
     path: "about",
     component: AboutComponent

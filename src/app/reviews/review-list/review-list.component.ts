@@ -12,6 +12,8 @@ import { AuthService } from "src/app/core/auth/auth.service";
 export class ReviewListComponent implements OnInit {
   isAuth: boolean;
   reviews: Review[];
+  introText: string =
+    "Looking for reviews? You've found just the place! Restaurants, cafes, bars... all tried and tested";
   // Icons
   leaf = faLeaf;
   defaultImg: string = "../../../../../../assets/images/placeholder.png";

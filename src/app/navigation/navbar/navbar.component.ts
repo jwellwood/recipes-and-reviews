@@ -1,33 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { BsDropdownConfig } from "ngx-bootstrap/dropdown";
+import { Component, OnInit, Input } from "@angular/core";
 import { faLeaf, faUserShield } from "@fortawesome/free-solid-svg-icons";
-import {
-  faInstagram,
-  faFacebookSquare,
-  faTwitter
-} from "@fortawesome/free-brands-svg-icons";
 import { AuthService } from "src/app/core/auth/auth.service";
 import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.scss"],
-  providers: [
-    {
-      provide: BsDropdownConfig,
-      useValue: { isAnimated: true, autoClose: true }
-    }
-  ]
+  styleUrls: ["./navbar.component.scss"]
 })
 export class NavbarComponent implements OnInit {
+  @Input() socialLinks: any;
   isAuth: boolean;
   authUser: string;
+  links = [];
   // Icons
   admin = faUserShield;
-  twitter = faTwitter;
-  facebook = faFacebookSquare;
-  instagram = faInstagram;
   leaf = faLeaf;
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -41,10 +28,5 @@ export class NavbarComponent implements OnInit {
         this.isAuth = false;
       }
     });
-  }
-
-  onLogout() {
-    this.authService.logout();
-    this.router.navigate(["/"]);
   }
 }

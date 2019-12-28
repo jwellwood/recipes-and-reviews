@@ -11,10 +11,9 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 // Core Components
-import { LoginComponent } from "./login/login.component";
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,6 +27,6 @@ import { LoginComponent } from "./login/login.component";
     FontAwesomeModule,
     FlashMessagesModule.forRoot()
   ],
-  exports: [RouterModule, FormsModule, LoginComponent]
+  exports: [RouterModule, FormsModule]
 })
 export class CoreModule {}

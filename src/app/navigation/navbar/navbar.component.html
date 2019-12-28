@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" routerLink="/">PbP</a>
-
+  <a class="navbar-brand" [routerLink]="'/'">PbP</a>
   <!-- Mobile screens -->
-  <app-nav-dropdown></app-nav-dropdown>
+  <app-nav-dropdown
+    [isAuth]="isAuth"
+    [socialLinks]="socialLinks"
+  ></app-nav-dropdown>
   <!-- Full Screens -->
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -23,31 +25,17 @@
         ></a>
       </li>
     </ul>
-
+    <!-- Social media links -->
     <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-      <li class="nav-item">
-        <a class="nav-link">
-          <fa-icon [icon]="instagram" class="text-white"></fa-icon>
+      <li *ngFor="let link of socialLinks" class="nav-item">
+        <a class="nav-link" href="{{ link.link }}">
+          <fa-icon [icon]="link.icon" class="text-white"></fa-icon>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <fa-icon [icon]="facebook" class="text-white"></fa-icon>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <fa-icon [icon]="twitter" class="text-white"></fa-icon>
-        </a>
-      </li>
+
       <li class="nav-item" *ngIf="isAuth">
-        <a class="nav-link">
-          <fa-icon [icon]="admin" class="text-secondary"></fa-icon>
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="isAuth">
-        <a class="nav-link" (click)="onLogout()">
-          Logout
+        <a class="nav-link" [routerLink]="['/admin']">
+          <fa-icon [icon]="admin" class="text-info"></fa-icon>
         </a>
       </li>
     </ul>

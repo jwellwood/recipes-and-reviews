@@ -5,51 +5,40 @@
     type="button"
     data-toggle="collapse"
     data-target="#navbarNav"
-    aria-controls="dropdown-animated"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
   >
     <fa-icon [icon]="leaf"></fa-icon>
   </div>
   <ul
     id="dropdown-animated"
     *dropdownMenu
-    class="dropdown-menu dropdown-menu-right mr-1"
+    class="dropdown-menu dropdown-menu-right mr-1 bg-primary"
     role="menu"
-    aria-labelledby="button-alignment"
+    aria-labelledby="button-animated"
   >
-    <li role="menuitem">
-      <a
-        class="dropdown-item text-light"
-        routerLink="'/'"
-        routerLinkActive="router-link-active"
-        >Home</a
-      >
+    <!-- Internal links -->
+    <li *ngFor="let link of links" role="menuitem">
+      <a class="dropdown-item text-white" routerLink="{{ link.link }}">{{
+        link.title
+      }}</a>
     </li>
-    <li role="menuitem">
-      <a
-        class="dropdown-item text-light"
-        routerLink="'/recipes'"
-        routerLinkActive="router-link-active"
-        >Recipes</a
-      >
-    </li>
-    <li role="menuitem">
-      <a
-        class="dropdown-item text-light"
-        routerLink="'/reviews'"
-        routerLinkActive="router-link-active"
-        >Reviews</a
+    <li class="divider dropdown-divider"></li>
+    <!-- Social media links -->
+    <li *ngFor="let link of socialLinks" role="menuitem">
+      <a class="dropdown-item text-info" href="{{ link.link }}">
+        <fa-icon [icon]="link.icon"></fa-icon>
+        {{ link.title }}</a
       >
     </li>
     <li class="divider dropdown-divider"></li>
+    <!-- Other links -->
     <li role="menuitem">
-      <a
-        class="dropdown-item text-secondary"
-        routerLink="'/about'"
-        routerLinkActive="router-link-active"
-        >About</a
-      >
+      <a class="dropdown-item text-white" [routerLink]="'/about'">About</a>
     </li>
+    <div *ngIf="isAuth">
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem" class="bg-info">
+        <a class="dropdown-item  text-primary" [routerLink]="'/admin'">Admin</a>
+      </li>
+    </div>
   </ul>
 </div>

@@ -1,0 +1,16 @@
+<div class="p-3">
+  <app-subtitle [text]="'Admin'"></app-subtitle>
+  <div *ngIf="isAuth">
+    <p>
+      Logged in as <strong>{{ authUser }}</strong>
+    </p>
+    <button type="button" class="btn btn-primary" (click)="onLogout()">
+      Logout
+    </button>
+  </div>
+  <div *ngIf="!isAuth">
+    <button type="button" class="btn btn-primary" [routerLink]="'login'">
+      login
+    </button>
+  </div>
+</div>

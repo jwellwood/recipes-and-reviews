@@ -1,5 +1,5 @@
 <app-back-button [link]=""></app-back-button>
-<app-jumbotron [title]="'Reviews'"></app-jumbotron>
+<app-jumbotron [title]="'Reviews'" [text]="introText"></app-jumbotron>
 
 <app-add-button
   *ngIf="isAuth"
@@ -11,7 +11,7 @@
   <app-spinner></app-spinner>
 </div>
 
-<div class="row" *ngIf="reviews">
+<div class="card-group align-center" *ngIf="reviews">
   <div class="col-sm-4" *ngFor="let review of reviews">
     <div class="card mb-3 " routerLink="/reviews/{{ review.id }}">
       <h5 class="card-header text-center text-white bg-primary">

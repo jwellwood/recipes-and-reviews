@@ -42,10 +42,10 @@ export class RecipeComponent implements OnInit {
       if (recipe != null) {
         this.recipe = recipe;
         this.buttons = [
-          { title: "details", link: `/recipes/${this.id}/edit-details` },
-          { title: "comment", link: `/recipes/${this.id}/add-comment` },
-          { title: "ingredients", link: `/recipes/${this.id}/add-ingredients` },
-          { title: "steps", link: `/recipes/${this.id}/add-steps` }
+          { title: "Details", link: `/recipes/${this.id}/edit-details` },
+          { title: "Comment", link: `/recipes/${this.id}/add-comment` },
+          { title: "Ingredients", link: `/recipes/${this.id}/add-ingredients` },
+          { title: "Steps", link: `/recipes/${this.id}/add-steps` }
         ];
       }
     });
