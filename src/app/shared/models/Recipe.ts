@@ -14,6 +14,7 @@ export interface Recipe {
   healthRating: number;
   ingredientsTotal?: number;
   prepTime: number;
+  mainImage?: string;
   // Ingredients
   ingredients?: Ingredient[];
   // Steps

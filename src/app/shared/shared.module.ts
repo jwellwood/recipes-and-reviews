@@ -21,19 +21,20 @@ import { MainImageComponent } from "./components/main-image/main-image.component
 import { MainCommentComponent } from "./components/main-comment/main-comment.component";
 import { CarouselComponent } from "./components/carousel/carousel.component";
 import { CardFooterComponent } from "./components/card-footer/card-footer.component";
+import { FormLabelComponent } from "./components/form-label/form-label.component";
+import { SubtitleComponent } from "./components/subtitle/subtitle.component";
 // Util Components
-import { AddButtonComponent } from "./utils/add-button/add-button.component";
-import { BackButtonComponent } from "./utils/back-button/back-button.component";
-import { EditButtonsComponent } from "./utils/edit-buttons/edit-buttons.component";
-import { SubmitButtonComponent } from "./utils/submit-button/submit-button.component";
-import { InputButtonsComponent } from "./utils/input-buttons/input-buttons.component";
+import { AddButtonComponent } from "./utils/buttons/add-button/add-button.component";
+import { BackButtonComponent } from "./utils/buttons/back-button/back-button.component";
+import { EditButtonsComponent } from "./utils/buttons/edit-buttons/edit-buttons.component";
+import { SubmitButtonComponent } from "./utils/buttons/submit-button/submit-button.component";
+import { InputButtonsComponent } from "./utils/buttons/input-buttons/input-buttons.component";
 import { ImagePlaceholderComponent } from "./utils/image-placeholder/image-placeholder.component";
-import { InputWrapperComponent } from "./utils/input-wrapper/input-wrapper.component";
+import { InputWrapperComponent } from "./utils/wrappers/input-wrapper/input-wrapper.component";
 import { ControlMessagesComponent } from "./utils/control-messages/control-messages.component";
-import { FormLabelComponent } from "./utils/form-label/form-label.component";
-import { FormWrapperComponent } from "./utils/form-wrapper/form-wrapper.component";
-import { SubtitleComponent } from "./utils/subtitle/subtitle.component";
+import { FormWrapperComponent } from "./utils/wrappers/form-wrapper/form-wrapper.component";
 import { SpinnerComponent } from "./utils/spinner/spinner.component";
+import { UploaderComponent } from "./utils/uploader/uploader.component";
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { SpinnerComponent } from "./utils/spinner/spinner.component";
     SubmitButtonComponent,
     SubtitleComponent,
     LandingComponent,
-    AboutComponent
+    AboutComponent,
+    UploaderComponent
   ],
   imports: [
     CommonModule,
@@ -88,18 +90,20 @@ import { SpinnerComponent } from "./utils/spinner/spinner.component";
     MainCommentComponent,
     MainImageComponent,
     TaglineComponent,
+    FormLabelComponent,
+    SubtitleComponent,
+    // Utils
     AddButtonComponent,
     BackButtonComponent,
-    ControlMessagesComponent,
     EditButtonsComponent,
-    FormLabelComponent,
-    FormWrapperComponent,
-    ImagePlaceholderComponent,
-    InputButtonsComponent,
-    InputWrapperComponent,
     SubmitButtonComponent,
-    SubtitleComponent,
-    SpinnerComponent
+    InputButtonsComponent,
+    FormWrapperComponent,
+    InputWrapperComponent,
+    ImagePlaceholderComponent,
+    ControlMessagesComponent,
+    SpinnerComponent,
+    UploaderComponent
   ]
 })
 export class SharedModule {}

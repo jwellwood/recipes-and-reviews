@@ -39,9 +39,9 @@
       </div>
     </div>
   </div>
-  <div class="card-body" *ngIf="review.images">
+  <div class="card-body" *ngIf="review.imageList">
     <app-subtitle [text]="'Gallery'"></app-subtitle>
-    <app-carousel></app-carousel>
+    <app-carousel [images]="review.imageList"></app-carousel>
   </div>
   <app-review-ratings [ratings]="ratings"></app-review-ratings>
 

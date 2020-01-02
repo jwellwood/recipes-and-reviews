@@ -28,13 +28,7 @@
       </h5>
 
       <div class="card-body">
-        <app-image-placeholder></app-image-placeholder>
-        <!-- <img
-          style="height: 200px; width: 100%; display: block;"
-          src="https://picsum.photos/200/200"
-          alt="Card image"
-          class="img-thumbnail"
-        /> -->
+        <app-main-image [mainImage]="recipe.mainImage"></app-main-image>
       </div>
       <app-recipe-card-footer
         [data]="[

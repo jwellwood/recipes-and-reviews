@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-add-review-gallery",
-  templateUrl: "./add-review-gallery.component.html",
-  styleUrls: ["./add-review-gallery.component.scss"]
+  selector: "app-add-recipe-gallery",
+  templateUrl: "./add-recipe-gallery.component.html",
+  styleUrls: ["./add-recipe-gallery.component.scss"]
 })
-export class AddReviewGalleryComponent implements OnInit {
+export class AddRecipeGalleryComponent implements OnInit {
   id: string;
   isUpdate: boolean;
   files: File[] = [];
@@ -14,7 +14,7 @@ export class AddReviewGalleryComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    // Get id of review to add to
+    // Get id of recipe to add to
     this.id = this.route.snapshot.params["id"];
   }
 
@@ -29,6 +29,6 @@ export class AddReviewGalleryComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigate([`/reviews/${this.id}`]);
+    this.router.navigate([`/recipes/${this.id}`]);
   }
 }

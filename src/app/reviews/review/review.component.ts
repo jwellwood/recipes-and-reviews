@@ -52,7 +52,7 @@ export class ReviewComponent implements OnInit {
       { title: "Details", link: `/reviews/${this.id}/edit-details` },
       { title: "Comment", link: `/reviews/${this.id}/add-comment` },
       { title: "Ratings", link: `/reviews/${this.id}/add-rating` },
-      { title: "Images", link: `/reviews/${this.id}/add-image` },
+      { title: "Cover Image", link: `/reviews/${this.id}/add-image` },
       { title: "Gallery", link: `/reviews/${this.id}/add-gallery` }
     ];
   }

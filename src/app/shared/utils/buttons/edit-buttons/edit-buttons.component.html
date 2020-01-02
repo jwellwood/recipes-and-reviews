@@ -1,9 +1,5 @@
 <div class="p-1 bd-highlight">
-  <button
-    type="button"
-    class="btn btn-warning btn-sm"
-    (click)="openModal(modal)"
-  >
+  <button class="btn btn-warning btn-sm" (click)="openModal(modal)">
     Edit
   </button>
 </div>
@@ -12,7 +8,6 @@
   <div class="modal-header">
     <h5 class="modal-title pull-left">Edit</h5>
     <button
-      type="button"
       class="close pull-right"
       aria-label="Close"
       (click)="modalRef.hide()"
@@ -29,13 +24,11 @@
         *ngFor="let button of buttons"
         routerLink="{{ button.link }}"
         (click)="closeModal()"
-        type="button"
         class="list-group-item list-group-item-action active bg-secondary text-secondary"
       >
         {{ button.title }}
       </button>
       <button
-        type="button"
         class="list-group-item bg-danger list-group-item-action active"
         (click)="onDeleteItem()"
         (click)="closeModal()"

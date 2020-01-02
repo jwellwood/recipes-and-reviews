@@ -1,8 +1,8 @@
-<app-back-button [link]="'reviews/' + id"></app-back-button>
+<app-back-button [link]="'recipes/' + id"></app-back-button>
 <app-form-wrapper [title]="'Add Gallery'">
   <app-form-label
     >Choose one or more images to add to the gallery for this
-    review</app-form-label
+    recipe</app-form-label
   >
   <div class="input-group mb-3">
     <div class="custom-file">
@@ -20,7 +20,7 @@
     <app-uploader
       [id]="id"
       [file]="file"
-      [imageType]="'reviews'"
+      [imageType]="'recipes'"
       (removeFile)="onRemoveFile($event, i)"
     ></app-uploader>
   </div>

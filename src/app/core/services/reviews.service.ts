@@ -73,6 +73,9 @@ export class ReviewsService {
   }
 
   deleteReview(review: Review) {
+    // TODO Delete any associated images
+
+    // Delete from DB
     this.reviewDoc = this.db.doc(`reviews/${review.id}`);
     this.reviewDoc.delete();
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-carousel",
@@ -6,15 +6,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./carousel.component.scss"]
 })
 export class CarouselComponent implements OnInit {
-  images = [];
+  @Input() images: any;
   constructor() {}
 
-  ngOnInit() {
-    this.images = [
-      { url: "https://picsum.photos/400", alt: "recipe image" },
-      { url: "https://picsum.photos/400", alt: "recipe image" },
-      { url: "https://picsum.photos/400", alt: "recipe image" },
-      { url: "https://picsum.photos/400", alt: "recipe image" }
-    ];
-  }
+  ngOnInit() {}
 }

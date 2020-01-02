@@ -1,11 +1,11 @@
 <carousel-component
   class="cube-mode"
   [mode]="'horizontal'"
-  [perspective]="400"
+  [perspective]="1000"
   [initialSlide]="1"
   #topCarousel
-  [angle]="20"
-  [threshold]="20"
+  [angle]="10"
+  [threshold]="10"
 >
   <div class="item-carousel" *ngFor="let image of images">
     <img src="{{ image.url }}" alt="{{ image.alt }}" />

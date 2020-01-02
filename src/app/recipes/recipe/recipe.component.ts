@@ -45,7 +45,9 @@ export class RecipeComponent implements OnInit {
           { title: "Details", link: `/recipes/${this.id}/edit-details` },
           { title: "Comment", link: `/recipes/${this.id}/add-comment` },
           { title: "Ingredients", link: `/recipes/${this.id}/add-ingredients` },
-          { title: "Steps", link: `/recipes/${this.id}/add-steps` }
+          { title: "Steps", link: `/recipes/${this.id}/add-steps` },
+          { title: "Image Gallery", link: `/recipes/${this.id}/add-gallery` },
+          { title: "Cover Image", link: `/recipes/${this.id}/add-image` }
         ];
       }
     });

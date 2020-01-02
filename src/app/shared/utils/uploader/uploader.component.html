@@ -1,0 +1,47 @@
+<div
+  class="d-flex row align-items-center text-center justify-content-center border-bottom border-primary bg-secondary"
+>
+  <div class="col">
+    <div class="row align-items-center p-1">
+      <img *ngIf="imgSrc" [src]="imgSrc" alt="" class="image-container" />
+    </div>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="progress bg-info border border-primary" style="width: 70%;">
+        <div
+          *ngIf="percentage | async as pct"
+          [ngClass]="{ 'bg-warning': !downloadUrl, 'bg-success': downloadUrl }"
+          class="progress-bar w-100"
+          role="progressbar"
+          aria-valuenow="pct"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          {{ pct | number }}%
+        </div>
+      </div>
+
+      <fa-icon
+        *ngIf="!downloadUrl"
+        (click)="startUpload()"
+        [icon]="upload"
+        class="upload-icon text-primary mx-2"
+      ></fa-icon>
+
+      <div *ngIf="snapshot | async as snap">
+        <fa-icon
+          [icon]="check"
+          class="text-success mx-2"
+          *ngIf="downloadUrl as url"
+        ></fa-icon>
+        <fa-icon
+          *ngIf="downloadUrl"
+          (click)="onRemoveUpload(downloadUrl)"
+          [icon]="times"
+          class="text-danger mx-2"
+        ></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>

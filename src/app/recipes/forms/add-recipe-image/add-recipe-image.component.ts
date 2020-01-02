@@ -2,27 +2,26 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap, finalize } from "rxjs/operators";
-import { ReviewsService } from "src/app/core/services/reviews.service";
-import { Review } from "src/app/shared/models/Review";
+import { RecipesService } from "src/app/core/services/recipes.service";
+import { Recipe } from "src/app/shared/models/Recipe";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
-  selector: "app-add-review-image",
-  templateUrl: "./add-review-image.component.html",
-  styleUrls: ["./add-review-image.component.scss"]
+  selector: "app-add-recipe-image",
+  templateUrl: "./add-recipe-image.component.html",
+  styleUrls: ["./add-recipe-image.component.scss"]
 })
-export class AddReviewImageComponent implements OnInit {
+export class AddRecipeImageComponent implements OnInit {
   id: string;
   isUpdate: boolean = false;
-  reviewImageForm: FormGroup;
+  recipeImageForm: FormGroup;
   imgSrc: string;
   selectedImage: any = null;
   isSubmitted: boolean = false;
-
   constructor(
     public fb: FormBuilder,
-    private reviewsService: ReviewsService,
+    private recipesService: RecipesService,
     private messageService: MessagesService,
     private route: ActivatedRoute,
     private router: Router,
@@ -31,15 +30,15 @@ export class AddReviewImageComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
-    this.reviewImageForm = this.createFormGroup(this.fb);
+    this.recipeImageForm = this.createFormGroup(this.fb);
     this.route.params
       .pipe(
-        switchMap((params: Params) => this.reviewsService.getReview(this.id))
+        switchMap((params: Params) => this.recipesService.getRecipe(this.id))
       )
-      .subscribe((review: Review) => {
-        if (review.mainImage) {
+      .subscribe((recipe: Recipe) => {
+        if (recipe.mainImage) {
           this.isUpdate = true;
-          this.imgSrc = review.mainImage;
+          this.imgSrc = recipe.mainImage;
         }
       });
   }
@@ -61,19 +60,19 @@ export class AddReviewImageComponent implements OnInit {
     });
   }
   get mainImage() {
-    return this.reviewImageForm.get("mainImage");
+    return this.recipeImageForm.get("mainImage");
   }
 
   onSubmit() {
     this.isSubmitted = true;
     // Create a deep copy of the form-model
-    let value: Review = Object.assign({}, this.reviewImageForm.value);
-    const valid: boolean = this.reviewImageForm.valid;
+    let value: Recipe = Object.assign({}, this.recipeImageForm.value);
+    const valid: boolean = this.recipeImageForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
       // Create file path and file ref
-      const filePath = `reviews/${this.id}/${
+      const filePath = `recipes/${this.id}/${
         this.selectedImage.name
       }_${new Date().getTime()}`;
       const fileRef = this.storage.ref(filePath);
@@ -86,13 +85,13 @@ export class AddReviewImageComponent implements OnInit {
           finalize(() => {
             fileRef.getDownloadURL().subscribe(url => {
               value.mainImage = url;
-              this.reviewsService.addReviewData(this.id, value);
+              this.recipesService.addRecipeData(this.id, value);
             });
           })
         )
         .subscribe();
-      // Go back to review
-      this.router.navigate([`/reviews/${this.id}`]);
+      // Go back to recipe
+      this.router.navigate([`/recipes/${this.id}`]);
     }
   }
 }

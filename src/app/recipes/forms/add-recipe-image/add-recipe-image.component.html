@@ -1,6 +1,6 @@
-<app-back-button [link]="'reviews/' + id"></app-back-button>
+<app-back-button [link]="'recipes/' + id"></app-back-button>
 <app-form-wrapper [title]="'Add photos'">
-  <form [formGroup]="reviewImageForm" (ngSubmit)="onSubmit(reviewImageForm)">
+  <form [formGroup]="recipeImageForm" (ngSubmit)="onSubmit(recipeImageForm)">
     <!-- ************************************* Main Image **************************************** -->
     <div class="form-group">
       <label for="mainImage">Main Image</label>
@@ -26,7 +26,7 @@
         <label class="custom-file-label">Choose file</label>
       </div>
       <app-control-messages
-        [control]="reviewImageForm.get('mainImage')"
+        [control]="recipeImageForm.get('mainImage')"
       ></app-control-messages>
     </div>
     <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
