@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CardFooterComponent } from './card-footer.component';
+import { CardFooterComponent } from "./card-footer.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-describe('CardFooterComponent', () => {
+describe("CardFooterComponent", () => {
   let component: CardFooterComponent;
   let fixture: ComponentFixture<CardFooterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [CardFooterComponent],
+      imports: [FontAwesomeModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('CardFooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

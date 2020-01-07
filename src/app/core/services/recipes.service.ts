@@ -1,9 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
+import { AngularFireStorage } from "@angular/fire/storage";
+
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Recipe } from "../../shared/models/Recipe";
@@ -17,7 +19,10 @@ export class RecipesService {
   recipes: Observable<Recipe[]>;
   recipe: Observable<Recipe>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(
+    private db: AngularFirestore,
+    private storage: AngularFireStorage
+  ) {
     this.recipesCollection = this.db.collection("recipes");
   }
 
@@ -72,6 +77,23 @@ export class RecipesService {
   }
 
   deleteRecipe(recipe: Recipe) {
+    // Delete from storage
+    if (recipe.imageList || recipe.mainImage) {
+      let imagesToDelete = [];
+      if (recipe.mainImage) {
+        imagesToDelete.push(recipe.mainImage);
+      }
+      if (recipe.imageList) {
+        recipe.imageList.forEach(image => {
+          imagesToDelete.push(image.url);
+        });
+      }
+      imagesToDelete.forEach(url => {
+        // Create a reference to the file to delete
+        this.storage.storage.refFromURL(url).delete();
+      });
+    }
+    // Delete from DB
     this.recipeDoc = this.db.doc(`recipes/${recipe.id}`);
     this.recipeDoc.delete();
   }

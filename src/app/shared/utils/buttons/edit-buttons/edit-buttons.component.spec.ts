@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { EditButtonsComponent } from './edit-buttons.component';
+import { EditButtonsComponent } from "./edit-buttons.component";
+import { SharedModule } from "src/app/shared/shared.module";
 
-describe('EditButtonsComponent', () => {
+describe("EditButtonsComponent", () => {
   let component: EditButtonsComponent;
   let fixture: ComponentFixture<EditButtonsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditButtonsComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('EditButtonsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

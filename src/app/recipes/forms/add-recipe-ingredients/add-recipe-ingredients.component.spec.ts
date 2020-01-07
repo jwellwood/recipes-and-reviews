@@ -1,16 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddRecipeIngredientsComponent } from './add-recipe-ingredients.component';
+import { AddRecipeIngredientsComponent } from "./add-recipe-ingredients.component";
+import { RecipeFormsModule } from "../recipe-forms.module";
+import { SharedModule } from "../../../shared/shared.module";
+import { CoreModule } from "src/app/core/core.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('AddRecipeIngredientsComponent', () => {
+describe("AddRecipeIngredientsComponent", () => {
   let component: AddRecipeIngredientsComponent;
   let fixture: ComponentFixture<AddRecipeIngredientsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddRecipeIngredientsComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [
+        RecipeFormsModule,
+        SharedModule,
+        CoreModule,
+        RouterTestingModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +28,7 @@ describe('AddRecipeIngredientsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

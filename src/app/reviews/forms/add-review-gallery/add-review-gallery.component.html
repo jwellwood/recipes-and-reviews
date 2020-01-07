@@ -1,5 +1,5 @@
 <app-back-button [link]="'reviews/' + id"></app-back-button>
-<app-form-wrapper [title]="'Add Gallery'">
+<app-form-wrapper [title]="'Add Gallery Images'">
   <app-form-label
     >Choose one or more images to add to the gallery for this
     review</app-form-label
@@ -24,6 +24,7 @@
       (removeFile)="onRemoveFile($event, i)"
     ></app-uploader>
   </div>
+  <app-remove-image [imageType]="'reviews'"></app-remove-image>
   <button class="btn btn-block btn-success mt-2" (click)="onSubmit()">
     Done
   </button>

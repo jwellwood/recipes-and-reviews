@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { InputWrapperComponent } from './input-wrapper.component';
+import { InputWrapperComponent } from "./input-wrapper.component";
+import { SharedModule } from "src/app/shared/shared.module";
 
-describe('InputWrapperComponent', () => {
+describe("InputWrapperComponent", () => {
   let component: InputWrapperComponent;
   let fixture: ComponentFixture<InputWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputWrapperComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('InputWrapperComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

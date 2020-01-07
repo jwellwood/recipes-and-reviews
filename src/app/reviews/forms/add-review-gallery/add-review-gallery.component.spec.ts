@@ -1,16 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddReviewGalleryComponent } from './add-review-gallery.component';
+import { AddReviewGalleryComponent } from "./add-review-gallery.component";
+import { SharedModule } from "src/app/shared/shared.module";
+import { CoreModule } from "../../../core/core.module";
+import { ReviewFormsModule } from "../review-forms.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('AddReviewGalleryComponent', () => {
+describe("AddReviewGalleryComponent", () => {
   let component: AddReviewGalleryComponent;
   let fixture: ComponentFixture<AddReviewGalleryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddReviewGalleryComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [
+        SharedModule,
+        CoreModule,
+        ReviewFormsModule,
+        RouterTestingModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +28,7 @@ describe('AddReviewGalleryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

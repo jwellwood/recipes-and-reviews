@@ -35,6 +35,7 @@ import { ControlMessagesComponent } from "./utils/control-messages/control-messa
 import { FormWrapperComponent } from "./utils/wrappers/form-wrapper/form-wrapper.component";
 import { SpinnerComponent } from "./utils/spinner/spinner.component";
 import { UploaderComponent } from "./utils/uploader/uploader.component";
+import { RemoveImageComponent } from "./utils/remove-image/remove-image.component";
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { UploaderComponent } from "./utils/uploader/uploader.component";
     SubtitleComponent,
     LandingComponent,
     AboutComponent,
-    UploaderComponent
+    UploaderComponent,
+    RemoveImageComponent
   ],
   imports: [
     CommonModule,
@@ -103,7 +105,8 @@ import { UploaderComponent } from "./utils/uploader/uploader.component";
     ImagePlaceholderComponent,
     ControlMessagesComponent,
     SpinnerComponent,
-    UploaderComponent
+    UploaderComponent,
+    RemoveImageComponent
   ]
 })
 export class SharedModule {}

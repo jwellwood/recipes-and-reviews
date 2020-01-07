@@ -1,16 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddRecipeDetailsComponent } from './add-recipe-details.component';
+import { AddRecipeDetailsComponent } from "./add-recipe-details.component";
+import { RecipeFormsModule } from "../recipe-forms.module";
+import { CoreModule } from "../../../core/core.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('AddRecipeDetailsComponent', () => {
+describe("AddRecipeDetailsComponent", () => {
   let component: AddRecipeDetailsComponent;
   let fixture: ComponentFixture<AddRecipeDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddRecipeDetailsComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [RouterTestingModule, RecipeFormsModule, CoreModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +22,7 @@ describe('AddRecipeDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

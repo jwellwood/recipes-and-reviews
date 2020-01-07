@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { InputButtonsComponent } from './input-buttons.component';
+import { InputButtonsComponent } from "./input-buttons.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-describe('InputButtonsComponent', () => {
+describe("InputButtonsComponent", () => {
   let component: InputButtonsComponent;
   let fixture: ComponentFixture<InputButtonsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputButtonsComponent ]
-    })
-    .compileComponents();
+      declarations: [InputButtonsComponent],
+      imports: [FontAwesomeModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('InputButtonsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

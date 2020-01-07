@@ -4,10 +4,11 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+// Components
 import { NavbarComponent } from "./navbar/navbar.component";
 import { NavDropdownComponent } from "./nav-dropdown/nav-dropdown.component";
 import { FooterComponent } from "./footer/footer.component";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [NavbarComponent, NavDropdownComponent, FooterComponent],

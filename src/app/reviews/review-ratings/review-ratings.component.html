@@ -1,5 +1,4 @@
 <div class="card-body" *ngIf="ratings">
-  <app-subtitle [text]="'Ratings'"></app-subtitle>
   <ul class="list-group list-group-xl">
     <li
       class="list-group-item bg-primary text-light"
@@ -8,7 +7,7 @@
       <div class="d-flex w-100 justify-content-between align-items-center">
         <div class="mb-1">
           <div>{{ rating.title }}</div>
-          <small class="text-info">{{ rating.comment }}</small>
+          <small class="text-info comment-font">{{ rating.comment }}</small>
         </div>
         <span> {{ rating.score }}</span>
       </div>

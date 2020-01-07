@@ -1,16 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BackButtonComponent } from './back-button.component';
+import { BackButtonComponent } from "./back-button.component";
+import { SharedModule } from "src/app/shared/shared.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('BackButtonComponent', () => {
+describe("BackButtonComponent", () => {
   let component: BackButtonComponent;
   let fixture: ComponentFixture<BackButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BackButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [SharedModule, RouterTestingModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +21,7 @@ describe('BackButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

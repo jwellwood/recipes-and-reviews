@@ -16,7 +16,7 @@ export class MessagesService {
 
   showFormError() {
     this.flashMessage.show(
-      "There was a problem with the submission tidgsibdfb",
+      "There was a problem with the submission. Check the fields marked *",
       {
         cssClass: "alert-danger",
         timeout: 4000

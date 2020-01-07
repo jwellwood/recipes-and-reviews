@@ -2,18 +2,23 @@
 
 @import "../node_modules/bootswatch/dist/litera/variables";
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-@import "../node_modules/bootswatch/dist/lumen/bootstrap.min.css";
+@import "../node_modules/bootswatch/dist/flatly/bootstrap.min.css";
 @import "./scss/variables";
 body {
   // font-family: "Patrick Hand", cursive;
+  font-family: "Palanquin Dark", sans-serif;
   min-height: 100vh;
 }
 
+.comment-font {
+  font-family: $comment-font;
+}
+
 .main-image {
-  width: 238px;
-  height: 238px;
   display: block;
   margin: auto;
+  width: 100%;
+  height: 200px;
 }
 
 .gallery-image {

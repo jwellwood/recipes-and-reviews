@@ -1,14 +1,11 @@
-<div
-  class="d-flex row align-items-center text-center justify-content-center border-bottom border-primary bg-secondary"
->
-  <div class="col">
-    <div class="row align-items-center p-1">
-      <img *ngIf="imgSrc" [src]="imgSrc" alt="" class="image-container" />
-    </div>
-  </div>
-  <div class="col">
-    <div class="row">
-      <div class="progress bg-info border border-primary" style="width: 70%;">
+<!-- Image -->
+<div *ngIf="!downloadUrl">
+  <div class="media">
+    <img *ngIf="imgSrc" [src]="imgSrc" alt="" class="image-container mr-2" />
+
+    <div class="media-body align-self-center">
+      <!-- Progress -->
+      <div class="progress" style="height: 20px;">
         <div
           *ngIf="percentage | async as pct"
           [ngClass]="{ 'bg-warning': !downloadUrl, 'bg-success': downloadUrl }"
@@ -21,27 +18,18 @@
           {{ pct | number }}%
         </div>
       </div>
-
-      <fa-icon
+      <div *ngIf="snapshot | async as snap"></div>
+    </div>
+    <!-- Button -->
+    <div class="align-self-center ml-2">
+      <button
         *ngIf="!downloadUrl"
         (click)="startUpload()"
-        [icon]="upload"
-        class="upload-icon text-primary mx-2"
-      ></fa-icon>
-
-      <div *ngIf="snapshot | async as snap">
-        <fa-icon
-          [icon]="check"
-          class="text-success mx-2"
-          *ngIf="downloadUrl as url"
-        ></fa-icon>
-        <fa-icon
-          *ngIf="downloadUrl"
-          (click)="onRemoveUpload(downloadUrl)"
-          [icon]="times"
-          class="text-danger mx-2"
-        ></fa-icon>
-      </div>
+        class="btn btn-outline-primary"
+        [disabled]="isUploading"
+      >
+        Upload
+      </button>
     </div>
   </div>
 </div>

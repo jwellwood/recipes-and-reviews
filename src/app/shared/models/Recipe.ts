@@ -15,6 +15,7 @@ export interface Recipe {
   ingredientsTotal?: number;
   prepTime: number;
   mainImage?: string;
+  imageList?: any;
   // Ingredients
   ingredients?: Ingredient[];
   // Steps

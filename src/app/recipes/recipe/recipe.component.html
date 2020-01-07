@@ -14,7 +14,7 @@
   <app-spinner></app-spinner>
 </div>
 <!-- Title -->
-<div class="card mb-3" *ngIf="recipe">
+<div class="card mb-3 border-primary" *ngIf="recipe">
   <app-card-title [title]="recipe.name">
     <h6 class="card-subtitle text-muted">{{ recipe.type }}</h6>
   </app-card-title>
@@ -44,23 +44,24 @@
   <div class="card-body ">
     <div class="row">
       <div class="col-md-5 px-2 my-2">
-        <app-subtitle [text]="'Ingredients'"></app-subtitle>
+        <app-subtitle>Ingredients</app-subtitle>
         <app-ingredients-list
           [ingredients]="recipe.ingredients"
         ></app-ingredients-list>
       </div>
       <!-- Steps -->
       <div class="col-md-7 px-2 my-2">
-        <app-subtitle [text]="'Steps'"></app-subtitle>
+        <app-subtitle>Steps</app-subtitle>
         <app-steps-list [steps]="recipe.steps"></app-steps-list>
       </div>
     </div>
   </div>
   <!-- Gallery -->
   <div class="card-body">
-    <app-subtitle [text]="'Gallery'"></app-subtitle>
+    <app-subtitle>Gallery</app-subtitle>
     <app-carousel [images]="recipe.imageList"></app-carousel>
   </div>
   <!-- Card Footer -->
   <app-card-footer></app-card-footer>
 </div>
+<app-back-button [link]="'recipes'"></app-back-button>

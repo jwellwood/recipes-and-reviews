@@ -29,6 +29,7 @@ export class UploaderComponent implements OnInit {
   snapshot: Observable<any>;
   imgSrc: string;
   selectedFilePath: string;
+  isUploading: boolean;
   downloadUrl;
   // Icon
   check = faCheck;
@@ -53,6 +54,7 @@ export class UploaderComponent implements OnInit {
   }
 
   startUpload() {
+    this.isUploading = true;
     // Path - imageType will be either reviews or recipes
     const path = `${this.imageType}/${this.id}/${Date.now()}_${this.file.name}`;
     // Ref

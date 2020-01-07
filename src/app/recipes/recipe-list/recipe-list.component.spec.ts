@@ -1,16 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RecipeListComponent } from './recipe-list.component';
+import { RecipeListComponent } from "./recipe-list.component";
+import { SharedModule } from "src/app/shared/shared.module";
+import { CoreModule } from "../../core/core.module";
+import { RecipesModule } from "../recipes.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('RecipeListComponent', () => {
+describe("RecipeListComponent", () => {
   let component: RecipeListComponent;
   let fixture: ComponentFixture<RecipeListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecipeListComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [SharedModule, CoreModule, RecipesModule, RouterTestingModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +23,7 @@ describe('RecipeListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,9 +1,10 @@
+<!-- The button that opens the modal -->
 <div class="p-1 bd-highlight">
   <button class="btn btn-warning btn-sm" (click)="openModal(modal)">
     Edit
   </button>
 </div>
-
+<!-- The modal itself -->
 <ng-template #modal>
   <div class="modal-header">
     <h5 class="modal-title pull-left">Edit</h5>
@@ -24,7 +25,7 @@
         *ngFor="let button of buttons"
         routerLink="{{ button.link }}"
         (click)="closeModal()"
-        class="list-group-item list-group-item-action active bg-secondary text-secondary"
+        class="list-group-item list-group-item-action active text-white"
       >
         {{ button.title }}
       </button>

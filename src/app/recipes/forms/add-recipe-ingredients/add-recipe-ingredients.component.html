@@ -1,4 +1,4 @@
-<!-- TODO - add an explanation about what is happening in this template -->
+<!-- This is a reactive forms template, with a form array of 'ingredients' that allows for the dynamic creation of new forms to add new ingredients. The index is included as 'i' to enable the addition/removal of forms at certain places in the array -->
 
 <app-back-button [link]="id ? 'recipes/' + id : 'recipes'"></app-back-button>
 <app-form-wrapper [title]="'Add ingredients'">
@@ -47,7 +47,6 @@
         </div>
       </div>
     </div>
-
     <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>
 </app-form-wrapper>

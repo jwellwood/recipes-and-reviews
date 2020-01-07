@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -6,9 +6,8 @@ import { Router, ActivatedRoute } from "@angular/router";
   templateUrl: "./add-review-gallery.component.html",
   styleUrls: ["./add-review-gallery.component.scss"]
 })
-export class AddReviewGalleryComponent implements OnInit {
+export class AddReviewGalleryComponent implements OnInit, OnDestroy {
   id: string;
-  isUpdate: boolean;
   files: File[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -16,6 +15,10 @@ export class AddReviewGalleryComponent implements OnInit {
   ngOnInit() {
     // Get id of review to add to
     this.id = this.route.snapshot.params["id"];
+  }
+
+  ngOnDestroy() {
+    this.files = [];
   }
 
   onSelectFiles(files: FileList) {

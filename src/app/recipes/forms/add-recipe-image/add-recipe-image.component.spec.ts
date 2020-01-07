@@ -1,16 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddRecipeImageComponent } from './add-recipe-image.component';
+import { AddRecipeImageComponent } from "./add-recipe-image.component";
+import { RecipeFormsModule } from "../recipe-forms.module";
+import { CoreModule } from "../../../core/core.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('AddRecipeImageComponent', () => {
+describe("AddRecipeImageComponent", () => {
   let component: AddRecipeImageComponent;
   let fixture: ComponentFixture<AddRecipeImageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddRecipeImageComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [RouterTestingModule, RecipeFormsModule, CoreModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +22,7 @@ describe('AddRecipeImageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

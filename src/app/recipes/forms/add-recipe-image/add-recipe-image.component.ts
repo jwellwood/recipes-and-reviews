@@ -18,6 +18,7 @@ export class AddRecipeImageComponent implements OnInit {
   recipeImageForm: FormGroup;
   imgSrc: string;
   selectedImage: any = null;
+  downloadUrl: string;
   isSubmitted: boolean = false;
   constructor(
     public fb: FormBuilder,
@@ -39,6 +40,7 @@ export class AddRecipeImageComponent implements OnInit {
         if (recipe.mainImage) {
           this.isUpdate = true;
           this.imgSrc = recipe.mainImage;
+          this.downloadUrl = recipe.mainImage;
         }
       });
   }
@@ -71,6 +73,10 @@ export class AddRecipeImageComponent implements OnInit {
     if (!valid) {
       this.messageService.showFormError();
     } else {
+      // Remove previous image from storage
+      if (this.downloadUrl) {
+        this.storage.storage.refFromURL(this.downloadUrl).delete();
+      }
       // Create file path and file ref
       const filePath = `recipes/${this.id}/${
         this.selectedImage.name

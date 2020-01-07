@@ -1,16 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddReviewCommentComponent } from './add-review-comment.component';
+import { AddReviewCommentComponent } from "./add-review-comment.component";
+import { ReviewFormsModule } from "../review-forms.module";
+import { CoreModule } from "src/app/core/core.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('AddReviewCommentComponent', () => {
+describe("AddReviewCommentComponent", () => {
   let component: AddReviewCommentComponent;
   let fixture: ComponentFixture<AddReviewCommentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddReviewCommentComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [CoreModule, ReviewFormsModule, RouterTestingModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +22,7 @@ describe('AddReviewCommentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

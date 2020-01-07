@@ -17,6 +17,7 @@ export class AddReviewImageComponent implements OnInit {
   isUpdate: boolean = false;
   reviewImageForm: FormGroup;
   imgSrc: string;
+  downloadUrl: string;
   selectedImage: any = null;
   isSubmitted: boolean = false;
 
@@ -40,6 +41,7 @@ export class AddReviewImageComponent implements OnInit {
         if (review.mainImage) {
           this.isUpdate = true;
           this.imgSrc = review.mainImage;
+          this.downloadUrl = review.mainImage;
         }
       });
   }
@@ -72,6 +74,10 @@ export class AddReviewImageComponent implements OnInit {
     if (!valid) {
       this.messageService.showFormError();
     } else {
+      // Remove previous image from storage
+      if (this.downloadUrl) {
+        this.storage.storage.refFromURL(this.downloadUrl).delete();
+      }
       // Create file path and file ref
       const filePath = `reviews/${this.id}/${
         this.selectedImage.name

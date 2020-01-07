@@ -7,6 +7,7 @@ import { AddRecipeIngredientsComponent } from "./add-recipe-ingredients/add-reci
 import { AddRecipeStepsComponent } from "./add-recipe-steps/add-recipe-steps.component";
 import { AddRecipeImageComponent } from "./add-recipe-image/add-recipe-image.component";
 import { AddRecipeGalleryComponent } from "./add-recipe-gallery/add-recipe-gallery.component";
+import { RemoveImageComponent } from "src/app/shared/utils/remove-image/remove-image.component";
 
 export const routes: Routes = [
   {
@@ -37,6 +38,11 @@ export const routes: Routes = [
   {
     path: ":id/add-gallery",
     component: AddRecipeGalleryComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: ":id/edit-gallery",
+    component: RemoveImageComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ImagePlaceholderComponent } from './image-placeholder.component';
+import { ImagePlaceholderComponent } from "./image-placeholder.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-describe('ImagePlaceholderComponent', () => {
+describe("ImagePlaceholderComponent", () => {
   let component: ImagePlaceholderComponent;
   let fixture: ComponentFixture<ImagePlaceholderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImagePlaceholderComponent ]
-    })
-    .compileComponents();
+      declarations: [ImagePlaceholderComponent],
+      imports: [FontAwesomeModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('ImagePlaceholderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

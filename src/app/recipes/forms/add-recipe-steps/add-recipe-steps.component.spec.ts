@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { AddRecipeStepsComponent } from "./add-recipe-steps.component";
+import { RecipeFormsModule } from "../recipe-forms.module";
+import { CoreModule } from "../../../core/core.module";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe("AppRecipeStepsComponent", () => {
   let component: AddRecipeStepsComponent;
@@ -8,7 +11,8 @@ describe("AppRecipeStepsComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AddRecipeStepsComponent]
+      declarations: [],
+      imports: [RecipeFormsModule, CoreModule, RouterTestingModule]
     }).compileComponents();
   }));
 

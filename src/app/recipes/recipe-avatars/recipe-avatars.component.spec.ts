@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RecipeAvatarsComponent } from './recipe-avatars.component';
+import { RecipeAvatarsComponent } from "./recipe-avatars.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-describe('RecipeAvatarsComponent', () => {
+describe("RecipeAvatarsComponent", () => {
   let component: RecipeAvatarsComponent;
   let fixture: ComponentFixture<RecipeAvatarsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecipeAvatarsComponent ]
-    })
-    .compileComponents();
+      declarations: [RecipeAvatarsComponent],
+      imports: [FontAwesomeModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('RecipeAvatarsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

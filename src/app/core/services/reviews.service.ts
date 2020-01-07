@@ -4,6 +4,7 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
+import { AngularFireStorage } from "@angular/fire/storage";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Review } from "../../shared/models/Review";
@@ -17,7 +18,10 @@ export class ReviewsService {
   reviews: Observable<Review[]>;
   review: Observable<Review>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(
+    private db: AngularFirestore,
+    private storage: AngularFireStorage
+  ) {
     this.reviewsCollection = this.db.collection("reviews");
   }
 
@@ -73,8 +77,22 @@ export class ReviewsService {
   }
 
   deleteReview(review: Review) {
-    // TODO Delete any associated images
-
+    // Delete from storage
+    if (review.imageList || review.mainImage) {
+      let imagesToDelete = [];
+      if (review.mainImage) {
+        imagesToDelete.push(review.mainImage);
+      }
+      if (review.imageList) {
+        review.imageList.forEach(image => {
+          imagesToDelete.push(image.url);
+        });
+      }
+      imagesToDelete.forEach(url => {
+        // Create a reference to the file to delete
+        this.storage.storage.refFromURL(url).delete();
+      });
+    }
     // Delete from DB
     this.reviewDoc = this.db.doc(`reviews/${review.id}`);
     this.reviewDoc.delete();

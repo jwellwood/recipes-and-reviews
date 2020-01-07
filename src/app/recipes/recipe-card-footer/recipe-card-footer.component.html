@@ -1,8 +1,8 @@
-<div class="d-flex justify-content-between card-footer">
+<div class="d-flex justify-content-between card-footer bg-primary">
   <div class="container text-center">
     <div class="row">
       <div class="col text-center" *ngFor="let item of data">
-        <fa-icon [icon]="item.icon"></fa-icon>
+        <fa-icon [icon]="item.icon" class="text-light"></fa-icon>
         <div class="font-weight-bold text-success">
           {{ item.value }}<span *ngIf="item.title == 'Prep time'">'</span>
         </div>
