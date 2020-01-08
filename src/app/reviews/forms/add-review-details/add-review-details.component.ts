@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
-import { ReviewsService } from "src/app/core/services/reviews.service";
+// Internal
 import { Review } from "src/app/shared/models/Review";
+import { ReviewsService } from "src/app/core/services/reviews.service";
 import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
@@ -16,6 +17,7 @@ export class AddReviewDetailsComponent implements OnInit {
   isUpdate: boolean = false;
   reviewDetailsForm: FormGroup;
   pattern = "^(?:[0-9]|0[0-9]|10)$";
+  // This is for the datepicker
   bsConfig = {
     isAnimated: true,
     dateInputFormat: "DD-MM-YYYY",
@@ -50,6 +52,8 @@ export class AddReviewDetailsComponent implements OnInit {
       });
   }
 
+  // ****************************** Form and getters ***********************************
+
   createFormGroup(formBuilder: FormBuilder) {
     return formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
@@ -76,13 +80,15 @@ export class AddReviewDetailsComponent implements OnInit {
     return this.reviewDetailsForm.get("country");
   }
 
+  // ****************************** Event functions ***********************************
+
   onUpdate() {
+    // Create a deep copy
     const value: Review = Object.assign({}, this.reviewDetailsForm.value);
     const valid: boolean = this.reviewDetailsForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
-      // Add id to client
       value.id = this.id;
       this.reviewsService.updateReview(value);
       this.router.navigate([`/reviews/${this.id}`]);
@@ -90,13 +96,12 @@ export class AddReviewDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    // Make sure to create a deep copy of the form-model
+    // Create a deep copy
     const value: Review = Object.assign({}, this.reviewDetailsForm.value);
     const valid: boolean = this.reviewDetailsForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
-      // Add new client to firestore
       this.reviewsService.newReview(value);
       this.router.navigate(["/reviews"]);
     }

@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { GalleryImageComponent } from './gallery-image.component';
+import { GalleryImageComponent } from "./gallery-image.component";
+import { SharedModule } from "src/app/shared/shared.module";
 
-describe('GalleryImageComponent', () => {
+describe("GalleryImageComponent", () => {
   let component: GalleryImageComponent;
   let fixture: ComponentFixture<GalleryImageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GalleryImageComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('GalleryImageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import {
-  faInstagram,
-  faFacebook,
-  faTwitter
+  faInstagram
+  // faFacebook,
+  // faTwitter
 } from "@fortawesome/free-brands-svg-icons";
 @Component({
   selector: "app-root",

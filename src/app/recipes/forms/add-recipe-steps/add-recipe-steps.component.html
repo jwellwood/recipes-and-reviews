@@ -12,22 +12,24 @@
       class="card border-dark mb-1 p-2"
     >
       <div [formGroupName]="i" class="row align-items-center">
-        <!-- ************************************* NAME **************************************** -->
-        <div class="col-md-3">
-          <app-input-wrapper [inputTitle]="'Step Title'">
-            <input
-              formControlName="title"
-              class="form-control form-control-sm"
-            />
-          </app-input-wrapper>
-        </div>
-        <!-- ************************************* QUANTITY **************************************** -->
+        <!-- ************************************* Text **************************************** -->
         <div class="col-md-7">
           <app-input-wrapper [inputTitle]="'Step text*'">
             <input
               formControlName="text"
               class="form-control form-control-sm"
               required
+              maxlength="150"
+            />
+          </app-input-wrapper>
+        </div>
+        <!-- ************************************* Title **************************************** -->
+        <div class="col-md-3">
+          <app-input-wrapper [inputTitle]="'Step Title (optional)'">
+            <input
+              formControlName="title"
+              class="form-control form-control-sm"
+              maxlength="50"
             />
           </app-input-wrapper>
         </div>

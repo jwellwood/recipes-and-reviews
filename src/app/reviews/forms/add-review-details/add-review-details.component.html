@@ -22,6 +22,7 @@
               'is-invalid': name.errors && name.touched
             }"
             required
+            maxlength="50"
           />
         </app-input-wrapper>
       </div>
@@ -30,14 +31,14 @@
         <app-input-wrapper
           [labelText]="'Date *'"
           [labelFor]="'dateVisited'"
-          [inputTitle]="'Date of visit *'"
+          [inputTitle]="'Date of visit'"
           [validation]="reviewDetailsForm.get('dateVisited')"
         >
           <input
             formControlName="dateVisited"
-            class="form-control"
             bsDatepicker
             [bsConfig]="bsConfig"
+            class="form-control"
             [ngClass]="{
               'is-invalid': dateVisited.errors && dateVisited.touched
             }"
@@ -47,12 +48,12 @@
       </div>
     </div>
     <!-- ************************************* LOCATION **************************************** -->
-    <label>Location</label>
+    <label>Location *</label>
     <div class="row">
       <!-- City -->
       <div class="col-md-6">
         <app-input-wrapper
-          [inputTitle]="'City'"
+          [inputTitle]="'City*'"
           [validation]="reviewDetailsForm.get('city')"
         >
           <input
@@ -63,6 +64,7 @@
               'is-invalid': city.errors && city.touched
             }"
             required
+            maxlength="20"
           />
         </app-input-wrapper>
       </div>
@@ -72,7 +74,15 @@
           [inputTitle]="'Country'"
           [validation]="reviewDetailsForm.get('country')"
         >
-          <input type="text" formControlName="country" class="form-control" />
+          <input
+            type="text"
+            formControlName="country"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': country.errors && country.touched
+            }"
+            maxlength="20"
+          />
         </app-input-wrapper>
       </div>
     </div>
@@ -84,7 +94,15 @@
       [inputTitle]="'Place\'s own website'"
       [validation]="reviewDetailsForm.get('website')"
     >
-      <input type="text" formControlName="website" class="form-control" />
+      <input
+        type="url"
+        formControlName="website"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': website.errors && website.touched
+        }"
+        maxlength="30"
+      />
     </app-input-wrapper>
     <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>

@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { switchMap, finalize } from "rxjs/operators";
-import { ReviewsService } from "src/app/core/services/reviews.service";
-import { Review } from "src/app/shared/models/Review";
 import { AngularFireStorage } from "@angular/fire/storage";
+import { switchMap, finalize } from "rxjs/operators";
+// Internal
+import { Review } from "src/app/shared/models/Review";
+import { ReviewsService } from "src/app/core/services/reviews.service";
 import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
@@ -46,6 +47,18 @@ export class AddReviewImageComponent implements OnInit {
       });
   }
 
+  // ****************************** Form and getters ***********************************
+  createFormGroup(formBuilder: FormBuilder) {
+    return formBuilder.group({
+      mainImage: ["", [Validators.required]]
+    });
+  }
+  get mainImage() {
+    return this.reviewImageForm.get("mainImage");
+  }
+
+  // ****************************** Event functions ***********************************
+
   showPreview(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -57,18 +70,9 @@ export class AddReviewImageComponent implements OnInit {
     }
   }
 
-  createFormGroup(formBuilder: FormBuilder) {
-    return formBuilder.group({
-      mainImage: ["", [Validators.required]]
-    });
-  }
-  get mainImage() {
-    return this.reviewImageForm.get("mainImage");
-  }
-
   onSubmit() {
     this.isSubmitted = true;
-    // Create a deep copy of the form-model
+    // Create a deep copy
     let value: Review = Object.assign({}, this.reviewImageForm.value);
     const valid: boolean = this.reviewImageForm.valid;
     if (!valid) {

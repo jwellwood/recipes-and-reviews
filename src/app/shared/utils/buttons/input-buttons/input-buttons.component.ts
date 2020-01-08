@@ -10,10 +10,10 @@ export class InputButtonsComponent implements OnInit {
   // These match what is found in the parent component (onAdd)="addField($event, i)" etc
   @Output() onAdd = new EventEmitter<any>();
   @Output() onRemove = new EventEmitter<any>();
-
   // Icons
   minus = faMinusCircle;
   plus = faPlusCircle;
+
   constructor() {}
 
   ngOnInit() {}

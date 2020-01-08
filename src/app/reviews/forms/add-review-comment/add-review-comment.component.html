@@ -17,7 +17,12 @@
         type="text"
         formControlName="tagLine"
         class="form-control"
+        [ngClass]="{
+          'is-invalid': tagLine.errors && tagLine.touched
+        }"
         rows="1"
+        required
+        maxlength="150"
       ></textarea>
     </app-input-wrapper>
     <!-- ************************************* MAIN COMMENT **************************************** -->
@@ -31,8 +36,13 @@
         type="text"
         formControlName="mainComment"
         class="form-control"
+        [ngClass]="{
+          'is-invalid': mainComment.errors && mainComment.touched
+        }"
         rows="3"
         wrap="hard"
+        required
+        maxlength="2000"
       ></textarea>
     </app-input-wrapper>
     <app-submit-button [isUpdate]="isUpdate"></app-submit-button>

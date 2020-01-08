@@ -18,8 +18,10 @@
   <app-card-title [title]="recipe.name">
     <h6 class="card-subtitle text-muted">{{ recipe.type }}</h6>
   </app-card-title>
+
   <!-- Tagline -->
   <app-tagline *ngIf="recipe.tagLine" [text]="recipe.tagLine"></app-tagline>
+
   <!-- Avatars -->
   <app-recipe-avatars
     [data]="[
@@ -28,7 +30,8 @@
       { icon: seedling, value: recipe.healthRating }
     ]"
   ></app-recipe-avatars>
-  <!-- IMage and comment -->
+
+  <!-- Image and comment -->
   <div class="card-body">
     <div class="row align-items-center">
       <div class="col-md-5 text-center">
@@ -41,7 +44,7 @@
   </div>
 
   <!-- Ingredients -->
-  <div class="card-body ">
+  <div class="card-body">
     <div class="row">
       <div class="col-md-5 px-2 my-2">
         <app-subtitle>Ingredients</app-subtitle>
@@ -49,6 +52,7 @@
           [ingredients]="recipe.ingredients"
         ></app-ingredients-list>
       </div>
+
       <!-- Steps -->
       <div class="col-md-7 px-2 my-2">
         <app-subtitle>Steps</app-subtitle>
@@ -56,11 +60,13 @@
       </div>
     </div>
   </div>
+
   <!-- Gallery -->
   <div class="card-body">
     <app-subtitle>Gallery</app-subtitle>
     <app-carousel [images]="recipe.imageList"></app-carousel>
   </div>
+
   <!-- Card Footer -->
   <app-card-footer></app-card-footer>
 </div>

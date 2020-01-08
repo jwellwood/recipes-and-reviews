@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { ImagePlaceholderComponent } from "./image-placeholder.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { SharedModule } from "src/app/shared/shared.module";
 
 describe("ImagePlaceholderComponent", () => {
   let component: ImagePlaceholderComponent;
@@ -9,8 +10,8 @@ describe("ImagePlaceholderComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ImagePlaceholderComponent],
-      imports: [FontAwesomeModule]
+      declarations: [],
+      imports: [FontAwesomeModule, SharedModule]
     }).compileComponents();
   }));
 

@@ -2,9 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap, finalize } from "rxjs/operators";
-import { RecipesService } from "src/app/core/services/recipes.service";
-import { Recipe } from "src/app/shared/models/Recipe";
 import { AngularFireStorage } from "@angular/fire/storage";
+// Internal
+import { Recipe } from "src/app/shared/models/Recipe";
+import { RecipesService } from "src/app/core/services/recipes.service";
 import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
@@ -45,6 +46,18 @@ export class AddRecipeImageComponent implements OnInit {
       });
   }
 
+  // ****************************** Form and Getters ***********************************
+  createFormGroup(formBuilder: FormBuilder) {
+    return formBuilder.group({
+      mainImage: ["", [Validators.required]]
+    });
+  }
+  get mainImage() {
+    return this.recipeImageForm.get("mainImage");
+  }
+
+  // ****************************** Event Functions ***********************************
+
   showPreview(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -56,18 +69,9 @@ export class AddRecipeImageComponent implements OnInit {
     }
   }
 
-  createFormGroup(formBuilder: FormBuilder) {
-    return formBuilder.group({
-      mainImage: ["", [Validators.required]]
-    });
-  }
-  get mainImage() {
-    return this.recipeImageForm.get("mainImage");
-  }
-
   onSubmit() {
     this.isSubmitted = true;
-    // Create a deep copy of the form-model
+    // Create a deep copy
     let value: Recipe = Object.assign({}, this.recipeImageForm.value);
     const valid: boolean = this.recipeImageForm.valid;
     if (!valid) {

@@ -6,9 +6,9 @@ import { Router, ActivatedRoute } from "@angular/router";
   templateUrl: "./add-recipe-gallery.component.html",
   styleUrls: ["./add-recipe-gallery.component.scss"]
 })
+// TODO combine this in utils with review
 export class AddRecipeGalleryComponent implements OnInit, OnDestroy {
   id: string;
-  isUpdate: boolean;
   files: File[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router) {}

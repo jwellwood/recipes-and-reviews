@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FormListImageComponent } from './form-list-image.component';
+import { FormListImageComponent } from "./form-list-image.component";
+import { SharedModule } from "src/app/shared/shared.module";
 
-describe('FormListImageComponent', () => {
+describe("FormListImageComponent", () => {
   let component: FormListImageComponent;
   let fixture: ComponentFixture<FormListImageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormListImageComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('FormListImageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

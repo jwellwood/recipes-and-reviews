@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormArray, FormBuilder, Validators } from "@angular/forms";
-import { RecipesService } from "src/app/core/services/recipes.service";
-import { Recipe } from "src/app/shared/models/Recipe";
-import { MessagesService } from "src/app/core/services/messages.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { switchMap } from "rxjs/operators";
+// Internal
+import { Recipe } from "src/app/shared/models/Recipe";
+import { RecipesService } from "src/app/core/services/recipes.service";
+import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
   selector: "app-add-recipe-ingredients",
@@ -61,6 +62,8 @@ export class AddRecipeIngredientsComponent implements OnInit {
     return formArray;
   }
 
+  // ****************************** Form and Getters ***********************************
+
   createIngredientInput(): FormGroup {
     return this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
@@ -74,8 +77,10 @@ export class AddRecipeIngredientsComponent implements OnInit {
   get type() {
     return this.addIngredientsForm.get("quantity");
   }
+  // ****************************** Event Functions ***********************************
 
   onUpdate() {
+    // Create a deep copy
     const value: Recipe = Object.assign({}, this.addIngredientsForm.value);
     const valid: boolean = this.addIngredientsForm.valid;
     if (!valid) {
@@ -88,7 +93,7 @@ export class AddRecipeIngredientsComponent implements OnInit {
   }
 
   onSubmit() {
-    // Make sure to create a deep copy of the form-model
+    // Create a deep copy
     const value: Recipe = Object.assign({}, this.addIngredientsForm.value);
     const valid: boolean = this.addIngredientsForm.valid;
     if (!valid) {

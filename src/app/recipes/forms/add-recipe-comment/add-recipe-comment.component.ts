@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
-import { RecipesService } from "src/app/core/services/recipes.service";
+// Internal
 import { Recipe } from "src/app/shared/models/Recipe";
+import { RecipesService } from "src/app/core/services/recipes.service";
 import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
@@ -40,10 +41,11 @@ export class AddRecipeCommentComponent implements OnInit {
         }
       });
   }
+  // ***************************** Form and getters **********************************
   createFormGroup(formBuilder: FormBuilder) {
     return formBuilder.group({
-      tagLine: ["", [Validators.required, Validators.maxLength(100)]],
-      mainComment: ["", [Validators.required, Validators.maxLength(5000)]]
+      tagLine: ["", [Validators.required, Validators.maxLength(150)]],
+      mainComment: ["", [Validators.required, Validators.maxLength(2000)]]
     });
   }
   get tagLine() {
@@ -52,26 +54,26 @@ export class AddRecipeCommentComponent implements OnInit {
   get mainComment() {
     return this.recipeCommentForm.get("mainComment");
   }
+  // ****************************** Event Functions ***********************************
   onUpdate() {
+    // Create a deep copy
     const value: Recipe = Object.assign({}, this.recipeCommentForm.value);
     const valid: boolean = this.recipeCommentForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
-      // Add id to client
       value.id = this.id;
       this.recipesService.updateRecipe(value);
       this.router.navigate([`/recipes/${this.id}`]);
     }
   }
   onSubmit() {
-    // Make sure to create a deep copy of the form-model
+    // Create a deep copy
     const value: Recipe = Object.assign({}, this.recipeCommentForm.value);
     const valid: boolean = this.recipeCommentForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
-      // Add new client to firestore
       this.recipesService.addRecipeData(this.id, value);
       this.router.navigate([`/recipes/${this.id}`]);
     }

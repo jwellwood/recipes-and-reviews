@@ -17,32 +17,36 @@
       <div [formGroupName]="i" class="row align-items-center">
         <!-- ************************************* Title **************************************** -->
         <div class="col-md-3">
-          <app-input-wrapper [inputTitle]="'Rating type'">
+          <app-input-wrapper [inputTitle]="'Rating type*'">
             <input
               formControlName="title"
               class="form-control form-control-sm"
               required
+              maxlength="50"
             />
           </app-input-wrapper>
         </div>
         <!-- ************************************* Score **************************************** -->
         <div class="col-md-1">
-          <app-input-wrapper [inputTitle]="'Score'">
+          <app-input-wrapper [inputTitle]="'Score*'">
             <input
               type="number"
               formControlName="score"
               class="form-control form-control-sm"
               required
+              min="0"
+              max="10"
             />
           </app-input-wrapper>
         </div>
         <!-- ************************************* Comment **************************************** -->
         <div class="col-md-6">
-          <app-input-wrapper [inputTitle]="'Comment'">
+          <app-input-wrapper [inputTitle]="'Comment (optional)'">
             <textarea
               formControlName="comment"
               class="form-control form-control-sm"
               rows="1"
+              maxlength="150"
             ></textarea>
           </app-input-wrapper>
         </div>

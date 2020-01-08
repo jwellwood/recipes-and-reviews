@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { CarouselComponent } from "./carousel.component";
 import { CarouselModule } from "ngx-carousel-lib";
+import { SharedModule } from "../../shared.module";
 
 describe("CarouselComponent", () => {
   let component: CarouselComponent;
@@ -9,8 +10,8 @@ describe("CarouselComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CarouselComponent],
-      imports: [CarouselModule]
+      declarations: [],
+      imports: [CarouselModule, SharedModule]
     }).compileComponents();
   }));
 

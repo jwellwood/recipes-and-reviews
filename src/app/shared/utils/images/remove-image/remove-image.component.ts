@@ -1,14 +1,16 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import { ReviewsService } from "src/app/core/services/reviews.service";
-import { RecipesService } from "src/app/core/services/recipes.service";
-import { Review } from "src/app/shared/models/Review";
-import { Recipe } from "src/app/shared/models/Recipe";
+import { switchMap } from "rxjs/operators";
+// Firebase
 import { AngularFireStorage } from "@angular/fire/storage";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { switchMap } from "rxjs/operators";
 import * as firebase from "firebase/app";
 import "firebase/firestore";
+// Internal
+import { Review } from "src/app/shared/models/Review";
+import { Recipe } from "src/app/shared/models/Recipe";
+import { ReviewsService } from "src/app/core/services/reviews.service";
+import { RecipesService } from "src/app/core/services/recipes.service";
 
 @Component({
   selector: "app-remove-image",
@@ -30,9 +32,8 @@ export class RemoveImageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Get ID
     this.id = this.route.snapshot.params["id"];
-    // Get images
+    // Get images for reviews
     if (this.imageType === "reviews") {
       this.route.params
         .pipe(
@@ -44,6 +45,7 @@ export class RemoveImageComponent implements OnInit {
           }
         });
     }
+    // Get images for recipes
     if (this.imageType === "recipes") {
       this.route.params
         .pipe(

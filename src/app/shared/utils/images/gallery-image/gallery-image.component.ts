@@ -13,6 +13,7 @@ export class GalleryImageComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    // To avoid the 0 for first item
     this.index += 1;
   }
 }

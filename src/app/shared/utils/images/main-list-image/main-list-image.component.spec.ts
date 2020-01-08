@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MainListImageComponent } from './main-list-image.component';
+import { MainListImageComponent } from "./main-list-image.component";
+import { SharedModule } from "src/app/shared/shared.module";
 
-describe('MainListImageComponent', () => {
+describe("MainListImageComponent", () => {
   let component: MainListImageComponent;
   let fixture: ComponentFixture<MainListImageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainListImageComponent ]
-    })
-    .compileComponents();
+      declarations: [],
+      imports: [SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('MainListImageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

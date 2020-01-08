@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { AdminComponent } from "./admin.component";
-import { SharedModule } from "../shared/shared.module";
-import { CoreModule } from "../core/core.module";
-import { AdminModule } from "./admin.module";
+import { SharedModule } from "../../shared/shared.module";
+import { CoreModule } from "../../core/core.module";
+import { AdminModule } from "../admin.module";
 import { RouterTestingModule } from "@angular/router/testing";
 
 describe("AdminComponent", () => {

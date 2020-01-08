@@ -42,19 +42,48 @@ export class RecipeComponent implements OnInit {
       if (recipe != null) {
         this.recipe = recipe;
         this.buttons = [
-          { title: "Details", link: `/recipes/${this.id}/edit-details` },
-          { title: "Comment", link: `/recipes/${this.id}/add-comment` },
-          { title: "Ingredients", link: `/recipes/${this.id}/add-ingredients` },
-          { title: "Steps", link: `/recipes/${this.id}/add-steps` },
-          { title: "Image Gallery", link: `/recipes/${this.id}/add-gallery` },
-          { title: "Cover Image", link: `/recipes/${this.id}/add-image` }
+          {
+            title: "Details",
+            link: `/recipes/${this.id}/edit-details`,
+            isEdit: recipe.id ? true : false
+          },
+          {
+            title: "Comment",
+            link: `/recipes/${this.id}/add-comment`,
+            isEdit: recipe.mainComment ? true : false
+          },
+          {
+            title: "Ingredients",
+            link: `/recipes/${this.id}/add-ingredients`,
+            isEdit: recipe.ingredients ? true : false
+          },
+          {
+            title: "Steps",
+            link: `/recipes/${this.id}/add-steps`,
+            isEdit: recipe.steps ? true : false
+          },
+          {
+            title: "Image Gallery",
+            link: `/recipes/${this.id}/add-gallery`,
+            isEdit: recipe.imageList ? true : false
+          },
+          {
+            title: "Cover Image",
+            link: `/recipes/${this.id}/add-image`,
+            isEdit: recipe.mainImage ? true : false
+          }
         ];
       }
     });
   }
 
   onDelete() {
-    if (confirm("Are you sure?")) {
+    // TODO add a modal confirm instead of browser
+    if (
+      confirm(
+        "You will lose all data for this recipe permanently. Are you sure?"
+      )
+    ) {
       this.recipesService.deleteRecipe(this.recipe);
       this.router.navigate(["/recipes"]);
     }

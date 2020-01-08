@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AdminComponent } from "./admin.component";
+import { AdminComponent } from "./admin/admin.component";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";

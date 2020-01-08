@@ -1,11 +1,10 @@
 <app-back-button [link]="'recipes/' + id"></app-back-button>
 <app-form-wrapper [title]="'Add photos'">
   <form [formGroup]="recipeImageForm" (ngSubmit)="onSubmit(recipeImageForm)">
-    <!-- ************************************* Main Image **************************************** -->
     <div class="form-group">
       <label for="mainImage">Main Image</label>
       <app-form-label>Choose the main image for this review</app-form-label>
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-md-4 m-auto text-center">
           <app-main-image [imgSrc]="imgSrc"></app-main-image>
         </div>
@@ -13,10 +12,14 @@
           <div class="custom-file mt-1">
             <input
               type="file"
-              class="custom-file-input text-dark"
               formControlName="mainImage"
               #fileUploader
               (change)="showPreview($event)"
+              class="custom-file-input text-dark"
+              [ngClass]="{
+                'is-invalid': mainImage.errors && mainImage.touched
+              }"
+              required
             />
             <label class="custom-file-label">Choose file</label>
             <app-control-messages
@@ -25,8 +28,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="img-thumbnail bg-secondary main-image p-2" > -->
-      <!-- </div> -->
     </div>
     <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>

@@ -21,6 +21,7 @@
               'is-invalid': name.errors && name.touched
             }"
             required
+            maxlength="50"
           />
         </app-input-wrapper>
       </div>
@@ -56,6 +57,12 @@
             type="number"
             formControlName="servesNumber"
             class="form-control"
+            [ngClass]="{
+              'is-invalid': servesNumber.errors && servesNumber.touched
+            }"
+            required
+            min="1"
+            max="99"
           />
         </app-input-wrapper>
       </div>
@@ -70,19 +77,31 @@
             type="number"
             formControlName="prepTime"
             class="form-control"
+            [ngClass]="{
+              'is-invalid': prepTime.errors && prepTime.touched
+            }"
+            required
+            min="1"
+            max="999"
           />
         </app-input-wrapper>
       </div>
-      <!-- ************************************* Prep Time **************************************** -->
+      <!-- ************************************* Health Rating **************************************** -->
       <div class="col-4">
         <app-input-wrapper
-          [inputTitle]="'Health Rating (/10)'"
+          [inputTitle]="'Health Rating (out of 10)'"
           [validation]="recipeDetailsForm.get('healthRating')"
         >
           <input
             type="number"
             formControlName="healthRating"
             class="form-control"
+            [ngClass]="{
+              'is-invalid': healthRating.errors && healthRating.touched
+            }"
+            required
+            min="1"
+            max="10"
           />
         </app-input-wrapper>
       </div>

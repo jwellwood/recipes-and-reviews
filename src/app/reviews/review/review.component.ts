@@ -39,6 +39,33 @@ export class ReviewComponent implements OnInit {
     this.reviewsService.getReview(this.id).subscribe(review => {
       if (review != null) {
         this.review = review;
+        this.buttons = [
+          {
+            title: "Details",
+            link: `/reviews/${this.id}/edit-details`,
+            isEdit: review.id ? true : false
+          },
+          {
+            title: "Comment",
+            link: `/reviews/${this.id}/add-comment`,
+            isEdit: review.mainComment ? true : false
+          },
+          {
+            title: "Ratings",
+            link: `/reviews/${this.id}/add-rating`,
+            isEdit: review.ratings ? true : false
+          },
+          {
+            title: "Cover Image",
+            link: `/reviews/${this.id}/add-image`,
+            isEdit: review.mainImage ? true : false
+          },
+          {
+            title: "Gallery",
+            link: `/reviews/${this.id}/add-gallery`,
+            isEdit: review.imageList ? true : false
+          }
+        ];
       }
       if (review.ratings) {
         this.ratings = review.ratings.map(rating => ({
@@ -48,17 +75,14 @@ export class ReviewComponent implements OnInit {
         }));
       }
     });
-    this.buttons = [
-      { title: "Details", link: `/reviews/${this.id}/edit-details` },
-      { title: "Comment", link: `/reviews/${this.id}/add-comment` },
-      { title: "Ratings", link: `/reviews/${this.id}/add-rating` },
-      { title: "Cover Image", link: `/reviews/${this.id}/add-image` },
-      { title: "Gallery", link: `/reviews/${this.id}/add-gallery` }
-    ];
   }
 
   onDelete() {
-    if (confirm("Are you sure?")) {
+    if (
+      confirm(
+        "You will lose all data for this review permanently. Are you sure?"
+      )
+    ) {
       this.reviewsService.deleteReview(this.review);
       this.router.navigate(["/reviews"]);
     }

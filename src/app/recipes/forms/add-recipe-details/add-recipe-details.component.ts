@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
-import { RecipesService } from "src/app/core/services/recipes.service";
+// Internal
 import { Recipe } from "src/app/shared/models/Recipe";
+import { RecipesService } from "src/app/core/services/recipes.service";
 import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
@@ -44,21 +45,22 @@ export class AddRecipeDetailsComponent implements OnInit {
         }
       });
   }
+  // ***************************** Form and getters **********************************
 
   createFormGroup(formBuilder: FormBuilder) {
     return formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
       type: ["", Validators.required],
       prepTime: [
-        0,
+        1,
         [Validators.required, Validators.max(999), Validators.min(1)]
       ],
       servesNumber: [
-        0,
+        1,
         [Validators.required, Validators.max(99), Validators.min(1)]
       ],
       healthRating: [
-        0,
+        1,
         [Validators.required, Validators.max(10), Validators.min(1)]
       ]
     });
@@ -80,13 +82,15 @@ export class AddRecipeDetailsComponent implements OnInit {
     return this.recipeDetailsForm.get("healthRating");
   }
 
+  // ****************************** Event Functions ***********************************
+
   onUpdate() {
+    // Create a deep copy
     const value: Recipe = Object.assign({}, this.recipeDetailsForm.value);
     const valid: boolean = this.recipeDetailsForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
-      // Add id to client
       value.id = this.id;
       this.recipesService.updateRecipe(value);
       this.router.navigate([`/recipes/${this.id}`]);
@@ -94,13 +98,12 @@ export class AddRecipeDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    // Make sure to create a deep copy of the form-model
+    // Create a deep copy
     const value: Recipe = Object.assign({}, this.recipeDetailsForm.value);
     const valid: boolean = this.recipeDetailsForm.valid;
     if (!valid) {
       this.messageService.showFormError();
     } else {
-      // Add new client to firestore
       this.recipesService.newRecipe(value);
       this.router.navigate(["/recipes"]);
     }

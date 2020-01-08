@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
-import { ReviewsService } from "src/app/core/services/reviews.service";
+// Internal
 import { Review } from "src/app/shared/models/Review";
+import { ReviewsService } from "src/app/core/services/reviews.service";
 import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
@@ -62,6 +63,8 @@ export class AddReviewRatingsComponent implements OnInit {
     return formArray;
   }
 
+  // ****************************** Form and getters ***********************************
+
   createRatingInput(): FormGroup {
     return this.formBuilder.group({
       title: ["", [Validators.required, Validators.maxLength(50)]],
@@ -80,7 +83,10 @@ export class AddReviewRatingsComponent implements OnInit {
     return this.addRatingsForm.get("comment");
   }
 
+  // ****************************** Event functions ***********************************
+
   onUpdate() {
+    // Create a deep copy
     const value: Review = Object.assign({}, this.addRatingsForm.value);
     const valid: boolean = this.addRatingsForm.valid;
     if (!valid) {
@@ -93,7 +99,7 @@ export class AddReviewRatingsComponent implements OnInit {
   }
 
   onSubmit() {
-    // Make sure to create a deep copy of the form-model
+    // Create a deep copy
     const value: Review = Object.assign({}, this.addRatingsForm.value);
     const valid: boolean = this.addRatingsForm.valid;
     if (!valid) {

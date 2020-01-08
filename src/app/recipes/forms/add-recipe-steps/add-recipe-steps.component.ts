@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormArray, FormBuilder, Validators } from "@angular/forms";
-import { RecipesService } from "src/app/core/services/recipes.service";
-import { Recipe } from "src/app/shared/models/Recipe";
-import { MessagesService } from "src/app/core/services/messages.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { switchMap } from "rxjs/operators";
+// Internal
+import { Recipe } from "src/app/shared/models/Recipe";
+import { RecipesService } from "src/app/core/services/recipes.service";
+import { MessagesService } from "src/app/core/services/messages.service";
 
 @Component({
   selector: "app-add-recipe-steps",
@@ -61,6 +62,8 @@ export class AddRecipeStepsComponent implements OnInit {
     return formArray;
   }
 
+  // ****************************** Form and getters ***********************************
+
   createStepInput(): FormGroup {
     return this.formBuilder.group({
       title: ["", Validators.maxLength(50)],
@@ -74,6 +77,8 @@ export class AddRecipeStepsComponent implements OnInit {
   get text() {
     return this.addStepsForm.get("text");
   }
+
+  // ****************************** Event Functions ***********************************
 
   onUpdate() {
     const value: Recipe = Object.assign({}, this.addStepsForm.value);

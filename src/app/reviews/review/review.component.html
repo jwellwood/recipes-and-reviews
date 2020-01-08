@@ -14,6 +14,7 @@
 <div *ngIf="!review">
   <app-spinner></app-spinner>
 </div>
+
 <!-- Card -->
 <div class="card mb-3 border-primary" *ngIf="review">
   <!---------------------------------------------------Main Details---------------------------------------------- -->
@@ -26,8 +27,8 @@
       {{ review.dateVisited.toDate() | date }}
     </h6>
   </app-card-title>
-  <!-- -----------------------------------------------Main Details------------------------------------------------ -->
 
+  <!-- ---------------------------------------------Image and comment---------------------------------------------- -->
   <app-tagline *ngIf="review.tagLine" [text]="review.tagLine"></app-tagline>
   <div class="card-body">
     <div class="row">
@@ -39,19 +40,27 @@
       </div>
     </div>
   </div>
+
+  <!-- ---------------------------------------------Gallery--------------------------------------------- -->
+
   <div class="card-body">
     <app-subtitle>Gallery</app-subtitle>
     <app-carousel
       *ngIf="review.imageList"
       [images]="review.imageList"
     ></app-carousel>
+
+    <!-- ---------------------------------------------Ratings---------------------------------------------- -->
+
     <app-subtitle>Ratings</app-subtitle>
     <app-review-ratings
       *ngIf="review.ratings"
       [ratings]="ratings"
     ></app-review-ratings>
   </div>
-
-  <app-card-footer [footerText]="review.website"></app-card-footer>
+  <div *ngIf="review.website" class="my-3 text-center">
+    <div class="text-dark">{{ review.website }}</div>
+  </div>
+  <app-card-footer></app-card-footer>
 </div>
 <app-back-button [link]="'reviews'"></app-back-button>

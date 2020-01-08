@@ -4,20 +4,30 @@
     <div class="form-group">
       <label for="mainImage">Main Image</label>
       <app-form-label>Choose the main image for this review</app-form-label>
-      <app-main-image [imgSrc]="imgSrc"></app-main-image>
-      <div class="custom-file mt-1">
-        <input
-          type="file"
-          class="custom-file-input text-dark"
-          formControlName="mainImage"
-          #fileUploader
-          (change)="showPreview($event)"
-        />
-        <label class="custom-file-label">Choose file</label>
+      <div class="row align-items-center">
+        <div class="col-md-4 m-auto text-center">
+          <app-main-image [imgSrc]="imgSrc"></app-main-image>
+        </div>
+        <div class="col-md-8">
+          <div class="custom-file mt-1">
+            <input
+              type="file"
+              formControlName="mainImage"
+              #fileUploader
+              (change)="showPreview($event)"
+              class="custom-file-input text-dark"
+              [ngClass]="{
+                'is-invalid': mainImage.errors && mainImage.touched
+              }"
+              required
+            />
+            <label class="custom-file-label">Choose file</label>
+            <app-control-messages
+              [control]="reviewImageForm.get('mainImage')"
+            ></app-control-messages>
+          </div>
+        </div>
       </div>
-      <app-control-messages
-        [control]="reviewImageForm.get('mainImage')"
-      ></app-control-messages>
     </div>
     <app-submit-button [isUpdate]="isUpdate"></app-submit-button>
   </form>

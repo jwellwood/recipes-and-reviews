@@ -20,12 +20,16 @@
     <div>Choose a section to edit</div>
   </div>
   <div class="modal-body">
-    <div class="list-group ">
+    <div class="list-group">
       <button
         *ngFor="let button of buttons"
         routerLink="{{ button.link }}"
         (click)="closeModal()"
         class="list-group-item list-group-item-action active text-white"
+        [ngClass]="{
+          'bg-warning': !button.isEdit,
+          'bg-success': button.isEdit
+        }"
       >
         {{ button.title }}
       </button>
