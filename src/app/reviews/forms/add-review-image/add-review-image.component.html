@@ -1,20 +1,10 @@
 <app-back-button [link]="'reviews/' + id"></app-back-button>
 <app-form-wrapper [title]="'Add photos'">
   <form [formGroup]="reviewImageForm" (ngSubmit)="onSubmit(reviewImageForm)">
-    <!-- ************************************* Main Image **************************************** -->
     <div class="form-group">
       <label for="mainImage">Main Image</label>
       <app-form-label>Choose the main image for this review</app-form-label>
-      <app-image-placeholder *ngIf="!imgSrc"></app-image-placeholder>
-      <!-- <div class="img-thumbnail bg-secondary main-image p-2" > -->
-      <img
-        *ngIf="imgSrc"
-        [src]="imgSrc"
-        class="main-image"
-        alt="selected-image"
-        (click)="fileUploader.click()"
-      />
-      <!-- </div> -->
+      <app-main-image [imgSrc]="imgSrc"></app-main-image>
       <div class="custom-file mt-1">
         <input
           type="file"

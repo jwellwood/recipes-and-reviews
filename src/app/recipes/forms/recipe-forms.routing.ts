@@ -7,7 +7,7 @@ import { AddRecipeIngredientsComponent } from "./add-recipe-ingredients/add-reci
 import { AddRecipeStepsComponent } from "./add-recipe-steps/add-recipe-steps.component";
 import { AddRecipeImageComponent } from "./add-recipe-image/add-recipe-image.component";
 import { AddRecipeGalleryComponent } from "./add-recipe-gallery/add-recipe-gallery.component";
-import { RemoveImageComponent } from "src/app/shared/utils/remove-image/remove-image.component";
+import { RemoveImageComponent } from "src/app/shared/utils/images/remove-image/remove-image.component";
 
 export const routes: Routes = [
   {

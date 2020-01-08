@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { faLeaf, faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faSeedling, faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { BsDropdownConfig } from "ngx-bootstrap/dropdown";
 
 @Component({
@@ -18,7 +18,7 @@ export class NavDropdownComponent implements OnInit {
   @Input() socialLinks: any;
   links = [];
   // Icons
-  leaf = faLeaf;
+  leaf = faSeedling;
   question = faQuestion;
   constructor() {}
 

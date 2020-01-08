@@ -1,0 +1,19 @@
+<div class="mt-2">
+  <app-subtitle>Current Gallery</app-subtitle>
+  <div *ngIf="!images.length">No images yet</div>
+  <div *ngIf="images">
+    <div class="media" *ngFor="let image of images">
+      <!-- Image -->
+      <app-form-list-image [imgSrc]="image.url"></app-form-list-image>
+      <div class="media-body align-self-center"></div>
+      <div class="align-self-center ml-2">
+        <button
+          (click)="onRemoveImage(image.url, image.path)"
+          class="btn btn-outline-dark"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

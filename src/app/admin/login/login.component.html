@@ -1,40 +1,42 @@
-<div class="col-md-6 m-auto">
-  <app-form-wrapper [title]="'Admin Sign in'">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
-      <app-input-wrapper
-        [labelText]="'Email *'"
-        [labelFor]="'email'"
-        [validation]="loginForm.get('email')"
-      >
-        <input
-          type="email"
-          formControlName="email"
-          class="form-control"
-          [ngClass]="{
-            'is-invalid': email.errors && email.touched
-          }"
-          required
-        />
-      </app-input-wrapper>
-      <app-input-wrapper
-        [labelText]="'Password *'"
-        [labelFor]="'password'"
-        [validation]="loginForm.get('password')"
-      >
-        <input
-          type="password"
-          formControlName="password"
-          class="form-control"
-          [ngClass]="{
-            'is-invalid': password.errors && password.touched
-          }"
-          required
-        />
-      </app-input-wrapper>
-      <flash-messages></flash-messages>
-      <button type="submit" class="btn btn-success btn-sm btn-block">
-        Sign in
-      </button>
-    </form>
-  </app-form-wrapper>
+<div class="mt-5">
+  <div class="col-md-6 m-auto">
+    <app-form-wrapper [title]="'Admin Sign in'">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+        <app-input-wrapper
+          [labelText]="'Email *'"
+          [labelFor]="'email'"
+          [validation]="loginForm.get('email')"
+        >
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': email.errors && email.touched
+            }"
+            required
+          />
+        </app-input-wrapper>
+        <app-input-wrapper
+          [labelText]="'Password *'"
+          [labelFor]="'password'"
+          [validation]="loginForm.get('password')"
+        >
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': password.errors && password.touched
+            }"
+            required
+          />
+        </app-input-wrapper>
+        <flash-messages></flash-messages>
+        <button type="submit" class="btn btn-success btn-sm btn-block">
+          Sign in
+        </button>
+      </form>
+    </app-form-wrapper>
+  </div>
 </div>

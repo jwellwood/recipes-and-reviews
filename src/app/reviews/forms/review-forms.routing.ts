@@ -6,7 +6,7 @@ import { AddReviewCommentComponent } from "./add-review-comment/add-review-comme
 import { AddReviewRatingsComponent } from "./add-review-ratings/add-review-ratings.component";
 import { AddReviewImageComponent } from "./add-review-image/add-review-image.component";
 import { AddReviewGalleryComponent } from "./add-review-gallery/add-review-gallery.component";
-import { RemoveImageComponent } from "../../shared/utils/remove-image/remove-image.component";
+import { RemoveImageComponent } from "../../shared/utils/images/remove-image/remove-image.component";
 
 export const routes: Routes = [
   {

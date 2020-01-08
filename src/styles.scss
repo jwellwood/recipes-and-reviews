@@ -4,8 +4,9 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/bootswatch/dist/flatly/bootstrap.min.css";
 @import "./scss/variables";
+@import "./scss/image";
+
 body {
-  // font-family: "Patrick Hand", cursive;
   font-family: "Palanquin Dark", sans-serif;
   min-height: 100vh;
 }
@@ -14,16 +15,16 @@ body {
   font-family: $comment-font;
 }
 
-.main-image {
-  display: block;
-  margin: auto;
-  width: 100%;
-  height: 200px;
+.pointer {
+  cursor: pointer;
 }
 
-.gallery-image {
-  width: 108px;
-  height: 108px;
-  display: block;
-  margin: auto;
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-content {
+  flex: 1;
 }

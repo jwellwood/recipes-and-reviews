@@ -28,5 +28,9 @@ export class NavbarComponent implements OnInit {
         this.isAuth = false;
       }
     });
+    this.links = [
+      { title: "Recipes", link: "recipes" },
+      { title: "Reviews", link: "reviews" }
+    ];
   }
 }

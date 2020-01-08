@@ -25,16 +25,16 @@
     [data]="[
       { icon: people, value: recipe.servesNumber },
       { icon: clock, value: recipe.prepTime },
-      { icon: heart, value: recipe.healthRating }
+      { icon: seedling, value: recipe.healthRating }
     ]"
   ></app-recipe-avatars>
   <!-- IMage and comment -->
   <div class="card-body">
-    <div class="row">
-      <div class="col-md-4">
-        <app-main-image [mainImage]="recipe.mainImage"></app-main-image>
+    <div class="row align-items-center">
+      <div class="col-md-5 text-center">
+        <app-main-image [imgSrc]="recipe.mainImage"></app-main-image>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <app-main-comment [mainComment]="recipe.mainComment"></app-main-comment>
       </div>
     </div>

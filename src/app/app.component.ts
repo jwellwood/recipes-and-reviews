@@ -15,13 +15,13 @@ export class AppComponent {
     {
       title: "Instagram",
       icon: faInstagram,
-      link: "https://www.instagram.com/"
-    },
-    {
-      title: "Facebook",
-      icon: faFacebook,
-      link: "https://www.facebook.com/"
-    },
-    { title: "Twitter", icon: faTwitter, link: "https://twitter.com/" }
+      link: "https://www.instagram.com/plantbasedponch/"
+    }
+    // {
+    //   title: "Facebook",
+    //   icon: faFacebook,
+    //   link: "https://www.facebook.com/"
+    // },
+    // { title: "Twitter", icon: faTwitter, link: "https://twitter.com/" }
   ];
 }

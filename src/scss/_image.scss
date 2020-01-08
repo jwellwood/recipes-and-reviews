@@ -1,0 +1,30 @@
+@import "./variables";
+
+@mixin imageCover($width, $height) {
+  width: $width;
+  height: $height;
+  margin: auto;
+  object-fit: cover;
+}
+
+.form-list-image {
+  @include imageCover(100px, 100px);
+}
+
+.gallery-image {
+  @include imageCover(200px, 200px);
+}
+
+.main-image-rounded {
+  @include imageCover(240px, 240px);
+  border-radius: 50%;
+}
+
+.main-image {
+  @include imageCover(100%, 250px);
+}
+
+.main-placeholder {
+  @include flexCenter();
+  height: 250px;
+}

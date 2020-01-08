@@ -12,7 +12,10 @@
 
 <div class="card-group align-center" *ngIf="recipes">
   <div class="col-sm-4" *ngFor="let recipe of recipes">
-    <div class="card mb-3 border-primary" routerLink="/recipes/{{ recipe.id }}">
+    <div
+      class="card mb-3 pointer border-primary"
+      routerLink="/recipes/{{ recipe.id }}"
+    >
       <h5 class="card-header text-center text-white bg-primary">
         <div class="d-flex justify-content-between">
           {{ recipe.name }}
@@ -26,14 +29,14 @@
         </div>
       </h5>
 
-      <div class="card-body">
-        <app-main-image [mainImage]="recipe.mainImage"></app-main-image>
+      <div class="">
+        <app-main-list-image [imgSrc]="recipe.mainImage"></app-main-list-image>
       </div>
       <app-recipe-card-footer
         [data]="[
           { icon: people, value: recipe.servesNumber },
           { icon: clock, value: recipe.prepTime },
-          { icon: heart, value: recipe.healthRating }
+          { icon: seedling, value: recipe.healthRating }
         ]"
       ></app-recipe-card-footer>
     </div>

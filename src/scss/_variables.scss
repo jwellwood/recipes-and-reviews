@@ -1,1 +1,10 @@
 $comment-font: "Kalam", cursive;
+$image-large: 200px;
+$image-small: 100px;
+
+@mixin flexCenter {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,11 +1,13 @@
 <div class="card-body">
   <div class="row mb-1 d-flex justify-content-center">
     <div class="mx-auto mb-1" *ngFor="let item of data">
-      <fa-icon
-        [icon]="item.icon"
-        class="small-icon text-primary bg-white"
-      ></fa-icon>
-      <div class="mx-auto circle-icon bg-primary">
+      <div class="small-circle">
+        <fa-icon
+          [icon]="item.icon"
+          class="text-success small-icon bg-white"
+        ></fa-icon>
+      </div>
+      <div class="mx-auto bg-primary circle-with-text">
         <div class="text-white">{{ item.value }}</div>
       </div>
     </div>

@@ -1,0 +1,28 @@
+.main-circle {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 2rem;
+}
+.small-icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+.circle-with-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 2rem;
+}

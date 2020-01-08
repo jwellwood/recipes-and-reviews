@@ -9,15 +9,10 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { FlashMessagesModule } from "angular2-flash-messages";
 // Pipes
 import { GetRatingPipe } from "./pipes/get-rating.pipe";
-// Pages
-import { AboutComponent } from "./pages/about/about.component";
-import { LandingComponent } from "./pages/landing/landing.component";
-import { NotFoundComponent } from "./pages/not-found/not-found.component";
 // Shared Components
 import { CardTitleComponent } from "./components/card-title/card-title.component";
 import { JumbotronComponent } from "./components/jumbotron/jumbotron.component";
 import { TaglineComponent } from "./components/tagline/tagline.component";
-import { MainImageComponent } from "./components/main-image/main-image.component";
 import { MainCommentComponent } from "./components/main-comment/main-comment.component";
 import { CarouselComponent } from "./components/carousel/carousel.component";
 import { CardFooterComponent } from "./components/card-footer/card-footer.component";
@@ -29,13 +24,18 @@ import { BackButtonComponent } from "./utils/buttons/back-button/back-button.com
 import { EditButtonsComponent } from "./utils/buttons/edit-buttons/edit-buttons.component";
 import { SubmitButtonComponent } from "./utils/buttons/submit-button/submit-button.component";
 import { InputButtonsComponent } from "./utils/buttons/input-buttons/input-buttons.component";
-import { ImagePlaceholderComponent } from "./utils/image-placeholder/image-placeholder.component";
+import { MainImageComponent } from "./utils/images/main-image/main-image.component";
+import { MainListImageComponent } from "./utils/images/main-list-image/main-list-image.component";
+import { GalleryImageComponent } from "./utils/images/gallery-image/gallery-image.component";
+import { FormListImageComponent } from "./utils/images/form-list-image/form-list-image.component";
+import { ImagePlaceholderComponent } from "./utils/images/image-placeholder/image-placeholder.component";
 import { InputWrapperComponent } from "./utils/wrappers/input-wrapper/input-wrapper.component";
 import { ControlMessagesComponent } from "./utils/control-messages/control-messages.component";
 import { FormWrapperComponent } from "./utils/wrappers/form-wrapper/form-wrapper.component";
 import { SpinnerComponent } from "./utils/spinner/spinner.component";
-import { UploaderComponent } from "./utils/uploader/uploader.component";
-import { RemoveImageComponent } from "./utils/remove-image/remove-image.component";
+import { UploaderComponent } from "./utils/images/uploader/uploader.component";
+import { RemoveImageComponent } from "./utils/images/remove-image/remove-image.component";
+import { PageWrapperComponent } from "./utils/wrappers/page-wrapper/page-wrapper.component";
 
 @NgModule({
   declarations: [
@@ -45,8 +45,6 @@ import { RemoveImageComponent } from "./utils/remove-image/remove-image.componen
     CarouselComponent,
     JumbotronComponent,
     MainCommentComponent,
-    MainImageComponent,
-    NotFoundComponent,
     TaglineComponent,
     AddButtonComponent,
     BackButtonComponent,
@@ -54,16 +52,20 @@ import { RemoveImageComponent } from "./utils/remove-image/remove-image.componen
     EditButtonsComponent,
     FormLabelComponent,
     FormWrapperComponent,
-    ImagePlaceholderComponent,
     InputButtonsComponent,
     InputWrapperComponent,
     SpinnerComponent,
     SubmitButtonComponent,
     SubtitleComponent,
-    LandingComponent,
-    AboutComponent,
+    PageWrapperComponent,
+    // Images
+    MainImageComponent,
+    MainListImageComponent,
+    GalleryImageComponent,
+    FormListImageComponent,
     UploaderComponent,
-    RemoveImageComponent
+    RemoveImageComponent,
+    ImagePlaceholderComponent
   ],
   imports: [
     CommonModule,
@@ -80,17 +82,12 @@ import { RemoveImageComponent } from "./utils/remove-image/remove-image.componen
     CommonModule,
     ModalModule,
     ReactiveFormsModule,
-    // Pages
-    LandingComponent,
-    AboutComponent,
-    NotFoundComponent,
     // Components
     CardTitleComponent,
     CardFooterComponent,
     CarouselComponent,
     JumbotronComponent,
     MainCommentComponent,
-    MainImageComponent,
     TaglineComponent,
     FormLabelComponent,
     SubtitleComponent,
@@ -102,11 +99,17 @@ import { RemoveImageComponent } from "./utils/remove-image/remove-image.componen
     InputButtonsComponent,
     FormWrapperComponent,
     InputWrapperComponent,
-    ImagePlaceholderComponent,
     ControlMessagesComponent,
     SpinnerComponent,
+    PageWrapperComponent,
+    // Images
+    MainImageComponent,
+    MainListImageComponent,
+    GalleryImageComponent,
+    FormListImageComponent,
     UploaderComponent,
-    RemoveImageComponent
+    RemoveImageComponent,
+    ImagePlaceholderComponent
   ]
 })
 export class SharedModule {}

@@ -1,13 +1,11 @@
 :host carousel-component {
   display: block;
   overflow: hidden;
-  padding: 2vh 2vh;
   width: 100%;
   margin: 0 auto;
   margin-top: 2vh;
 }
 .item-carousel {
-  background-color: white;
   display: -ms-flexbox !important;
   display: -webkit-flex !important;
   display: flex !important;
@@ -37,6 +35,16 @@
 }
 :host carousel-component.cube-mode.ready >>> .container {
   perspective: 30vh !important;
+}
+:host carousel-component.style-carousel.ready .item-carousel {
+  -webkit-transition: all 500ms !important;
+  -moz-transition: all 500ms !important;
+  -o-transition: all 500ms !important;
+  transition: all 500ms !important;
+}
+:host carousel-component.style-carousel.ready .item-carousel.actual {
+  height: 30vh !important;
+  top: -2.5vh;
 }
 @media (min-width: 768px) {
   .parameters-content {

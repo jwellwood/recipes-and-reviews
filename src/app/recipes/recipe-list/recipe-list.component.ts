@@ -6,7 +6,7 @@ import {
   faCookieBite,
   faUserFriends,
   faClock,
-  faHeart
+  faSeedling
 } from "@fortawesome/free-solid-svg-icons";
 import { RecipesService } from "src/app/core/services/recipes.service";
 import { Recipe } from "src/app/shared/models/Recipe";
@@ -29,7 +29,7 @@ export class RecipeListComponent implements OnInit {
   cookie = faCookieBite;
   people = faUserFriends;
   clock = faClock;
-  heart = faHeart;
+  seedling = faSeedling;
   constructor(
     private authService: AuthService,
     private recipesService: RecipesService

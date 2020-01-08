@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 // App
-import { LandingComponent } from "./shared/pages/landing/landing.component";
-import { AboutComponent } from "./shared/pages/about/about.component";
-import { NotFoundComponent } from "./shared/pages/not-found/not-found.component";
+import { LandingComponent } from "./pages/landing/landing.component";
+import { AboutComponent } from "./pages/about/about.component";
+import { NotFoundComponent } from "./pages/not-found/not-found.component";
 
 const routes: Routes = [
   {

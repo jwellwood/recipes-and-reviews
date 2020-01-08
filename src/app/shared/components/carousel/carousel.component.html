@@ -1,13 +1,22 @@
-<carousel-component
-  class="cube-mode"
-  [mode]="'horizontal'"
-  [perspective]="1000"
-  [initialSlide]="1"
-  #topCarousel
-  [angle]="10"
-  [threshold]="10"
->
-  <div class="item-carousel" *ngFor="let image of images">
-    <img src="{{ image.url }}" alt="{{ image.alt }}" />
-  </div>
-</carousel-component>
+<app-page-wrapper>
+  <carousel-component
+    [mode]="'horizontal'"
+    [perspective]="0"
+    [initialSlide]="1"
+    [timeToSlide]="1000"
+    #topCarousel
+    [angle]="1"
+    [threshold]="120"
+    class="bg-primary border border-primary rounded-lg"
+  >
+    <div class="item-carousel" *ngFor="let image of images; let i = index">
+      <div>
+        <app-gallery-image
+          [imgSrc]="image.url"
+          [arrLength]="images.length"
+          [index]="i"
+        ></app-gallery-image>
+      </div>
+    </div>
+  </carousel-component>
+</app-page-wrapper>
