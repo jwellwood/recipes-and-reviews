@@ -1,27 +1,38 @@
 # PlantBP
 
+## What is it?
+
+This project is a web app for uploading recipes and reviews of restaurants etc. and serves as a place for the client to keep a more personalised collection of these in addition to Instagram accounts etc.
+
+## How does it work
+
+Users are presented with a landing page, and can choose to navigate to the recipes/reviews section, as well as an about section for more details of the project. Only site admin can add, edit and delete items. To log in, users must navigate manually (to avoid confusion for regular users) to /admin route. Admin registration currently has to go through the Firebase console.
+
+#### Firebase
+
+[Firebase](https://console.firebase.google.com/) takes care of:
+
+- Authentication
+- Storage of images,
+- Database
+- Hosting
+
+#### Forms
+
+This app uses Angular's ReactiveFormsModule.
+To add new items, an admin user first creates one by entering the basic details of the recipe/review in a form. This document can then be identified by its ID (through params), and the admin user can flesh out the item by adding more details through a series of short forms. There are several dynamic forms in the project, where the user can add more form fields as required (for adding ingredients for example).
+
+#### Styling
+
+This app uses [Bootstrap 4](https://getbootstrap.com/) components. To avoid using jquery in the app, [ngx-bootstrap](https://valor-software.com/ngx-bootstrap/#/) is used for dynamic components such as the image carousel, nav dropdown etc.
+
+## What's next?
+
+- Angular animations between pages
+- Style the landing page
+- Consider a stepper system for adding new items as opposed to separate form groups
+- Email subscription option
+
+## Other info
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
