@@ -5,7 +5,7 @@
 
     <div class="media-body align-self-center">
       <!-- Progress -->
-      <div class="progress" style="height: 20px;">
+      <div class="progress m-2" style="height: 20px;">
         <div
           *ngIf="percentage | async as pct"
           [ngClass]="{ 'bg-warning': !downloadUrl, 'bg-success': downloadUrl }"

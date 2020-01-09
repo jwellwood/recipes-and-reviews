@@ -23,17 +23,20 @@ import { BackButtonComponent } from "./utils/buttons/back-button/back-button.com
 import { EditButtonsComponent } from "./utils/buttons/edit-buttons/edit-buttons.component";
 import { SubmitButtonComponent } from "./utils/buttons/submit-button/submit-button.component";
 import { InputButtonsComponent } from "./utils/buttons/input-buttons/input-buttons.component";
+import { SpinnerComponent } from "./utils/spinner/spinner.component";
+import { ControlMessagesComponent } from "./utils/control-messages/control-messages.component";
+// Wrappers
+import { PageWrapperComponent } from "./utils/wrappers/page-wrapper/page-wrapper.component";
+import { SectionWrapperComponent } from "./utils/wrappers/section-wrapper/section-wrapper.component";
+import { FormWrapperComponent } from "./utils/wrappers/form-wrapper/form-wrapper.component";
+import { InputWrapperComponent } from "./utils/wrappers/input-wrapper/input-wrapper.component";
+// Images
 import { MainImageComponent } from "./utils/images/main-image/main-image.component";
 import { MainListImageComponent } from "./utils/images/main-list-image/main-list-image.component";
 import { FormListImageComponent } from "./utils/images/form-list-image/form-list-image.component";
 import { ImagePlaceholderComponent } from "./utils/images/image-placeholder/image-placeholder.component";
-import { InputWrapperComponent } from "./utils/wrappers/input-wrapper/input-wrapper.component";
-import { ControlMessagesComponent } from "./utils/control-messages/control-messages.component";
-import { FormWrapperComponent } from "./utils/wrappers/form-wrapper/form-wrapper.component";
-import { SpinnerComponent } from "./utils/spinner/spinner.component";
 import { UploaderComponent } from "./utils/images/uploader/uploader.component";
 import { RemoveImageComponent } from "./utils/images/remove-image/remove-image.component";
-import { PageWrapperComponent } from "./utils/wrappers/page-wrapper/page-wrapper.component";
 import { CarouselComponent } from "./utils/images/carousel/carousel.component";
 
 @NgModule({
@@ -63,7 +66,8 @@ import { CarouselComponent } from "./utils/images/carousel/carousel.component";
     UploaderComponent,
     RemoveImageComponent,
     ImagePlaceholderComponent,
-    CarouselComponent
+    CarouselComponent,
+    SectionWrapperComponent
   ],
   imports: [
     CommonModule,
@@ -99,6 +103,7 @@ import { CarouselComponent } from "./utils/images/carousel/carousel.component";
     ControlMessagesComponent,
     SpinnerComponent,
     PageWrapperComponent,
+    SectionWrapperComponent,
     // Images
     MainImageComponent,
     MainListImageComponent,

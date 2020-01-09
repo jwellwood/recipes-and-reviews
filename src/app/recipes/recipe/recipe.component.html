@@ -21,21 +21,26 @@
     </app-card-title>
 
     <!-- Tagline -->
-    <app-tagline *ngIf="recipe.tagLine" [text]="recipe.tagLine"></app-tagline>
+    <app-section-wrapper>
+      <app-tagline *ngIf="recipe.tagLine" [text]="recipe.tagLine"></app-tagline>
+    </app-section-wrapper>
 
     <!-- Avatars -->
-    <app-recipe-avatars
-      [data]="[
-        { icon: people, value: recipe.servesNumber },
-        { icon: clock, value: recipe.prepTime },
-        { icon: seedling, value: recipe.healthRating }
-      ]"
-    ></app-recipe-avatars>
+    <app-section-wrapper>
+      <app-recipe-avatars
+        [data]="[
+          { icon: people, value: recipe.servesNumber },
+          { icon: clock, value: recipe.prepTime },
+          { icon: seedling, value: recipe.healthRating }
+        ]"
+      ></app-recipe-avatars>
+    </app-section-wrapper>
 
     <!-- Image and comment -->
-    <div class="card-body">
+
+    <app-section-wrapper>
       <div class="row align-items-center">
-        <div class="col-md-5 text-center">
+        <div class="col-md-5 text-center m-auto">
           <app-main-image [imgSrc]="recipe.mainImage"></app-main-image>
         </div>
         <div class="col-md-7">
@@ -44,33 +49,32 @@
           ></app-main-comment>
         </div>
       </div>
-    </div>
+    </app-section-wrapper>
 
     <!-- Ingredients -->
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-5 px-2 my-2">
-          <app-subtitle>Ingredients</app-subtitle>
+
+    <div class="row">
+      <div class="col-md-5">
+        <app-section-wrapper [subtitle]="'Ingredients'">
           <app-ingredients-list
             [ingredients]="recipe.ingredients"
           ></app-ingredients-list>
-        </div>
+        </app-section-wrapper>
+      </div>
 
-        <!-- Steps -->
-        <div class="col-md-7 px-2 my-2">
-          <app-subtitle>Steps</app-subtitle>
+      <!-- Steps -->
+      <div class="col-md-7">
+        <app-section-wrapper [subtitle]="'Steps'">
           <app-steps-list [steps]="recipe.steps"></app-steps-list>
-        </div>
+        </app-section-wrapper>
       </div>
     </div>
 
     <!-- Gallery -->
-    <div class="card-body">
-      <app-subtitle>Gallery</app-subtitle>
-      <app-carousel [images]="recipe.imageList"></app-carousel>
-    </div>
 
-    <!-- Card Footer -->
+    <app-section-wrapper [subtitle]="'Gallery'">
+      <app-carousel [images]="recipe.imageList"></app-carousel>
+    </app-section-wrapper>
     <app-card-footer></app-card-footer>
   </div>
   <app-back-button [link]="'recipes'"></app-back-button>

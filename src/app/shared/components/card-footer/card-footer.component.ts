@@ -6,7 +6,6 @@ import { faLeaf } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./card-footer.component.scss"]
 })
 export class CardFooterComponent implements OnInit {
-  @Input() footerText: string;
   // Icons
   leaf = faLeaf;
   constructor() {}
