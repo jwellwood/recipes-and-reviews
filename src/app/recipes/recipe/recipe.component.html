@@ -14,60 +14,64 @@
   <app-spinner></app-spinner>
 </div>
 <!-- Title -->
-<div class="card mb-3 border-primary" *ngIf="recipe">
-  <app-card-title [title]="recipe.name">
-    <h6 class="card-subtitle text-muted">{{ recipe.type }}</h6>
-  </app-card-title>
+<div *ngIf="recipe">
+  <div class="card mb-3 border-primary">
+    <app-card-title [title]="recipe.name">
+      <h6 class="card-subtitle text-muted">{{ recipe.type }}</h6>
+    </app-card-title>
 
-  <!-- Tagline -->
-  <app-tagline *ngIf="recipe.tagLine" [text]="recipe.tagLine"></app-tagline>
+    <!-- Tagline -->
+    <app-tagline *ngIf="recipe.tagLine" [text]="recipe.tagLine"></app-tagline>
 
-  <!-- Avatars -->
-  <app-recipe-avatars
-    [data]="[
-      { icon: people, value: recipe.servesNumber },
-      { icon: clock, value: recipe.prepTime },
-      { icon: seedling, value: recipe.healthRating }
-    ]"
-  ></app-recipe-avatars>
+    <!-- Avatars -->
+    <app-recipe-avatars
+      [data]="[
+        { icon: people, value: recipe.servesNumber },
+        { icon: clock, value: recipe.prepTime },
+        { icon: seedling, value: recipe.healthRating }
+      ]"
+    ></app-recipe-avatars>
 
-  <!-- Image and comment -->
-  <div class="card-body">
-    <div class="row align-items-center">
-      <div class="col-md-5 text-center">
-        <app-main-image [imgSrc]="recipe.mainImage"></app-main-image>
-      </div>
-      <div class="col-md-7">
-        <app-main-comment [mainComment]="recipe.mainComment"></app-main-comment>
-      </div>
-    </div>
-  </div>
-
-  <!-- Ingredients -->
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-5 px-2 my-2">
-        <app-subtitle>Ingredients</app-subtitle>
-        <app-ingredients-list
-          [ingredients]="recipe.ingredients"
-        ></app-ingredients-list>
-      </div>
-
-      <!-- Steps -->
-      <div class="col-md-7 px-2 my-2">
-        <app-subtitle>Steps</app-subtitle>
-        <app-steps-list [steps]="recipe.steps"></app-steps-list>
+    <!-- Image and comment -->
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-5 text-center">
+          <app-main-image [imgSrc]="recipe.mainImage"></app-main-image>
+        </div>
+        <div class="col-md-7">
+          <app-main-comment
+            [mainComment]="recipe.mainComment"
+          ></app-main-comment>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Gallery -->
-  <div class="card-body">
-    <app-subtitle>Gallery</app-subtitle>
-    <app-carousel [images]="recipe.imageList"></app-carousel>
-  </div>
+    <!-- Ingredients -->
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5 px-2 my-2">
+          <app-subtitle>Ingredients</app-subtitle>
+          <app-ingredients-list
+            [ingredients]="recipe.ingredients"
+          ></app-ingredients-list>
+        </div>
 
-  <!-- Card Footer -->
-  <app-card-footer></app-card-footer>
+        <!-- Steps -->
+        <div class="col-md-7 px-2 my-2">
+          <app-subtitle>Steps</app-subtitle>
+          <app-steps-list [steps]="recipe.steps"></app-steps-list>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="card-body">
+      <app-subtitle>Gallery</app-subtitle>
+      <app-carousel [images]="recipe.imageList"></app-carousel>
+    </div>
+
+    <!-- Card Footer -->
+    <app-card-footer></app-card-footer>
+  </div>
+  <app-back-button [link]="'recipes'"></app-back-button>
 </div>
-<app-back-button [link]="'recipes'"></app-back-button>

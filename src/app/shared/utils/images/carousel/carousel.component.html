@@ -1,0 +1,15 @@
+<div class="col-md-6 m-auto">
+  <carousel [showIndicators]="false" data-interval="false">
+    <slide *ngFor="let image of images; let i = index">
+      <img
+        [src]="image.url"
+        class="gallery-image border rounded-lg border-primary"
+        alt="slide image"
+        style="display: block; width: 100%;"
+      />
+      <h5 class="gallery-numbers text-white">
+        {{ i + 1 }}/{{ images.length }}
+      </h5>
+    </slide>
+  </carousel>
+</div>

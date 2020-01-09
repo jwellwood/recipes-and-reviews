@@ -9,5 +9,7 @@ export class CarouselComponent implements OnInit {
   @Input() images: any;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.images);
+  }
 }

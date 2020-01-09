@@ -16,51 +16,56 @@
 </div>
 
 <!-- Card -->
-<div class="card mb-3 border-primary" *ngIf="review">
-  <!---------------------------------------------------Main Details---------------------------------------------- -->
-  <app-card-title [title]="review.name">
-    <h6 class="text-muted mb-1">
-      {{ review.city }},
-      <small>{{ review.country }}</small>
-    </h6>
-    <h6 class="text-primary">
-      {{ review.dateVisited.toDate() | date }}
-    </h6>
-  </app-card-title>
+<div *ngIf="review">
+  <div class="card mb-3 border-primary">
+    <!---------------------------------------------------Main Details---------------------------------------------- -->
+    <app-card-title [title]="review.name">
+      <h6 class="text-muted mb-1">
+        {{ review.city }},
+        <small>{{ review.country }}</small>
+      </h6>
+      <h6 class="text-primary">
+        {{ review.dateVisited.toDate() | date }}
+      </h6>
+    </app-card-title>
 
-  <!-- ---------------------------------------------Image and comment---------------------------------------------- -->
-  <app-tagline *ngIf="review.tagLine" [text]="review.tagLine"></app-tagline>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-4">
-        <app-main-image [imgSrc]="review.mainImage"></app-main-image>
-      </div>
-      <div class="col-md-8">
-        <app-main-comment [mainComment]="review.mainComment"></app-main-comment>
+    <!-- ---------------------------------------------Image and comment---------------------------------------------- -->
+    <app-tagline *ngIf="review.tagLine" [text]="review.tagLine"></app-tagline>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <app-main-image [imgSrc]="review.mainImage"></app-main-image>
+        </div>
+        <div class="col-md-8">
+          <app-main-comment
+            [mainComment]="review.mainComment"
+          ></app-main-comment>
+        </div>
       </div>
     </div>
+
+    <!-- ---------------------------------------------Gallery--------------------------------------------- -->
+
+    <div class="card-body">
+      <app-subtitle>Gallery</app-subtitle>
+
+      <app-carousel
+        *ngIf="review.imageList"
+        [images]="review.imageList"
+      ></app-carousel>
+
+      <!-- ---------------------------------------------Ratings---------------------------------------------- -->
+
+      <app-subtitle>Ratings</app-subtitle>
+      <app-review-ratings
+        *ngIf="review.ratings"
+        [ratings]="ratings"
+      ></app-review-ratings>
+    </div>
+    <div *ngIf="review.website" class="my-3 text-center">
+      <div class="text-dark">{{ review.website }}</div>
+    </div>
+    <app-card-footer></app-card-footer>
   </div>
-
-  <!-- ---------------------------------------------Gallery--------------------------------------------- -->
-
-  <div class="card-body">
-    <app-subtitle>Gallery</app-subtitle>
-    <app-carousel
-      *ngIf="review.imageList"
-      [images]="review.imageList"
-    ></app-carousel>
-
-    <!-- ---------------------------------------------Ratings---------------------------------------------- -->
-
-    <app-subtitle>Ratings</app-subtitle>
-    <app-review-ratings
-      *ngIf="review.ratings"
-      [ratings]="ratings"
-    ></app-review-ratings>
-  </div>
-  <div *ngIf="review.website" class="my-3 text-center">
-    <div class="text-dark">{{ review.website }}</div>
-  </div>
-  <app-card-footer></app-card-footer>
+  <app-back-button [link]="'reviews'"></app-back-button>
 </div>
-<app-back-button [link]="'reviews'"></app-back-button>

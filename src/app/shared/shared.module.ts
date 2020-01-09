@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 // Externals
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { CarouselModule } from "ngx-carousel-lib";
+import { CarouselModule } from "ngx-bootstrap/carousel";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { FlashMessagesModule } from "angular2-flash-messages";
 // Pipes
@@ -14,7 +14,6 @@ import { CardTitleComponent } from "./components/card-title/card-title.component
 import { JumbotronComponent } from "./components/jumbotron/jumbotron.component";
 import { TaglineComponent } from "./components/tagline/tagline.component";
 import { MainCommentComponent } from "./components/main-comment/main-comment.component";
-import { CarouselComponent } from "./components/carousel/carousel.component";
 import { CardFooterComponent } from "./components/card-footer/card-footer.component";
 import { FormLabelComponent } from "./components/form-label/form-label.component";
 import { SubtitleComponent } from "./components/subtitle/subtitle.component";
@@ -26,7 +25,6 @@ import { SubmitButtonComponent } from "./utils/buttons/submit-button/submit-butt
 import { InputButtonsComponent } from "./utils/buttons/input-buttons/input-buttons.component";
 import { MainImageComponent } from "./utils/images/main-image/main-image.component";
 import { MainListImageComponent } from "./utils/images/main-list-image/main-list-image.component";
-import { GalleryImageComponent } from "./utils/images/gallery-image/gallery-image.component";
 import { FormListImageComponent } from "./utils/images/form-list-image/form-list-image.component";
 import { ImagePlaceholderComponent } from "./utils/images/image-placeholder/image-placeholder.component";
 import { InputWrapperComponent } from "./utils/wrappers/input-wrapper/input-wrapper.component";
@@ -36,13 +34,13 @@ import { SpinnerComponent } from "./utils/spinner/spinner.component";
 import { UploaderComponent } from "./utils/images/uploader/uploader.component";
 import { RemoveImageComponent } from "./utils/images/remove-image/remove-image.component";
 import { PageWrapperComponent } from "./utils/wrappers/page-wrapper/page-wrapper.component";
+import { CarouselComponent } from "./utils/images/carousel/carousel.component";
 
 @NgModule({
   declarations: [
     GetRatingPipe,
     CardFooterComponent,
     CardTitleComponent,
-    CarouselComponent,
     JumbotronComponent,
     MainCommentComponent,
     TaglineComponent,
@@ -61,18 +59,18 @@ import { PageWrapperComponent } from "./utils/wrappers/page-wrapper/page-wrapper
     // Images
     MainImageComponent,
     MainListImageComponent,
-    GalleryImageComponent,
     FormListImageComponent,
     UploaderComponent,
     RemoveImageComponent,
-    ImagePlaceholderComponent
+    ImagePlaceholderComponent,
+    CarouselComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FontAwesomeModule,
     FlashMessagesModule,
-    CarouselModule,
+    CarouselModule.forRoot(),
     ModalModule.forRoot()
   ],
   exports: [
@@ -85,7 +83,6 @@ import { PageWrapperComponent } from "./utils/wrappers/page-wrapper/page-wrapper
     // Components
     CardTitleComponent,
     CardFooterComponent,
-    CarouselComponent,
     JumbotronComponent,
     MainCommentComponent,
     TaglineComponent,
@@ -105,11 +102,11 @@ import { PageWrapperComponent } from "./utils/wrappers/page-wrapper/page-wrapper
     // Images
     MainImageComponent,
     MainListImageComponent,
-    GalleryImageComponent,
     FormListImageComponent,
     UploaderComponent,
     RemoveImageComponent,
-    ImagePlaceholderComponent
+    ImagePlaceholderComponent,
+    CarouselComponent
   ]
 })
 export class SharedModule {}

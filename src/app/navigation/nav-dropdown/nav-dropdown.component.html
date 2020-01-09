@@ -1,7 +1,7 @@
 <div dropdown placement="bottom right">
   <div
     dropdownToggle
-    class="text-white"
+    class="text-white navbar-toggler"
     data-toggle="collapse"
     data-target="#navbarNav"
   >
@@ -35,7 +35,7 @@
     </li>
     <div *ngIf="isAuth">
       <li class="divider dropdown-divider"></li>
-      <li role="menuitem" class="bg-info">
+      <li role="menuitem" class="bg-warning">
         <a class="dropdown-item  text-primary" [routerLink]="'/admin'">Admin</a>
       </li>
     </div>
